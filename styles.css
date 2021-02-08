@@ -2,10 +2,141 @@ button {
     outline: none;
     border: none;
 }
+
 h5, h6{
     cursor: pointer;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+
+h1{
+    font-family: 'Russo One', sans-serif;
+    cursor: default;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    color: white;
+    letter-spacing: 0.25vw;
+}
+
+p.dev-des{
+    position: absolute;
+    font-size: 0.75em;
+    letter-spacing: 0.1vw;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    transform: rotateZ(-2.5deg);
+    cursor: default;
+}
+
+p.dev-des.d{
+    left: 17%;
+}
+
+p.dev-des.e{
+    left: 24%;
+}
+
+p.dev-des.v{
+    left: 31%;
+}
+
+p.dev-des.s{
+    left: 31%;
+}
+
+p.dev-des.i{
+    left: 38%
+}
+
+p.dev-des.g{
+    left: 45%
+}
+
+p.dev-des.n{
+    left: 52%
+}
+
+p.dev-des.e3{
+    left: 59%;
+}
+
+p.dev-des.r{
+    left: 66%;
+}
+
+p.dev-des.e2{
+    left: 38%
+}
+
+p.dev-des.l{
+    left: 45%;
+}
+
+p.dev-des.o{
+    left: 52%;
+}
+
+p.dev-des.p{
+    left: 59%;
+}
+
+p.dev-des.e4{
+    left: 65%;
+}
+
+p.dev-des.r2{
+    left: 72%
+}
+
+p.developer-active{
+    transform: translateY(0);
+    transition: 0.8s ease;
+    opacity: 1;
+}
+
+p.developer-hidden{
+    transform: translateY(5vh);
+    transition: 0.8s ease;
+    opacity: 0
+}
+
+p.designer-active{
+    transform: translateY(0);
+    transition: 0.8s ease;
+    opacity: 1;
+}
+
+p.designer-hidden{
+    transform: translateY(-5vh);
+    transition: 0.8s ease;
+    opacity: 0
+}
+
+.matt-day-div{
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    transition: 0.8s ease ;
+    transform: rotateY(-90deg) translateZ(-150px) translateX(285px) translateY(140px)
+}
+
+.matt-day-div.active{
+    transition-delay: 0.4s;
+    opacity: 1;
+}
+
+.matt-day-div.hidden{
+    opacity: 0;
+}
+
+.developer-designer-div{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 35%;
 }
 
 .link-div{
@@ -116,35 +247,43 @@ a.show{
     align-items: center;
     padding-right: 3.5%;
 }
+
 .main-content-div.show-content{
     font-size: 1.5em;
     width: 55%;
     height: 100%;
 }
+
 .main-content-div.hide-content{
     width: 0;
     height: 100%;
 }
+
 .spacer-div{
     height: 2.5%;
     width: 100%
 }
+
 .content-title{
     font-family: 'Russo One', sans-serif;
     letter-spacing: 0.5vw;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
 }
+
 .main-scene {
     width: 300px;
     height: 300px;
     perspective: 550px;
     transition: 0.8s ease;
     animation: float 6s ease-in-out infinite;
+    margin-right: 10%;
 }
+
 .main-scene.content-active {
-    margin-right: 40%;
+    margin-right: 50%;
 }
+
 .main-cube {
     width: 100%;
     height: 100%;
@@ -172,6 +311,11 @@ a.show{
 .back{
     transform: translateZ(-150px) rotateY(210deg) rotateX(-5deg)
 }
+
+.right{
+    transform: translateZ(-150px) rotateY(285deg) rotateX(0deg)
+}
+
 .bottom{
     transform: translateZ(-150px) rotateX(90deg);
 }
@@ -208,9 +352,11 @@ a.show{
     text-align: center;
     z-index: 100;
 }
+
 .hidden{
     opacity: 0;
 }
+
 .active{
     opacity: 1;
 }
@@ -230,6 +376,7 @@ a.show{
 .cube-face-left {
     transform: rotateY(-90deg) translateZ(150px);
 }
+
 .cube-face-top {
     transform: rotateX( 90deg) translateZ(150px);
 }

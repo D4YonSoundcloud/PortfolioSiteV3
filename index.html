@@ -31,11 +31,30 @@
 <body>
 <div id="main-scene" :class="'main-scene ' + mainSceneContentActive">
     <div id="main-cube" :class="'main-cube ' + mainCubeClass">
-        <h1> MATT DAY | {{ developerDesigner }}</h1>
+        <div :class="'matt-day-div ' + contentFrontActive">
+            <h1>MATT DAY</h1>
+            <div class="developer-designer-div">
+                <p :class="'dev-des d '">D</p>
+                <p :class="'dev-des e '">E</p>
+                <p :class="'dev-des v ' + developerLetters">V</p>
+                <p :class="'dev-des s ' + designerLetters">S</p>
+                <p :class="'dev-des i ' + designerLetters">I</p>
+                <p :class="'dev-des g ' + designerLetters">G</p>
+                <p :class="'dev-des n ' + designerLetters">N</p>
+                <p :class="'dev-des e2 ' + developerLetters">E</p>
+                <p :class="'dev-des e3 ' + designerLetters">E</p>
+                <p :class="'dev-des r ' + designerLetters">R</p>
+                <p :class="'dev-des l ' + developerLetters">L</p>
+                <p :class="'dev-des o ' + developerLetters">O</p>
+                <p :class="'dev-des p ' + developerLetters">P</p>
+                <p :class="'dev-des e4 ' + developerLetters">E</p>
+                <p :class="'dev-des r2 ' + developerLetters">R</p>
+            </div>
+        </div>
         <div class="cube-face cube-face-front">
             <div :class="'content-div ' + 'content-back ' + contentFrontActive">
                 <h5 @click="goToSection('front', 'back', 'contentFrontActive', 'contentBackActive')">PROJECTS<button id="front-projects-button"></button></h5>
-                <h5 @click="goToSection('front', 'back', 'contentFrontActive', 'contentBackActive')">ABOUT<button id="front-about-button"></button></h5>
+                <h5 @click="goToSection('front', 'right', 'contentFrontActive', 'contentRightActive'); goToShowContent('about')">ABOUT<button id="front-about-button"></button></h5>
                 <div class="link-div">
                     <a class="icon-link" href="https://github.com/D4YonSoundcloud">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -60,14 +79,22 @@
                 </div>
             </div>
         </div>
-        <div class="cube-face cube-face-right"></div>
+        <div class="cube-face cube-face-right">
+            <div :class="'content-div ' + 'content-back ' + contentRightActive">
+                <h5 @click="">ABOUT</h5>
+                <div class="back-home-div">
+                    <p @click="goToSection('right','front','contentRightActive','contentFrontActive', 'hideContent')"><- BACK <button></button></p>
+                    <p @click="goToSection('right','front','contentRightActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
+                </div>
+            </div>
+        </div>
         <div class="cube-face cube-face-left"></div>
         <div class="cube-face cube-face-top">
             <div :class="'content-div ' + 'content-back ' + contentTopActive">
                 <h5 @click="goToShowContent('kh3k')">KH3K<button id="top-hP1-button"></button></h5>
                 <div class="back-home-div">
-                    <p @click="goToSection('bottom','back','contentBottomActive','contentBackActive', 'hideContent')"><- BACK <button></button></p>
-                    <p @click="goToSection('bottom','front','contentBottomActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
+                    <p @click="goToSection('top','back','contentTopActive','contentBackActive', 'hideContent')"><- BACK <button></button></p>
+                    <p @click="goToSection('top','front','contentTopActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
                 </div>
             </div>
         </div>
@@ -103,8 +130,8 @@
     let content = {
         "red meter interface":{
             title: "RED METER'S DENSITY METER USER INTERFACE",
-            paragraphOne: 'Hired as sole developer to create a new User Interface for their main product line of Density Meters using the latest, ' +
-                'web technologies and pratices, based off their old python based ' +
+            paragraphOne: 'Hired as sole developer to create a new User Interface for their main product line of Density Meters using the latest ' +
+                'web technologies and practices, based off their old python based ' +
                 'user interface. ',
             paragraphTwo: 'Worked with the sole Back-End Engineer, based in another country, to create and receive data from multiple API endpoints, ' +
             'which I would then format and properly visualize the incoming real-time data for the user to understand their process ',
@@ -123,7 +150,16 @@
             projectLink: 'https://www.kh3k.com/#/',
             languagesUsed: ['Vue + Vuetify'],
             showProjectLink: true,
-        }
+        },
+	    "about":{
+		    title: "BIO",
+		    paragraphOne: 'I started my coding journey back in October 2019 with PHP. At the very beginning of 2020 I started my javascript journey and have been inlove with development ever since.',
+		    paragraphTwo: 'In June 2020, I got my first development job as a Software Developer at a small start-up, which is where I still currently am at. Working there has unexplainably increased ' +
+                'my development skills, in all aspects, from the program architecture, to the gotchas of the framework I use (Vue), and even digging deep under the hood of javascript itself.',
+		    paragraphThree: 'My current preferred stack for big and professional projects are Vue (+ Vuetify is material design is wanted) + NodeJS, while for smaller projects I might just use a basic .html file' +
+                'with the vue cdn link (+ any others I might be using) included',
+		    showProjectLink: false,
+	    }
     }
 
     const appMainScene = new Vue({
@@ -135,8 +171,12 @@
             contentBackActive: 'hidden',
             contentBottomActive: 'hidden',
             contentTopActive: 'hidden',
+	        contentRightActive: 'hidden',
             shadowActive: 'active',
             mainSceneContentActive: '',
+            developerLetters: 'developer-active',
+            designerLetters: 'designer-hidden',
+            developerActive: true,
         },
         methods:{
             test(){
@@ -187,10 +227,23 @@
                     this.mainSceneContentActive = '';
                     appMainContent.showContent = 'hide-content';
                 }, 600)
+            },
+            developerDesignerLoop(){
+            	setInterval(() => {
+            		if(this.developerActive === true){
+            			this.developerLetters = 'developer-hidden';
+            			this.designerLetters = 'designer-active';
+            			this.developerActive = false;
+                    } else {
+            			this.developerLetters = 'developer-active';
+            			this.designerLetters = 'designer-hidden';
+            			this.developerActive = true;
+                    }
+                }, 3000)
             }
         },
         mounted(){
-
+            this.developerDesignerLoop();
         }
     })
 
