@@ -27,6 +27,24 @@
         align-items: center;
         background-color: rgb(22, 22, 22);
     }
+    @media only screen
+    and (min-device-width: 400px)
+    and (max-device-width: 820px)
+    and (-webkit-min-device-pixel-ratio: 3)
+    and (orientation: portrait) {
+
+        body {
+            overflow-y: hidden;
+            overflow-x: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: rgb(22, 22, 22);
+        }
+    }
 </style>
 <body>
 <div id="main-scene" :class="'main-scene ' + mainSceneContentActive">
@@ -74,7 +92,7 @@
                 <h5 @click="goToSection('back', 'bottom', 'contentBackActive', 'contentBottomActive')">PROFESSIONAL PROJECTS<button id="back-big-projects-button"></button></h5>
                 <h5 @click="goToSection('back', 'top', 'contentBackActive', 'contentTopActive')">HOBBY PROJECTS<button id="back-small-projects-button"></button></h5>
                 <div class="back-home-div">
-                    <p @click="goToSection('back','front','contentBackActive','contentFrontActive')"><- BACK <button></button></p>
+                    <p @click="goToSection('back','front','contentBackActive','contentFrontActive')">BACK <button></button></p>
                     <p @click="goToSection('back','front','contentBackActive','contentFrontActive')">HOME<button></button></p>
                 </div>
             </div>
@@ -83,7 +101,7 @@
             <div :class="'content-div ' + 'content-back ' + contentRightActive">
                 <h5 @click="">ABOUT</h5>
                 <div class="back-home-div">
-                    <p @click="goToSection('right','front','contentRightActive','contentFrontActive', 'hideContent')"><- BACK <button></button></p>
+                    <p @click="goToSection('right','front','contentRightActive','contentFrontActive', 'hideContent')">BACK <button></button></p>
                     <p @click="goToSection('right','front','contentRightActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
                 </div>
             </div>
@@ -93,7 +111,7 @@
             <div :class="'content-div ' + 'content-back ' + contentTopActive">
                 <h5 @click="goToShowContent('kh3k')">KH3K<button id="top-hP1-button"></button></h5>
                 <div class="back-home-div">
-                    <p @click="goToSection('top','back','contentTopActive','contentBackActive', 'hideContent')"><- BACK <button></button></p>
+                    <p @click="goToSection('top','back','contentTopActive','contentBackActive', 'hideContent')">BACK <button></button></p>
                     <p @click="goToSection('top','front','contentTopActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
                 </div>
             </div>
@@ -102,7 +120,7 @@
             <div :class="'content-div ' + 'content-back ' + contentBottomActive">
                 <h5 @click="goToShowContent('red meter interface')">RED METER INTERFACE<button id="bottom-bP1-button"></button></h5>
                 <div class="back-home-div">
-                    <p @click="goToSection('bottom','back','contentBottomActive','contentBackActive', 'hideContent')"><- BACK <button></button></p>
+                    <p @click="goToSection('bottom','back','contentBottomActive','contentBackActive', 'hideContent')">BACK <button></button></p>
                     <p @click="goToSection('bottom','front','contentBottomActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
                 </div>
             </div>
@@ -119,7 +137,21 @@
     <p :class="showParagraphTwo"> {{ paragraphTwo }}</p>
     <div class="spacer-div"></div>
     <p :class="showParagraphThree"> {{ paragraphThree }}</p>
-    <a :class="showParagraphThree" v-if="showProjectLink === true" :href="projectLink">LIVE PROJECT</a>
+    <div v-if="showProjectLink === true" :class="'scene-link-div ' + showParagraphThree">
+        <div :class="'scene-link ' + showParagraphThree">
+            <div class="box-main">
+                <div class="box-face box-face-front">
+                    <a v-if="showProjectLink === true" :href="projectLink">LIVE PROJECT</a>
+                </div>
+                <div class="box-face box-face-back"></div>
+                <div class="box-face box-shadow"></div>
+                <div class="box-face box-face-right"></div>
+                <div class="box-face box-face-left"></div>
+                <div class="box-face box-face-top"></div>
+                <div class="box-face box-face-bottom"></div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
