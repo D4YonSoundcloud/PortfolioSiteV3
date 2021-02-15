@@ -543,7 +543,7 @@ a.show{
 @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
 
     body{
-        overflow-y: hidden;
+        overflow-y: auto;
         overflow-x: hidden;
         height: 100vh;
         width: 100vw;
@@ -721,7 +721,7 @@ a.show{
     }
 
     p{
-        font-size: 0.5em;
+        font-size: 0.55em;
         cursor: pointer;
         margin-left: 2.5%;
         margin-right: 2.5%;
@@ -732,13 +732,16 @@ a.show{
         transform: translateY(2vh);
         transition: 0.8s ease;
         opacity: 0;
+        font-size: 1em;
         text-align: left;
+        width: 95%;
     }
 
     .content-title.show{
         opacity: 1;
+        transition: 0.8s ease;
         transform: translateY(0);
-        font-size: 1.15em;
+        font-size: 1em;
         text-align: left;
         width: 95%;
     }
@@ -754,7 +757,7 @@ a.show{
         transition: 0.6s ease;
         opacity: 1;
         transform: translateY(0);
-        font-size: 0.60em !important;
+        font-size: 0.55em !important;
         font-family: 'Roboto', sans-serif;
     }
 
@@ -818,7 +821,8 @@ a.show{
         width: 100%;
         height: 65%;
         position: absolute;
-        top: 30.5%;
+        top: 45%;
+        justify-content: start;
     }
 
     .main-content-div.hide-content{
@@ -851,7 +855,7 @@ a.show{
     .main-scene.content-active {
         width: 100%;
         margin-right: 0;
-        margin-top: -4%;
+        margin-top: 0;
         margin-left: 40%;
     }
 
@@ -998,11 +1002,11 @@ a.show{
         position: relative;
         transition: 1.6s ease;
         transform-style: preserve-3d;
-        transform: translateZ(-50px);
+        transform: translateZ(-310px);
     }
 
     .box-main:hover{
-        transform: rotateX(20deg);
+        transform: translateZ(-310px) rotateX(20deg);
     }
 
     .box-face{
@@ -1028,7 +1032,6 @@ a.show{
         box-shadow: 0 0 70px 1px rgb(220 162 228);
         background-color: rgba(0,0,0,0);
         transform: rotateY(180deg) translateZ( -10px);
-        animation: shadowFloat 6s ease-in-out infinite;
         transition: 0.8s ease;
         pointer-events: none;
     }
