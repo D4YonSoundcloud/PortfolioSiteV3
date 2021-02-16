@@ -889,7 +889,7 @@ a.show{
     }
 
     .right{
-        transform: translateZ(-100px) translateX(-25%) rotateY(285deg) rotateX(0deg)
+        transform: translateY(25%) translateZ(-100px) translateX(-25%) rotateY(285deg) rotateX(0deg)
     }
 
     .bottom{
