@@ -14,6 +14,10 @@ h5:hover{
     transform: scale(1.05)
 }
 
+h5:active{
+    transform: scale(1.075);
+}
+
 h1{
     font-family: 'Russo One', sans-serif;
     cursor: default;
@@ -169,6 +173,7 @@ p{
     margin-left: 2.5%;
     margin-right: 2.5%;
     transition: 0.8s ease;
+    font-family: 'Roboto', sans-serif;
 }
 
 .content-title.hide{
@@ -181,6 +186,11 @@ p{
 .content-title.show{
     opacity: 1;
     transform: translateY(0);
+}
+
+.content-title.transition{
+    opacity: 0;
+    transform: translateX(-50vw);
 }
 
 p.hide{
@@ -196,6 +206,23 @@ p.show{
     transform: translateY(0);
     font-size: 0.85em;
     font-family: 'Roboto', sans-serif;
+}
+
+p.transform{
+    font-family: 'Roboto', sans-serif;
+    transform: translateX(50vw);
+}
+
+p.languages{
+    font-size: 0.75em;
+    letter-spacing: 2px;
+}
+
+
+p.languages-title{
+    font-size: 0.55em;
+    letter-spacing: 3px;
+    color: rgb(225,225,225);
 }
 
 a{

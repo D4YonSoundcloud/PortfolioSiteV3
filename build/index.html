@@ -93,6 +93,7 @@
         <div class="cube-face cube-face-top">
             <div :class="'content-div ' + 'content-back ' + contentTopActive">
                 <h5 @click="goToShowContent('kh3k')">KH3K<button id="top-hP1-button"></button></h5>
+                <h5 @click="goToShowContent('portfolio site v3')">PORTFOLIO SITE V3<button id="top-hP2-button"></button></h5>
                 <div class="back-home-div">
                     <p @click="goToSection('top','back','contentTopActive','contentBackActive', 'hideContent')">BACK <button></button></p>
                     <p @click="goToSection('top','front','contentTopActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
@@ -102,6 +103,7 @@
         <div class="cube-face cube-face-bottom">
             <div :class="'content-div ' + 'content-back ' + contentBottomActive">
                 <h5 @click="goToShowContent('red meter interface')">RED METER INTERFACE<button id="bottom-bP1-button"></button></h5>
+                <h5 @click="goToShowContent('red meter 3d model')">RED METER 3D MODEL<button id="bottom-bP2-button"></button></h5>
                 <div class="back-home-div">
                     <p @click="goToSection('bottom','back','contentBottomActive','contentBackActive', 'hideContent')">BACK <button></button></p>
                     <p @click="goToSection('bottom','front','contentBottomActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
@@ -113,15 +115,25 @@
     </div>
 </div>
 <div id="main-content" :class="'main-content-div ' + showContent">
-    <h2 :class="'content-title ' + showTitle"> {{ title }} </h2>
-    <div :class="'title-divider-bar ' + showDivider"></div>
-    <p :class="showParagraphOne"> {{ paragraphOne }}</p>
+    <h2 :class="'content-title ' + showTitle + transition"> {{ title }} </h2>
+    <div :class="'title-divider-bar ' + showDivider + transition"></div>
+    <p :class="showParagraphOne + transition"> {{ paragraphOne }}</p>
     <div class="spacer-div"></div>
-    <p :class="showParagraphTwo"> {{ paragraphTwo }}</p>
+    <p :class="showParagraphTwo + transition"> {{ paragraphTwo }}</p>
     <div class="spacer-div"></div>
-    <p :class="showParagraphThree"> {{ paragraphThree }}</p>
-    <div v-if="showProjectLink === true" :class="'scene-link-div ' + showParagraphThree">
-        <div :class="'scene-link ' + showParagraphThree">
+    <p :class="showParagraphThree + transition"> {{ paragraphThree }}</p>
+    <div class="spacer-div"></div>
+    <div :class="'spacer-div ' +  'language-div ' + showParagraphOne" style="margin-top: 0.25%; display: flex; flex-flow: row; justify-content: start; align-items: center;">
+        <p v-if="(languagesUsed.length > 0) === true" :class="'languages-title ' + transition"> STACK USED </p>
+        <p :class="'languages ' + showParagraphOne + transition" v-for="(language, index) in languagesUsed"> {{language}} </p>
+        <a class="icon-link" v-if="showGithubLink === true" :href="githubLink">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="white" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+            </svg>
+        </a>
+    </div>
+    <div v-if="showProjectLink === true" :class="'scene-link-div ' + showParagraphThree + transition">
+        <div :class="'scene-link ' + showParagraphThree + transition">
             <div class="box-main">
                 <div class="box-face box-face-front">
                     <a v-if="showProjectLink === true" :href="projectLink">LIVE PROJECT</a>
@@ -147,32 +159,67 @@
             paragraphOne: 'Hired as sole developer to create a new User Interface for their main product line of Density Meters using the latest ' +
                 'web technologies and practices, based off their old python based ' +
                 'user interface. ',
-            paragraphTwo: 'Worked with the sole Back-End Engineer, based in another country, to create and receive data from multiple API endpoints, ' +
-            'which I would then format and properly visualize the incoming real-time data for the user to understand their process, using Vue + Vuetify ',
-            paragraphThree: '',
-            languagesUsed: ['Vue + Vuetify', 'Axios'],
+            paragraphTwo: 'Worked with the sole Back-End Engineer, based in another country, to create and receive real-time data from multiple API endpoints connected to the device sensors, ' +
+            'which I would then format and properly visualize for the user to understand their process, using Vue + Vuetify. In Addition' +
+                'the user Interface would need to run on a raspberry Pi computer with limited memory and CPU power, requiring performant code and memory management. ',
+            paragraphThree: 'Currently scheduled for release March 31st, 2021. Under NDA until then so no Photos or Links currently',
+            languagesUsed: ['Vue', 'Vuetify','Axios'],
             showProjectLink: false,
             projectLink: '',
+	        githubLink: '',
+	        showGithubLink: false,
+        },
+        "red meter 3d model":{
+	        title: "RED METER 3D MODEL",
+	        paragraphOne: 'Created a 3D Model of the companies main product, the Red Meter itself, to help customers visualize and preview what the actual device itself looked like.' +
+                ' Customers would often get confused about how the Red Meter would fit into their process, this greatly helped ease that confusion.',
+	        paragraphTwo: 'Built using ThreeJS, I got to learn quite a bit about 3D graphics in the process of creating the model. Also had to have some "fun" integrated it' +
+                ' within their WordPress page.',
+	        paragraphThree: 'Please wait a few seconds after clicking the link below, it can sometimes take a while to load the model.',
+	        languagesUsed: ['HTML', 'ThreeJS'],
+	        showProjectLink: true,
+	        projectLink: 'https://redmeters.com/product/',
+	        githubLink: '',
+	        showGithubLink: false,
         },
         "kh3k":{
             title: "KENDAMA HONER 3000 (KH3K)",
             paragraphOne: 'After playing kendama for about 7 months, I was out playing one afternoon and realized that there'
                 + ' is no web app or tool that generates kendama line combinations, by that night I had the prototype built '
                 + 'and after a few days had my trick list, and corresponding levels or "belts" to go along with them',
-            paragraphTwo: '',
+            paragraphTwo: 'Sadly I cannot link the source code, as surprisingly there are people in the Kendama community who would actually steal the ' +
+                'trick list generation source code for their own benefit',
             paragraphThree: '',
             projectLink: 'https://www.kh3k.com/#/',
-            languagesUsed: ['Vue + Vuetify'],
+            languagesUsed: ['Vue', 'Vuetify'],
             showProjectLink: true,
+	        githubLink: '',
+	        showGithubLink: false,
+        },
+        "portfolio site v3":{
+	        title: "PORTFOLIO SITE V3",
+	        paragraphOne: 'While satisfied with my past portfolio site when I had first created it (linked below), after getting my first development job though, ' +
+                'and the increase of skills that come with it, I knew I could create a much better portfolio site',
+	        paragraphTwo: 'My past portfolio site, code wise, was quite horrendous. So with this version I greatly strived for simple and scalable code. I would like to think I achieved this' +
+                ', with less than 200 lines of code needed for all the current logic this site has (vs 1000+ of my past portfolio site)',
+	        paragraphThree: '',
+	        projectLink: 'https://d4yonsoundcloud.github.io/RandomMiniProjects-Portfolio-Site/',
+	        languagesUsed: ['HTML', 'CSS', 'Vue (CDN)'],
+	        showProjectLink: true,
+            githubLink: 'https://github.com/D4YonSoundcloud/PortfolioSiteV3',
+            showGithubLink: true,
         },
 	    "about":{
 		    title: "BIO",
-		    paragraphOne: 'I started my coding journey back in October 2019 with PHP. At the very beginning of 2020 I started my javascript journey and have been inlove with development ever since.',
-		    paragraphTwo: 'In June 2020, I got my first development job as a Software Developer at a small start-up, which is where I still currently am at. Working there has unexplainably increased ' +
+		    paragraphOne: 'I started my coding journey back in 2019 with PHP. At the very beginning of 2020 I started learning Javascript and have pretty much been consumed by it ever since (in a good way).',
+		    paragraphTwo: 'In June 2020, I got my first development job as the only Front-End Software Developer at a small start-up called Red Meters, which is where I still currently am at. Working there has inexplicably increased ' +
                 'my development skills, in all aspects, from the program architecture, to the gotchas of the framework I use (Vue), and even digging deep under the hood of javascript itself. ',
-		    paragraphThree: 'My current preferred stack for big and professional projects are Vue (+ Vuetify if material design is wanted) + NodeJS, while for smaller projects I might just use a basic .html file ' +
-                'with the vue cdn link (+ any others I might be using) included',
+		    paragraphThree: 'My current preferred stack for big and professional projects are Vue (and Vuetify if material design is wanted) + NodeJS, while for smaller projects I might just use a basic HTML file ' +
+                'with the Vue cdn link (and any others I might be using) included. Emphasis on preferred though, I am willing to work with almost any language, framework, or library (within reason).',
 		    showProjectLink: false,
+		    languagesUsed: [],
+		    githubLink: '',
+		    showGithubLink: false,
 	    }
     }
 
@@ -197,10 +244,12 @@
                 console.log('i have been clicked')
             },
             goToSection(fromSection, toSection, fromShown, toShown, transformModifier){
+            	//changes the main cube class to the section we are going to, this starts the css transition
                 this.mainCubeClass = toSection;
-                console.log(appMainScene)
+                //change the from shown property in the data object above to 'hidden', and then the to property to 'active'
                 this[fromShown] = 'hidden';
                 this[toShown] = 'active';
+                //if we are going to the bottom section, then hide the shadow
                 if(toSection === 'bottom') {
                     this.shadowActive = 'hidden';
                 } else {
@@ -208,27 +257,38 @@
                         this.shadowActive = 'active';
                     }, 600)
                 }
+                //case for handling hiding the content, used if the user clicks back or home
                 if(transformModifier === 'hideContent'){
                     this.hideContent();
                 }
             },
             goToShowContent(contentName){
+            	if(this.mainSceneContentActive !== ''){
+            		console.log('main scene is active')
+                    appMainContent.transition = 'transition';
+            		setTimeout(() => {
+            			appMainContent.transition = '';
+                    }, 800
+                    )
+                }
                 this.mainSceneContentActive = 'content-active'
                 appMainContent.showContent = 'show-content';
                 console.log(content[contentName])
                 appMainContent.title = content[contentName].title
-                appMainContent.paragraphOne = content[contentName].paragraphOne
-                appMainContent.paragraphTwo = content[contentName].paragraphTwo
-                appMainContent.paragraphThree = content[contentName].paragraphThree
-                appMainContent.languagesUsed = content[contentName].languagesUsed
-                appMainContent.showProjectLink = content[contentName].showProjectLink
-                appMainContent.projectLink = content[contentName].projectLink
+                appMainContent.paragraphOne = content[contentName].paragraphOne;
+                appMainContent.paragraphTwo = content[contentName].paragraphTwo;
+                appMainContent.paragraphThree = content[contentName].paragraphThree;
+                appMainContent.showProjectLink = content[contentName].showProjectLink;
+                appMainContent.projectLink = content[contentName].projectLink;
                 setTimeout(() => {
                     appMainContent.showTitle = 'show';
                     appMainContent.showDivider = 'show';
                     appMainContent.showParagraphOne = 'show';
                     appMainContent.showParagraphTwo = 'show';
                     appMainContent.showParagraphThree = 'show';
+	                appMainContent.languagesUsed = content[contentName].languagesUsed
+	                appMainContent.githubLink = content[contentName].githubLink;
+	                appMainContent.showGithubLink = content[contentName].showGithubLink;
                 }, 600)
             },
             hideContent(){
@@ -237,6 +297,8 @@
                 appMainContent.showParagraphOne = 'hide';
                 appMainContent.showParagraphTwo = 'hide';
                 appMainContent.showParagraphThree = 'hide';
+                appMainContent.languagesUsed = [];
+                appMainContent.showGithubLink = false;
                 setTimeout(() => {
                     this.mainSceneContentActive = '';
                     appMainContent.showContent = 'hide-content';
@@ -272,7 +334,9 @@
                 'which I would then format and properly visualize the incoming real-time data for the user to understand their process ',
             paragraphThree: '',
             projectLink: '',
+            githubLink: '',
             showProjectLink: false,
+            showGithubLink: false,
             languagesUsed: [],
             showContent: 'hide-content',
             showParagraphOne: 'hide',
@@ -280,6 +344,7 @@
             showParagraphThree: 'hide',
             showTitle: 'hide',
             showDivider: 'hide',
+	        transition: '',
         },
         methods:{
 
