@@ -5,8 +5,8 @@ button {
 
 h5, h6{
     cursor: pointer;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
     transition: 0.4s ease;
 }
 
@@ -394,7 +394,7 @@ a.show{
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    padding: 10%;
+    padding: 5%;
     transition: 0.8s ease;
     text-align: center;
     z-index: 100;

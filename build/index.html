@@ -92,9 +92,10 @@
         <div class="cube-face cube-face-left"></div>
         <div class="cube-face cube-face-top">
             <div :class="'content-div ' + 'content-back ' + contentTopActive">
+                <h5 @click="goToShowContent('SSR2099 (Online Game)')">SSR2099<button id="top-hP4-button"></button></h5>
                 <h5 @click="goToShowContent('kh3k')">KH3K<button id="top-hP1-button"></button></h5>
-                <h5 @click="goToShowContent('portfolio site v3')">PORTFOLIO SITE V3<button id="top-hP2-button"></button></h5>
                 <h5 @click="goToShowContent('pokeBerryDex')">POKÉBERRYDEX<button id="top-hP3-button"></button></h5>
+                <h5 @click="goToShowContent('portfolio site v3')">PORTFOLIO SITE V3<button id="top-hP2-button"></button></h5>
                 <div class="back-home-div">
                     <p @click="goToSection('top','back','contentTopActive','contentBackActive', 'hideContent')">BACK <button></button></p>
                     <p @click="goToSection('top','front','contentTopActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
@@ -160,11 +161,11 @@
                 'web technologies and practices, based off their old python based ' +
                 'user interface. ',
             paragraphTwo: 'Worked with the sole Back-End Engineer, based in another country, to create and receive real-time data from multiple API endpoints connected to the device sensors, ' +
-            'which I would then format and properly visualize for the user to understand their process, using Vue + Vuetify. In Addition ' +
+            'which I would then format and properly visualize for the user to understand their process, using Vue, Vuetify, and D3js. In Addition ' +
                 'the user Interface would need to run on a raspberry Pi computer with limited memory and CPU power, requiring performant code and memory management. ',
             paragraphThree: 'Linked Below is a Web Demo showcasing the software, note that since this has been recorded, I have replaced the ChartJS charts with D3 charts,' +
                 ' that not only look much better and more coherent, but performs much better as well.',
-            languagesUsed: ['Vue', 'Vuetify','Axios'],
+            languagesUsed: ['Vue', 'Vuetify','Axios','D3js'],
             showProjectLink: true,
             projectLink: 'https://www.youtube.com/watch?v=RW_KBUUvBK8',
 	        githubLink: '',
@@ -183,10 +184,28 @@
 	        githubLink: '',
 	        showGithubLink: false,
         },
+        "SSR2099 (Online Game)":{
+	        title: "SoundCloud Stardum Royale 2099",
+	        paragraphOne: 'Inspired after learning of Danger Crew, a full-fledged developer RPG created in React, and having some nostalgia for the flash days of old,' +
+		        ' I decided I wanted to see how far I could get making a game using Vue, my Javascript framework of choice.',
+	        paragraphTwo: 'What started as an experiment, has quickly turned into my favorite hobby project. Not only being the most fun to actively develop, but has' +
+                ' taught me many valuable full stack lessons. With the game being split in half between Online 1v1 PVP and Single Player Time Trials, There was' +
+                ' plenty of challenges to be solved!',
+	        paragraphThree: 'My two favorite features I have developed so far include the tick system on the server, which allows for real-time fast paced online PVP,' +
+                'which I did not realize I would need to do until I had deployed the online PVP, only to realize it was almost unplayable due to the server not being the only ' +
+                'source of truth, rookie mistake, but one server rewrite and tick system implementation later, it plays like butter! My Other favorite feature, ' +
+                'would have to be the account tracking, so if a user logs in with their google account, and then navigates to the profile page, they will see a ' +
+                'detailed page view, showing their fastest and latest times, progress in the form of data Visualizations (in development), as well as their PvP record and Level. ',
+	        projectLink: 'https://www.ssr2099.com/#/',
+	        languagesUsed: ['Vue', 'Node', 'Express', 'SocketIO', 'mongoDB', 'D3js'],
+	        showProjectLink: true,
+	        githubLink: 'https://github.com/D4YonSoundcloud/Vue-Game-Test',
+	        showGithubLink: true,
+        },
         "kh3k":{
             title: "KENDAMA HONER 3000 (KH3K)",
             paragraphOne: 'After playing kendama for about 7 months, I was out playing one afternoon and realized that there'
-                + ' is no web app or tool that generates kendama line combinations, by that night I had the prototype built '
+                + ' is no web app or tool that generates kendama line combinations,so by that night I had a prototype built '
                 + 'and after a few days had my trick list, and corresponding levels or "belts" to go along with them',
             paragraphTwo: 'Sadly I cannot link the source code, as surprisingly there are people in the Kendama community who would actually steal the ' +
                 'trick list generation source code for their own benefit',
