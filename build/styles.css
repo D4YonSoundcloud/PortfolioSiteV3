@@ -10,12 +10,29 @@ h5, h6{
     transition: 0.4s ease;
 }
 
+h5.small{
+    cursor: pointer;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    font-size: 0.65em;
+    display: flex;
+    transition: 0.4s ease;
+}
+
 h5:hover{
+    transform: scale(1.05)
+}
+
+h5.small:hover{
     transform: scale(1.05)
 }
 
 h5:active{
     transform: scale(1.075);
+}
+
+h5.small:active{
+    transform: scale(1.075)
 }
 
 h1{
