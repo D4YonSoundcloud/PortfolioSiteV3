@@ -93,9 +93,9 @@
         <div class="cube-face cube-face-top">
             <div :class="'content-div ' + 'content-back ' + contentTopActive">
                 <h5 @click="goToShowContent('SSR2099 (Online Game)')">SSR2099<button id="top-hP4-button"></button></h5>
+                <h5 @click="goToShowContent('SSR2099 map maker')">SSR2099 MAP MAKER<button id="top-h54-button"></button></h5>
                 <h5 @click="goToShowContent('kh3k')">KH3K<button id="top-hP1-button"></button></h5>
                 <h5 @click="goToShowContent('pokeBerryDex')">POKÉBERRYDEX<button id="top-hP3-button"></button></h5>
-                <h5 @click="goToShowContent('portfolio site v3')">PORTFOLIO SITE V3<button id="top-hP2-button"></button></h5>
                 <div class="back-home-div">
                     <p @click="goToSection('top','back','contentTopActive','contentBackActive', 'hideContent')">BACK <button></button></p>
                     <p @click="goToSection('top','front','contentTopActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
@@ -202,6 +202,20 @@
 	        showProjectLink: true,
 	        githubLink: 'https://github.com/D4YonSoundcloud/Vue-Game-Test',
 	        showGithubLink: true,
+        },
+        "SSR2099 map maker":{
+            title: "SSR2099 Custom Map Maker",
+            paragraphOne: 'Wanting to make my life easier, and make it easier for my friends to contribute with SSR2099 in a much more accessible way, ' +
+                'I created this easy to use map editor.',
+            paragraphTwo: 'Built in Angular (11), this my project using the framework, and I must say, it was much more of a joy to use then I was expecting! ' +
+                'I hear "Oh the learning curve is awful", but honestly, it just felt like much more verbose Vue. I thought it was so easy to use in fact, ' +
+                'that I am going to have a hard time choosing between it and Vue for my next projects!',
+            paragraphThree: 'No libraries used for this one, just good old Angular',
+            projectLink: 'https://ssr2099-map-maker.netlify.app/',
+            languagesUsed: ['Angular11'],
+            showProjectLink: true,
+            githubLink: 'https://github.com/D4YonSoundcloud/SSR2099-Map-Maker',
+            showGithubLink: true,
         },
         "kh3k":{
             title: "KENDAMA HONER 3000 (KH3K)",
