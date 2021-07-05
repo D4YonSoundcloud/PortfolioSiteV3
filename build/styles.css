@@ -144,7 +144,7 @@ p.designer-hidden{
     flex-flow: column;
     justify-content: start;
     align-items: center;
-    transition: 0.8s ease ;
+    transition: 0.8s ease;
     transform: rotateY(-90deg) translateZ(-150px) translateX(285px) translateY(140px)
 }
 
@@ -322,6 +322,7 @@ a.show{
 .main-content-div.hide-content{
     width: 0;
     height: 100%;
+    display: none;
 }
 
 .spacer-div{
@@ -343,6 +344,7 @@ a.show{
     transition: 0.8s ease;
     animation: float 6s ease-in-out infinite;
     margin-right: 10%;
+    z-index: 10;
 }
 
 .main-scene.content-active {
@@ -374,12 +376,17 @@ a.show{
 }
 
 .back{
-    transform: translateZ(-150px) rotateY(121deg) rotateX(-5deg)
+    transform: translateZ(-150px) rotateY(121deg) rotateX(-2deg);
 }
 
 .right{
     transform: translateZ(-150px) rotateY(285deg) rotateX(0deg)
 }
+
+.cv{
+    transform: translateZ(-150px)  rotateY(270deg) rotateZ(-3deg) rotateX(0deg)
+}
+
 
 .bottom{
     transform: translateZ(-150px) rotateX(90deg);
@@ -461,6 +468,7 @@ a.show{
     /*transition: 0.8s ease;*/
     pointer-events: none;
 }
+
 
 .scene-link-div{
     display: flex;
@@ -611,6 +619,144 @@ a.show{
 
     }
 }
+
+/**
+cv styles
+ */
+.main-cv-container.hidden{
+    width: 100vw;
+    height: 95%;
+    margin-top: 10%;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+}
+.main-cv-container.floating{
+    animation: cvFloat 6s ease-in-out infinite;
+}
+
+.cv-title{
+    height: 15%;
+    width: 60%;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cv-title h1{
+    font-family: 'Russo One', sans-serif;
+    cursor: default;
+    font-size: 3em;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    color: white;
+    letter-spacing: 0.25vw;
+    text-shadow: 0 0 5px white;
+}
+
+.cv-content-div{
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    width: 50%;
+    padding: 8px 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px rgb(232 150 246), inset 0 0 10px 1px rgb(165 112 174);
+    margin-bottom: 32px;
+    transition: 0.4s ease;
+}
+
+.skills{
+    height: 20%;
+}
+
+.skills:hover{
+    height: 21%;
+    width: 51%;
+}
+
+.experience{
+    height: 25%;
+}
+
+.experience:hover{
+    height: 26%;
+    width: 51%;
+}
+
+.education{
+    margin-bottom: 16px;
+    height: 10%;
+}
+
+.education:hover{
+    height: 11%;
+    width: 51%;
+}
+
+.cv-content-title{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+}
+
+p.back-to-home-from-cv{
+    position: absolute;
+    bottom: 10%;
+    font-size: 1.5em;
+    color: white;
+    letter-spacing: 0.1vw;
+}
+p.back-to-home-from-cv:hover{
+    position: absolute;
+    bottom: 10%;
+    font-size: 1.5em;
+    color: white;
+    letter-spacing: 0.15vw;
+}
+
+
+
+@keyframes cvFloat {
+    0% {
+        transform: translateY(-20px);
+    }
+    33% {
+        transform: translateY(-15px);
+    }
+    66%{
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*iphone viewport portrait*/
 @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
@@ -901,6 +1047,7 @@ a.show{
     .main-content-div.hide-content{
         width: 0;
         height: 100%;
+        display: none;
     }
 
     .spacer-div{

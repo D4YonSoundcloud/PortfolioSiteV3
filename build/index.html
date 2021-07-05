@@ -30,6 +30,8 @@
     }
 </style>
 <body>
+
+<!-- CUBE + CUBE BUTTONS -->
 <div id="main-scene" :class="'main-scene ' + mainSceneContentActive">
     <div id="main-cube" :class="'main-cube ' + mainCubeClass">
         <div :class="'matt-day-div ' + contentFrontActive">
@@ -58,15 +60,16 @@
             <div :class="'content-div ' + 'content-back ' + contentFrontActive">
                 <h5 @click="goToSection('front', 'back', 'contentFrontActive', 'contentBackActive')">PROJECTS<button id="front-projects-button"></button></h5>
                 <h5 @click="goToSection('front', 'right', 'contentFrontActive', 'contentRightActive'); goToShowContent('about')">ABOUT<button id="front-about-button"></button></h5>
+                <h5 @click="goToCV('right')">CV<button id="front-cv-button"></button></h5>
                 <div class="link-div">
                     <a class="icon-link" href="https://github.com/D4YonSoundcloud">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                        <path fill="white" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                            <path fill="white" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
                         </svg>
                     </a>
                     <a class="icon-link" href="https://www.linkedin.com/in/matthew-day-a26a321a3/">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                        <path fill="white" d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
+                            <path fill="white" d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
                         </svg>
                     </a>
                 </div>
@@ -152,8 +155,33 @@
         <!-- cube shadow-->
         <div :class="'cube-face ' + 'cube-face-shadow '">
         </div>
+
     </div>
 </div>
+
+<!-- CV DIV-->
+<div id="main-cv" class="main-cv-container hidden">
+    <div class="cv-title">
+        <h1 class="cv-title-text">CV - MATTHEW DAY</h1>
+    </div>
+
+    <div class="skills cv-content-div">
+        <div class="cv-content-title"></div>
+    </div>
+
+    <div class="experience cv-content-div">
+        <div class="cv-content-title"></div>
+    </div>
+
+    <div class="education cv-content-div">
+        <div class="cv-content-title"></div>
+    </div>
+    <!-- Go back to Home from CV button -->
+    <p class="back-to-home-from-cv" @click="goBackToHomeFromCv('front')">BACK</p>
+
+</div>
+
+<!-- CONTENT DIV -->
 <div id="main-content" :class="'main-content-div ' + showContent">
     <h2 :class="'content-title ' + showTitle + transition"> {{ title }} </h2>
     <div :class="'title-divider-bar ' + showDivider + transition"></div>
@@ -188,11 +216,14 @@
         </div>
     </div>
 </div>
+
+<!-- JAVASCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
 <script>
+
     /*
-    * START OF UGLY DATE ZONE, ENTER IF YE DARE (end line: 749)
+    * START OF UGLY DATE ZONE, ENTER IF YE DARE (end line: 810)
     */
 
     gsap.set('.cube-face-front', { transform: 'rotateY(  0deg) translateZ(150px)'})
@@ -210,47 +241,47 @@
                 'web technologies and practices, based off their old python based ' +
                 'user interface. ',
             paragraphTwo: 'Worked with the sole Back-End Engineer, based in another country, to create and receive real-time data from multiple API endpoints connected to the device sensors, ' +
-            'which I would then format and properly visualize for the user to understand their process, using Vue, Vuetify, and D3js. In Addition ' +
+                'which I would then format and properly visualize for the user to understand their process, using Vue, Vuetify, and D3js. In Addition ' +
                 'the user Interface would need to run on a raspberry Pi computer with limited memory and CPU power, requiring performant code and memory management. ',
             paragraphThree: 'Linked Below is a Web Demo showcasing the software, note that since this has been recorded, I have replaced the ChartJS charts with D3 charts,' +
                 ' that not only look much better and more coherent, but performs much better as well.',
             languagesUsed: ['Vue', 'Vuetify','Axios','D3js'],
             showProjectLink: true,
             projectLink: 'https://www.youtube.com/watch?v=RW_KBUUvBK8',
-	        githubLink: '',
-	        showGithubLink: false,
+            githubLink: '',
+            showGithubLink: false,
         },
         "red meter 3d model":{
-	        title: "RED METER 3D MODEL",
-	        paragraphOne: 'Created a 3D Model of the companies main product, the Red Meter itself, to help customers visualize and preview what the actual device itself looked like.' +
+            title: "RED METER 3D MODEL",
+            paragraphOne: 'Created a 3D Model of the companies main product, the Red Meter itself, to help customers visualize and preview what the actual device itself looked like.' +
                 ' Customers would often get confused about how the Red Meter would fit into their process, this greatly helped ease that confusion.',
-	        paragraphTwo: 'Built using ThreeJS, I got to learn quite a bit about 3D graphics in the process of creating the model. Also had to have some "fun" integrating it' +
+            paragraphTwo: 'Built using ThreeJS, I got to learn quite a bit about 3D graphics in the process of creating the model. Also had to have some "fun" integrating it' +
                 ' within their WordPress page.',
-	        paragraphThree: 'Please wait a few seconds after clicking the link below, it can sometimes take a while to load the model.',
-	        languagesUsed: ['HTML', 'ThreeJS'],
-	        showProjectLink: true,
-	        projectLink: 'https://redmeters.com/product/',
-	        githubLink: '',
-	        showGithubLink: false,
+            paragraphThree: 'Please wait a few seconds after clicking the link below, it can sometimes take a while to load the model.',
+            languagesUsed: ['HTML', 'ThreeJS'],
+            showProjectLink: true,
+            projectLink: 'https://redmeters.com/product/',
+            githubLink: '',
+            showGithubLink: false,
         },
         "SSR2099 (Online Game)":{
-	        title: "SoundCloud Stardum Royale 2099",
-	        paragraphOne: 'Inspired after learning of Danger Crew, a full-fledged developer RPG created in React, and having some nostalgia for the flash days of old,' +
-		        ' I decided I wanted to see how far I could get making a game using Vue, my Javascript framework of choice.',
-	        paragraphTwo: 'What started as an experiment, has quickly turned into my favorite hobby project. Not only being the most fun to actively develop, but has' +
+            title: "SoundCloud Stardum Royale 2099",
+            paragraphOne: 'Inspired after learning of Danger Crew, a full-fledged developer RPG created in React, and having some nostalgia for the flash days of old,' +
+                ' I decided I wanted to see how far I could get making a game using Vue, my Javascript framework of choice.',
+            paragraphTwo: 'What started as an experiment, has quickly turned into my favorite hobby project. Not only being the most fun to actively develop, but has' +
                 ' taught me many valuable full stack lessons. With the game being split in half between Online 1v1 PVP and Single Player Time Trials, There was' +
                 ' plenty of challenges to be solved!',
-	        paragraphThree: 'My two favorite features I have developed so far include the tick system on the server, which allows for real-time fast paced online PVP,' +
+            paragraphThree: 'My two favorite features I have developed so far include the tick system on the server, which allows for real-time fast paced online PVP,' +
                 'which I did not realize I would need to do until I had deployed the online PVP, only to realize it was almost unplayable due to the server not being the only ' +
                 'source of truth, rookie mistake, but one server rewrite and tick system implementation later, it plays like butter! My Other favorite feature, ' +
                 'would have to be the account progress tracking, so if a user logs in with their google account, and then navigates to the profile page, they will see a ' +
                 'detailed page view, showing their fastest and latest times, progress in the form of data Visualizations (in development), as well as their PvP record and Level. ' +
                 'SSR2099 is still very much in active development, with new features being added almost daily.',
-	        projectLink: 'https://www.ssr2099.com/#/',
-	        languagesUsed: ['Vue', 'Node', 'Express', 'SocketIO', 'mongoDB', 'D3js'],
-	        showProjectLink: true,
-	        githubLink: 'https://github.com/D4YonSoundcloud/Vue-Game-Test',
-	        showGithubLink: true,
+            projectLink: 'https://www.ssr2099.com/#/',
+            languagesUsed: ['Vue', 'Node', 'Express', 'SocketIO', 'mongoDB', 'D3js'],
+            showProjectLink: true,
+            githubLink: 'https://github.com/D4YonSoundcloud/Vue-Game-Test',
+            showGithubLink: true,
         },
         "SSR2099 map maker":{
             title: "SSR2099 Custom Map Maker",
@@ -277,19 +308,19 @@
             projectLink: 'https://www.kh3k.com/#/',
             languagesUsed: ['Vue', 'Vuetify'],
             showProjectLink: true,
-	        githubLink: 'https://github.com/D4YonSoundcloud/KendamaHoner3000-KH3K',
-	        showGithubLink: true,
+            githubLink: 'https://github.com/D4YonSoundcloud/KendamaHoner3000-KH3K',
+            showGithubLink: true,
         },
         "portfolio site v3":{
-	        title: "PORTFOLIO SITE V3",
-	        paragraphOne: 'While satisfied with my past portfolio site when I had first created it (linked below), after getting my first development job though, ' +
+            title: "PORTFOLIO SITE V3",
+            paragraphOne: 'While satisfied with my past portfolio site when I had first created it (linked below), after getting my first development job though, ' +
                 'and the increase of skills that come with it, I knew I could create a much better portfolio site',
-	        paragraphTwo: 'My past portfolio site, code wise, was quite horrendous. So with this version I greatly strived for simple and scalable code. I would like to think I achieved this' +
+            paragraphTwo: 'My past portfolio site, code wise, was quite horrendous. So with this version I greatly strived for simple and scalable code. I would like to think I achieved this' +
                 ', with less than 200 lines of code needed for all the current logic this site has (vs 1000+ of my past portfolio site)',
-	        paragraphThree: '',
-	        projectLink: 'https://d4yonsoundcloud.github.io/RandomMiniProjects-Portfolio-Site/',
-	        languagesUsed: ['HTML', 'CSS', 'Vue (CDN)'],
-	        showProjectLink: true,
+            paragraphThree: '',
+            projectLink: 'https://d4yonsoundcloud.github.io/RandomMiniProjects-Portfolio-Site/',
+            languagesUsed: ['HTML', 'CSS', 'Vue (CDN)'],
+            showProjectLink: true,
             githubLink: 'https://github.com/D4YonSoundcloud/PortfolioSiteV3',
             showGithubLink: true,
         },
@@ -309,18 +340,18 @@
             githubLink: 'https://github.com/D4YonSoundcloud/PokeBerryDex',
             showGithubLink: true,
         },
-	    "about":{
-		    title: "BIO",
-		    paragraphOne: 'I started my coding journey back in 2019 with PHP. At the very beginning of 2020 I started learning Javascript and have pretty much been consumed by it ever since (in a good way).',
-		    paragraphTwo: 'In June 2020, I got my first development job as the only Front-End Software Developer at a small start-up called Red Meters, which is where I still currently am at. Working there has inexplicably increased ' +
+        "about":{
+            title: "BIO",
+            paragraphOne: 'I started my coding journey back in 2019 with PHP. At the very beginning of 2020 I started learning Javascript and have pretty much been consumed by it ever since (in a good way).',
+            paragraphTwo: 'In June 2020, I got my first development job as the only Front-End Software Developer at a small start-up called Red Meters, which is where I still currently am at. Working there has inexplicably increased ' +
                 'my development skills, in all aspects, from the program architecture, to the gotchas of the framework I use (Vue), and even digging deep under the hood of javascript itself. ',
-		    paragraphThree: 'My current preferred stack for big and professional projects are Vue (and Vuetify if material design is wanted) + NodeJS, while for smaller projects I might just use a basic HTML file ' +
+            paragraphThree: 'My current preferred stack for big and professional projects are Vue (and Vuetify if material design is wanted) + NodeJS, while for smaller projects I might just use a basic HTML file ' +
                 'with the Vue cdn link (and any others I might be using) included. Emphasis on preferred though, I am willing to work with almost any language, framework, or library (within reason).',
-		    showProjectLink: false,
-		    languagesUsed: [],
-		    githubLink: '',
-		    showGithubLink: false,
-	    }
+            showProjectLink: false,
+            languagesUsed: [],
+            githubLink: '',
+            showGithubLink: false,
+        }
     }
 
     let activeCubeFaceAnimationData;
@@ -479,7 +510,7 @@
         }
     }
 
-    //animations for non-bottom faces when back face is focused
+    //animations for non-bottom faces when bottom face is focused
     let notBottomFacesAnimationLookUpTable = {
         'back':{
             duration: 0.8,
@@ -555,7 +586,7 @@
         }
     }
 
-    //animations for non-front faces when back face is focused
+    //animations for non-front faces when front face is focused
     let notFrontFacesAnimationLookUpTable = {
         'bottom':{
             duration: 0.8,
@@ -565,13 +596,13 @@
         },
         'top':{
             duration: 0.8,
-            transform: 'rotateX( 90deg) translateZ(150px)',
+            transform: 'translate(0%, -50%) translate(0px, 0px) rotateX(90deg)',
             height: '300px',
             width: '300px'
         },
         'left':{
             duration: 0.8,
-            transform: 'rotateY(-90deg) translateZ(150px)',
+            transform: 'translate(-50%, 0%) translate(300px, 0px) rotateY(-90deg)',
             height: '300px',
             width: '300px'
         },
@@ -631,69 +662,75 @@
         }
     }
 
-    //animations for non-left faces when back face is focused
+    //animations for non-left faces when left face is focused
     let notLeftFacesAnimationLookUpTable = {
         'bottom':{
             duration: 0.8,
-            transform: 'rotateX(-90deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            transform: 'translate3d(0px, 15px, 70px) rotateX(-90deg)',
+            height: 450,
+            width: 300,
+            boxShadow: '0 0 25px 1px rgba(220 162 228,0)',
         },
         'top':{
             duration: 0.8,
-            transform: 'rotateX( 90deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            transform: 'translate(0%, -50%) translateZ(75px) rotateX(90deg)',
+            height: 450,
+            width: 300,
         },
-        'back':{
+        'left':{
             duration: 0.8,
-            transform: 'rotateY(180deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            transform: 'translate(-50%, 0%) translateZ(75px) rotateY(-90deg)',
+            height: 240,
+            width: 450,
         },
         'right':{
             duration: 0.8,
-            transform: 'rotateY( 90deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            transform: 'translate3d(80px, 0px, 75px) rotateY(90deg)',
+            height: 240,
+            width: 450
         },
         'front':{
             duration: 0.8,
-            transform: 'rotateY(  0deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            transform: 'translate3d(0px, 0px, 300px)',
+            height: 240,
+            width: 300
         },
+        'shadow':{
+            duration: 0.8,
+            height: 0,
+            width: 0,
+        }
     }
     let notLeftFacesRemoveAnimationLookUpTable = {
-        'bottom':{
+        "bottom":{
             duration: 0.8,
             transform: 'rotateX(-90deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            height: 300,
+            width: 300
         },
-        'top':{
+        "top":{
             duration: 0.8,
             transform: 'rotateX( 90deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            height: 300,
+            width: 300
         },
-        'back':{
+        "back":{
             duration: 0.8,
             transform: 'rotateY(180deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            height: 300,
+            width: 300
         },
-        'right':{
+        "right":{
             duration: 0.8,
             transform: 'rotateY( 90deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            height: 300,
+            width: 300
         },
-        'front':{
+        "front":{
             duration: 0.8,
             transform: 'rotateY(  0deg) translateZ(150px)',
-            height: '300px',
-            width: '300px'
+            height: 300,
+            width: 300
         },
     }
 
@@ -775,6 +812,84 @@
         }
     }
 
+    //animations for CV faces when CV is selected
+    let cvFacesAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'translate(0px, -600px) rotateX(-90deg)',
+            height: 1250,
+            width: 310,
+            boxShadow: '0 0 25px 1px rgba(220 162 228,0)',
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'translate(0%, -50%) rotateX(90deg)',
+            height: 1250,
+            width: 310
+        },
+        'left':{
+            duration: 0.8,
+            transform: 'translate(-50%, 0%) translateX(-5px) rotateY(-90deg)',
+            height: 25,
+            width: 1250
+        },
+        'back':{
+            duration: 0.8,
+            transform: 'translate3d(0px, 0px, -625px) rotateY(180deg)',
+            height: 25,
+            width: 310
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'translate3d(0px, 0px, 625px)',
+            height: 25,
+            width: 310
+        },
+        'shadow':{
+            duration: 0.8,
+            height: 400,
+            width: 300,
+        }
+    }
+    let cvFacesRemoveAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'rotateX(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+            boxShadow: '0 0 125px 1px rgba(220 162 228,0)',
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'rotateX(90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+        },
+        'left':{
+            duration: 0.1,
+            transform: 'translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)',
+            height: '300px',
+            width: '300px',
+        },
+        'back':{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'rotateY(0deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+        },
+        'shadow':{
+            duration: 0.8,
+            height: '300px',
+            width: '300px',
+        }
+    }
+
     //decides which animation look up table to use for the current not active faces
     let notActiveFacesAnimationLookUpTable = {
         "top": notTopFacesAnimationLookUpTable,
@@ -783,6 +898,7 @@
         "back": notBackFacesAnimationLookUpTable,
         "left": notLeftFacesAnimationLookUpTable,
         "right": notRightFacesAnimationLookUpTable,
+        "cv": cvFacesAnimationLookUpTable,
     };
     let notActiveFacesRemoveAnimationLookUpTable = {
         "top": notTopFacesRemoveAnimationLookUpTable,
@@ -791,6 +907,7 @@
         "back": notBackFacesRemoveAnimationLookUpTable,
         "left": notLeftFacesRemoveAnimationLookUpTable,
         "right": notRightFacesRemoveAnimationLookUpTable,
+        "cv": cvFacesRemoveAnimationLookUpTable,
     }
 
     //debug camera transform
@@ -807,7 +924,7 @@
     * END OF UGLY DATA ZONE
     */
 
-    const appMainScene = new Vue({
+    let appMainScene = new Vue({
         el: '#main-scene',
         data: {
             mainCubeClass: 'front',
@@ -815,7 +932,7 @@
             contentBackActive: 'hidden',
             contentBottomActive: 'hidden',
             contentTopActive: 'hidden',
-	        contentRightActive: 'hidden',
+            contentRightActive: 'hidden',
             shadowActive: 'active',
             mainSceneContentActive: '',
             developerLetters: 'developer-active',
@@ -829,14 +946,21 @@
                 'right': ['bottom','left', 'top', 'front', 'back', 'shadow'],
                 'back': ['top','bottom','left', 'right', 'front', 'shadow'],
                 'front': ['bottom','left', 'right', 'top', 'back', 'shadow'],
+                'cv':['bottom','left','top','back','front','shadow']
             },
         },
         methods:{
             goToSection(fromSection, toSection, fromShown, toShown, transformModifier){
 
+                let cubeSceneCvAnimationProperties = {
+                    marginRight: '20%',
+                }
+                gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+
                 //change the from shown property in the data object above to 'hidden', and then the to property to 'active'
                 this[fromShown] = 'hidden';
                 this[toShown] = 'active';
+
                 //if we are going to the bottom section, then hide the shadow
                 if(toSection === 'bottom') {
                     gsap.to('.cube-face-shadow ', { opacity: 0, duration: 0.4 });
@@ -845,6 +969,7 @@
                         gsap.to('.cube-face-shadow ', { opacity: 1, duration: 0.4 });
                     }, 600)
                 }
+
 
 
                 //case for handling hiding the content, used if the user clicks back or home
@@ -865,16 +990,22 @@
             },
             goToShowContent(contentName){
 
-            	if(this.mainSceneContentActive !== ''){
-            		console.log('main scene is active')
+                if(this.mainSceneContentActive !== ''){
+                    console.log('main scene is active')
                     appMainContent.transition = 'transition';
-            		setTimeout(() => {
-            			appMainContent.transition = '';
-                    }, 800
+                    setTimeout(() => {
+                            appMainContent.transition = '';
+                        }, 800
                     )
                 }
 
+
                 this.mainSceneContentActive = 'content-active'
+
+                let cubeSceneCvAnimationProperties = {
+                    marginRight: '50%',
+                }
+                gsap.to('#main-scene', cubeSceneCvAnimationProperties)
 
                 appMainContent.showContent = 'show-content';
                 appMainContent.title = content[contentName].title
@@ -890,9 +1021,9 @@
                     appMainContent.showParagraphOne = 'show';
                     appMainContent.showParagraphTwo = 'show';
                     appMainContent.showParagraphThree = 'show';
-	                appMainContent.languagesUsed = content[contentName].languagesUsed
-	                appMainContent.githubLink = content[contentName].githubLink;
-	                appMainContent.showGithubLink = content[contentName].showGithubLink;
+                    appMainContent.languagesUsed = content[contentName].languagesUsed
+                    appMainContent.githubLink = content[contentName].githubLink;
+                    appMainContent.showGithubLink = content[contentName].showGithubLink;
                 }, 600)
 
             },
@@ -915,15 +1046,15 @@
             developerDesignerLoop(){
 
                 //basic loop for the developer/designer text animation
-            	setInterval(() => {
-            		if(this.developerActive === true){
-            			this.developerLetters = 'developer-hidden';
-            			this.designerLetters = 'designer-active';
-            			this.developerActive = false;
+                setInterval(() => {
+                    if(this.developerActive === true){
+                        this.developerLetters = 'developer-hidden';
+                        this.designerLetters = 'designer-active';
+                        this.developerActive = false;
                     } else {
-            			this.developerLetters = 'developer-active';
-            			this.designerLetters = 'designer-hidden';
-            			this.developerActive = true;
+                        this.developerLetters = 'developer-active';
+                        this.designerLetters = 'designer-hidden';
+                        this.developerActive = true;
                     }
                 }, 3000)
 
@@ -1012,14 +1143,60 @@
                 }
 
             },
+            goToCV(toSection){
+                //hide front-content
+                this['contentFrontActive'] = 'hidden';
+                this.mainCubeClass = 'cv';
 
+                gsap.to('.cube-face-shadow ', { opacity: 0, duration: 0.4 });
+
+                let cubeFaceAnimationProperties = {
+                    duration: 0.8,
+                    transform: activeCubeFaceAnimationData["activeCubeFace"]["cv"],
+                    height: activeCubeFaceAnimationData["activeHeight"]["cv"],
+                    width: activeCubeFaceAnimationData["activeWidth"]["cv"],
+                }
+
+                //increase the box shadow on the right face
+                let boxShadowAnimationProperties = {
+                    delay: 0.6,
+                    duration: 0.8,
+                    boxShadow: activeCubeFaceAnimationData["activeCubeFaceBoxShadow"]["cv"]
+                }
+
+                //need to make margin-bottom more responsive
+                let cubeSceneCvAnimationProperties = {
+                    width: '100vw',
+                    height: 100,
+                    duration: 0.8,
+                    marginRight: 0,
+                    perspective: 1600,
+                    marginBottom: '47%',
+                }
+
+                console.log(cubeFaceAnimationProperties)
+
+                gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
+                gsap.to(`.cube-face-${toSection}`, boxShadowAnimationProperties);
+                gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+                gsap.fromTo('.main-cv-container', { y: 100 }, { delay: 0.8, duration: 0.8, y: -20, opacity: 1 }).then(() => {
+                    document.querySelector('.main-cv-container').classList.add('floating')
+                    console.log('added')
+                })
+
+                //adds classes to not-active faces, selected with the noneActiveFaces lookup table
+                this.addNoneActiveClasses(this.notActiveFaces['cv'], 'cv')
+
+                //change body flex to 'column'
+                document.querySelector('body').style.flexFlow = 'column';
+            },
         },
         mounted(){
             this.developerDesignerLoop();
         }
     })
 
-    const appMainContent = new Vue({
+    let appMainContent = new Vue({
         el: '#main-content',
         data: {
             title: "RED METER'S DENSITY METER USER INTERFACE",
@@ -1040,8 +1217,67 @@
             showParagraphThree: 'hide',
             showTitle: 'hide',
             showDivider: 'hide',
-	        transition: '',
+            transition: '',
         },
+    })
+
+    let appMainCv = new Vue({
+        el: '#main-cv',
+        methods:{
+            goBackToHomeFromCv(toSection){
+                console.log('this is happening', appMainScene)
+
+
+                gsap.to('.cube-face-shadow ', { opacity: 1, duration: 0.8 });
+
+                let cubeFaceAnimationProperties = {
+                    duration: 0.8,
+                    delay: 0.1,
+                    transform: activeCubeFaceAnimationData["activeCubeFace"]["front"],
+                    height: activeCubeFaceAnimationData["activeHeight"]["front"],
+                    width: activeCubeFaceAnimationData["activeWidth"]["front"],
+                }
+
+                //increase the box shadow on the right face
+                let boxShadowAnimationProperties = {
+                    duration: 0.8,
+                    delay: 0.1,
+                    boxShadow: activeCubeFaceAnimationData["activeCubeFaceRemoveBoxShadow"]["cv"]
+                }
+
+                //need to make margin-bottom more responsive
+                let cubeSceneCvAnimationProperties = {
+                    width: 300,
+                    height: 300,
+                    duration: 0.8,
+                    delay: 0.1,
+                    marginRight: '20%',
+                    perspective: 550,
+                    marginBottom: '0',
+                }
+
+                console.log(cubeFaceAnimationProperties)
+
+                gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
+                gsap.to(`.cube-face-right`, boxShadowAnimationProperties);
+                gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+                gsap.to('.main-cv-container',{ duration: 0.6, y: 200, opacity: 0})
+
+                setTimeout(() => {
+                    //show front-content
+                    appMainScene.contentFrontActive = 'active';
+                    appMainScene.mainCubeClass = 'front';
+                    //adds classes to not-active faces, selected with the noneActiveFaces lookup table
+                    appMainScene.addNoneActiveClasses(appMainScene.notActiveFaces['front'], 'front')
+                }, 100)
+
+
+                //change body flex to 'column'
+                document.querySelector('body').style.flexFlow = 'row';
+                document.querySelector('body').style.justifyContent = 'space-evenly';
+                document.querySelector('body').style.alignItems = 'center';
+            }
+        }
     })
 
 </script>
