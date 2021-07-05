@@ -5,9 +5,10 @@ button {
 
 h5, h6{
     cursor: pointer;
+    max-width: 250px;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
-    transition: 0.4s ease;
+    transition: 0.2s ease;
 }
 
 h5.small{
@@ -270,7 +271,7 @@ a{
 }
 
 a.hide{
-    transition: 0.6s ease;
+    transition: 0.4s ease;
     transform: translateY(5vh);
     opacity: 0;
     box-shadow: 0 0 5px 1px rgb(220 162 228);
@@ -373,7 +374,7 @@ a.show{
 }
 
 .back{
-    transform: translateZ(-150px) rotateY(-200deg) rotateX(-5deg)
+    transform: translateZ(-150px) rotateY(121deg) rotateX(-5deg)
 }
 
 .right{
@@ -397,7 +398,7 @@ a.show{
     height: 300px;
     box-shadow: 0 0 5px 1px rgb(220 162 228);
     color: white;
-    background-color: rgba(128, 91, 134, 1)
+    background-color: rgba(128, 91, 134, 1);
 }
 
 .content-div{
@@ -425,29 +426,31 @@ a.show{
     opacity: 1;
 }
 
-.cube-face-front {
-    transform: rotateY(  0deg) translateZ(150px);
-}
+/*.cube-face-front {*/
+/*    transform: rotateY(  0deg) translateZ(150px);*/
+/*}*/
 
-.cube-face-right {
-    transform: rotateY( 90deg) translateZ(150px);
-}
+/*.cube-face-right {*/
+/*    transform: rotateY( 90deg) translateZ(150px);*/
+/*}*/
 
-.cube-face-back {
-    transform: rotateY(180deg) translateZ(150px);
-}
+/*.cube-face-back {*/
+/*    transform: rotateY(180deg) translateZ(150px);*/
+/*}*/
 
-.cube-face-left {
-    transform: rotateY(-90deg) translateZ(150px);
-}
+/*.cube-face-left {*/
+/*    transform: rotateY(-90deg) translateZ(150px);*/
+/*}*/
 
-.cube-face-top {
-    transform: rotateX( 90deg) translateZ(150px);
-}
-.cube-face-bottom{
-    transform: rotateX(-90deg) translateZ(150px);
-    box-shadow: 0 0 125px 1px rgb(220 162 228);
-}
+/*.cube-face-top {*/
+/*    transform: rotateX( 90deg) translateZ(150px);*/
+/*}*/
+
+/*.cube-face-bottom{*/
+/*    transform: rotateX(-90deg) translateZ(150px);*/
+/*    box-shadow: 0 0 125px 1px rgb(220 162 228);*/
+/*}*/
+
 .cube-face-shadow {
     position: relative;
     z-index: 1;
@@ -455,7 +458,7 @@ a.show{
     background-color: rgba(0,0,0,0);
     transform: rotateX(-90deg) translateZ(150px);
     animation: shadowFloat 6s ease-in-out infinite;
-    transition: 0.8s ease;
+    /*transition: 0.8s ease;*/
     pointer-events: none;
 }
 
@@ -599,6 +602,16 @@ a.show{
     }
 }
 
+@keyframes sinkIn {
+    0%{
+        transform: rotateX( 90deg) translateZ(150px);
+    }
+    100%{
+        transform: rotateX( 90deg) translateZ(125px);
+
+    }
+}
+
 /*iphone viewport portrait*/
 @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
 
@@ -739,7 +752,7 @@ a.show{
         flex-flow: column;
         justify-content: start;
         align-items: center;
-        transition: 0.8s ease ;
+        transition: 0.8s ease;
         transform: rotateY(-0deg) translateZ(100px) translateX(-50px) translateY(-20px)
     }
 
@@ -1027,7 +1040,6 @@ a.show{
         background-color: rgba(0,0,0,0);
         transform: rotateX(-90deg) translateZ(-10px);
         animation: shadowFloat 6s ease-in-out infinite;
-        transition: 0.8s ease;
         pointer-events: none;
     }
 

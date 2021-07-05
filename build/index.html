@@ -52,6 +52,8 @@
                 <p :class="'dev-des r2 ' + developerLetters">R</p>
             </div>
         </div>
+
+        <!-- front face - contains the projects and about links + Github/LinkedIn image links-->
         <div class="cube-face cube-face-front">
             <div :class="'content-div ' + 'content-back ' + contentFrontActive">
                 <h5 @click="goToSection('front', 'back', 'contentFrontActive', 'contentBackActive')">PROJECTS<button id="front-projects-button"></button></h5>
@@ -70,16 +72,11 @@
                 </div>
             </div>
         </div>
+
+        <!-- back face - used to contained the buttons for professional/hobby projects, moved to left face -->
         <div class="cube-face cube-face-back">
-            <div :class="'content-div ' + 'content-back ' + contentBackActive">
-                <h5 @click="goToSection('back', 'bottom', 'contentBackActive', 'contentBottomActive')">PROFESSIONAL PROJECTS<button id="back-big-projects-button"></button></h5>
-                <h5 @click="goToSection('back', 'top', 'contentBackActive', 'contentTopActive')">HOBBY PROJECTS<button id="back-small-projects-button"></button></h5>
-                <div class="back-home-div">
-                    <p @click="goToSection('back','front','contentBackActive','contentFrontActive')">BACK <button></button></p>
-                    <p @click="goToSection('back','front','contentBackActive','contentFrontActive')">HOME<button></button></p>
-                </div>
-            </div>
         </div>
+
         <div class="cube-face cube-face-right">
             <div :class="'content-div ' + 'content-back ' + contentRightActive">
                 <h5 @click="">ABOUT</h5>
@@ -89,7 +86,20 @@
                 </div>
             </div>
         </div>
-        <div class="cube-face cube-face-left"></div>
+
+        <!-- left face - technically the old back face, changed 7-4-21 -->
+        <div class="cube-face cube-face-left">
+            <div :class="'content-div ' + 'content-back ' + contentBackActive">
+                <h5 @click="goToSection('back', 'bottom', 'contentBackActive', 'contentBottomActive')">PROFESSIONAL PROJECTS<button id="back-big-projects-button"></button></h5>
+                <h5 @click="goToSection('back', 'top', 'contentBackActive', 'contentTopActive')">HOBBY PROJECTS<button id="back-small-projects-button"></button></h5>
+                <div class="back-home-div">
+                    <p @click="goToSection('back','front','contentBackActive','contentFrontActive', 'hideContent')">BACK <button></button></p>
+                    <p @click="goToSection('back','front','contentBackActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- top face - hobby projects -->
         <div class="cube-face cube-face-top">
             <div :class="'content-div ' + 'content-back ' + contentTopActive">
                 <h5 @click="goToShowContent('SSR2099 (Online Game)')">SSR2099
@@ -118,6 +128,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- bottom face - professional projects -->
         <div class="cube-face cube-face-bottom">
             <div :class="'content-div ' + 'content-back ' + contentBottomActive">
                 <h5 @click="goToShowContent('red meter interface')">RED METER INTERFACE
@@ -136,7 +148,9 @@
                 </div>
             </div>
         </div>
-        <div :class="'cube-face ' + 'cube-face-shadow ' + shadowActive">
+
+        <!-- cube shadow-->
+        <div :class="'cube-face ' + 'cube-face-shadow '">
         </div>
     </div>
 </div>
@@ -175,9 +189,20 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
 <script>
-    let mainScene = document.getElementById('#main-scene');
-    let frontProjectsButton = document.getElementById('front-projects-button')
+    /*
+    * START OF UGLY DATE ZONE, ENTER IF YE DARE (end line: 749)
+    */
+
+    gsap.set('.cube-face-front', { transform: 'rotateY(  0deg) translateZ(150px)'})
+    gsap.set('.cube-face-right', { transform: 'rotateY( 90deg) translateZ(150px)'})
+    gsap.set('.cube-face-back', { transform: 'rotateY(180deg) translateZ(150px)'})
+    gsap.set('.cube-face-left', { transform: 'translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)'})
+    gsap.set('.cube-face-bottom', { transform: 'rotateX(-90deg) translateZ(150px)'})
+    gsap.set('.cube-face-top', { transform: 'rotateX( 90deg) translateZ(150px)'})
+
+
     let content = {
         "red meter interface":{
             title: "RED METER'S DENSITY METER USER INTERFACE",
@@ -298,11 +323,494 @@
 	    }
     }
 
+    let activeCubeFaceAnimationData;
+
+    fetch('./activeCubeFaceAnimationData.json')
+        .then(response => response.json())
+        .then(data => activeCubeFaceAnimationData = data);
+
+    //animations for non-top faces when top face is focused
+    let notTopFacesRemoveAnimationLookUpTable = {
+        'bottom': {
+            duration: 0.8,
+            transform: 'rotateX(-90deg) translateZ(150px)',
+            height: 300,
+            width: 300,
+        },
+        'left': {
+            duration: 0.8,
+            transform: 'translate(-50%, 0%) rotateY(-90deg)',
+            height: 300,
+            width: 300,
+        },
+        'right': {
+            duration: 0.8,
+            transform: 'rotateY( 90deg) translateZ(150px)',
+            height: 300,
+            width: 300,
+        },
+        'back': {
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: 300,
+            width: 300,
+        },
+        'front': {
+            duration: 0.8,
+            transform: 'rotateY(  0deg) translateZ(150px)',
+            height: 300,
+            width: 300,
+        },
+    }
+    let notTopFacesAnimationLookUpTable = {
+        'bottom': {
+            duration: 0.8,
+            transform: 'translate(-25px, 70px) rotateX(-90deg)',
+            height: '500px',
+            width: '350px'
+        },
+        'left': {
+            duration: 0.8,
+            transform: 'translate(-50%, 0%) translate(-30px, 0px) rotateY(-90deg)',
+            height: '320px',
+            width: '490px'
+        },
+        'right': {
+            duration: 0.8,
+            transform: 'translate(83px, 0px) rotateY(90deg)',
+            height: '320px',
+            width: '490px'
+        },
+        'back': {
+            duration: 0.8,
+            transform: 'translate3d(-25px, 0px, -250px) rotateY(180deg)',
+            height: '320px',
+            transformOrigin: 'bottom',
+            width: '350px',
+        },
+        'front': {
+            duration: 0.8,
+            transform: 'translate3d(-25px, 0px, 250px) rotateX(0deg)',
+            height: '320px',
+            transformOrigin: 'bottom',
+            width: '350px',
+        },
+        "shadow": {
+            duration: 0.8,
+            height: '300px',
+            width: '300px',
+        }
+    }
+
+    //animations for non-back faces when back face is focused
+    let notBackFacesAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'translate3d(0px, 15px, 70px) rotateX(-90deg)',
+            height: 450,
+            width: 300,
+            boxShadow: '0 0 25px 1px rgba(220 162 228,0)',
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'translate(0%, -50%) translateZ(75px) rotateX(90deg)',
+            height: 450,
+            width: 300,
+        },
+        'left':{
+            duration: 0.8,
+            transform: 'translate(-50%, 0%) translateZ(75px) rotateY(-90deg)',
+            height: 240,
+            width: 450,
+        },
+        'right':{
+            duration: 0.8,
+            transform: 'translate3d(80px, 0px, 75px) rotateY(90deg)',
+            height: 240,
+            width: 450
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'translate3d(0px, 0px, 300px)',
+            height: 240,
+            width: 300
+        },
+        'shadow':{
+            duration: 0.8,
+            height: 450,
+            width: 300,
+        }
+    }
+    let notBackFacesRemoveAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'rotateX(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'translate(0%, -50%) translate(0px, 0px) rotateX(90deg)',
+            height: '300px',
+            width: '300px'
+        },
+        'left':{
+            duration: 0.8,
+            transform: 'translate(-50%, 0%) rotateY(-90deg)',
+            height: '300px',
+            width: '300px',
+        },
+        'right':{
+            duration: 0.8,
+            transform: 'rotateY( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'rotateY(  0deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'shadow':{
+            duration: 0.8,
+            height: 300,
+            width: 300,
+        }
+    }
+
+    //animations for non-bottom faces when back face is focused
+    let notBottomFacesAnimationLookUpTable = {
+        'back':{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'translate(0%, -50%) translate(0px, 0px) rotateX(90deg)',
+            height: 300,
+            width: 300
+        },
+        'left':{
+            duration: 0.8,
+            transform: 'translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)',
+            height: 300,
+            width: 300
+        },
+        'right':{
+            duration: 0.8,
+            transform: 'rotateY(90deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'rotateY(0deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        "shadow": {
+            duration: 0.8,
+            height: 300,
+            width: 300,
+        }
+    }
+    let notBottomFacesRemoveAnimationLookUpTable = {
+        "back":{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        "top":{
+            duration: 0.8,
+            transform: 'rotateX( 90deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        "left":{
+            duration: 0.8,
+            transform: 'rotateY(-90deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        "right":{
+            duration: 0.8,
+            transform: 'rotateY( 90deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        "front":{
+            duration: 0.8,
+            transform: 'rotateY(  0deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        "shadow": {
+            duration: 0.8,
+            height: 300,
+            width: 300,
+        }
+    }
+
+    //animations for non-front faces when back face is focused
+    let notFrontFacesAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'rotateX(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'rotateX( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'left':{
+            duration: 0.8,
+            transform: 'rotateY(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'right':{
+            duration: 0.8,
+            transform: 'rotateY( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'back':{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'shadow':{
+            duration: 0.8,
+            height: '300px',
+            width: '300px',
+        }
+    }
+    let notFrontFacesRemoveAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'rotateX(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'rotateX( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'left':{
+            duration: 0.8,
+            transform: 'rotateY(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'right':{
+            duration: 0.8,
+            transform: 'rotateY( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'back':{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'shadow':{
+            duration: 0.8,
+            height: '300px',
+            width: '300px',
+        }
+    }
+
+    //animations for non-left faces when back face is focused
+    let notLeftFacesAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'rotateX(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'rotateX( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'back':{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'right':{
+            duration: 0.8,
+            transform: 'rotateY( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'rotateY(  0deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+    }
+    let notLeftFacesRemoveAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'rotateX(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'rotateX( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'back':{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'right':{
+            duration: 0.8,
+            transform: 'rotateY( 90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'rotateY(  0deg) translateZ(150px)',
+            height: '300px',
+            width: '300px'
+        },
+    }
+
+    //animations for non-right faces when back face is focused
+    let notRightFacesAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'translate(0px, 30px) rotateX(-90deg)',
+            height: 400,
+            width: 300,
+            boxShadow: '0 0 25px 1px rgba(220 162 228,0)',
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'rotateX( 90deg) translateZ(150px)',
+            height: 300,
+            width: 300
+        },
+        'left':{
+            duration: 0.8,
+            transform: 'translate(-50%, 0%) rotateY(-90deg)',
+            height: 225,
+            width: 400
+        },
+        'back':{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(200px)',
+            height: 225,
+            width: 300
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'translate3d(0px, 0px, 200px)',
+            height: 225,
+            width: 300
+        },
+        'shadow':{
+            duration: 0.8,
+            height: 400,
+            width: 300,
+        }
+    }
+    let notRightFacesRemoveAnimationLookUpTable = {
+        'bottom':{
+            duration: 0.8,
+            transform: 'rotateX(-90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+            boxShadow: '0 0 125px 1px rgba(220 162 228,0)',
+        },
+        'top':{
+            duration: 0.8,
+            transform: 'rotateX(90deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+        },
+        'left':{
+            duration: 0.1,
+            transform: 'translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)',
+            height: '300px',
+            width: '300px',
+        },
+        'back':{
+            duration: 0.8,
+            transform: 'rotateY(180deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+        },
+        'front':{
+            duration: 0.8,
+            transform: 'rotateY(0deg) translateZ(150px)',
+            height: '300px',
+            width: '300px',
+        },
+        'shadow':{
+            duration: 0.8,
+            height: '300px',
+            width: '300px',
+        }
+    }
+
+    //decides which animation look up table to use for the current not active faces
+    let notActiveFacesAnimationLookUpTable = {
+        "top": notTopFacesAnimationLookUpTable,
+        "bottom": notBottomFacesAnimationLookUpTable,
+        "front": notFrontFacesAnimationLookUpTable,
+        "back": notBackFacesAnimationLookUpTable,
+        "left": notLeftFacesAnimationLookUpTable,
+        "right": notRightFacesAnimationLookUpTable,
+    };
+    let notActiveFacesRemoveAnimationLookUpTable = {
+        "top": notTopFacesRemoveAnimationLookUpTable,
+        "bottom": notBottomFacesRemoveAnimationLookUpTable,
+        "front": notFrontFacesRemoveAnimationLookUpTable,
+        "back": notBackFacesRemoveAnimationLookUpTable,
+        "left": notLeftFacesRemoveAnimationLookUpTable,
+        "right": notRightFacesRemoveAnimationLookUpTable,
+    }
+
+    //debug camera transform
+    let debugCameraLookUpTable = {
+        "top": "translateZ(-150px) rotateX(357deg) rotateZ(360deg) rotateY(266deg)",
+        "bottom": "translateZ(-150px) rotateY(285deg) rotateZ(0deg) rotateX(0deg)",
+        "left": "translateZ(-150px) rotateX(0deg) rotateZ(0deg) rotateY(0deg)",
+        "right": "translateZ(-150px) rotateY(285deg) rotateX(0deg) rotateZ(0deg)",
+        "back": "translateZ(-150px) rotateY(-200deg) rotateX(-5deg) rotateZ(0deg)",
+        "front": "translateZ(-150px) rotateY(30deg) rotateZ(0deg) rotateX(0deg)",
+    }
+
+    /*
+    * END OF UGLY DATA ZONE
+    */
+
     const appMainScene = new Vue({
         el: '#main-scene',
         data: {
             mainCubeClass: 'front',
-            mainSceneClass: 'start',
             contentFrontActive: 'active',
             contentBackActive: 'hidden',
             contentBottomActive: 'hidden',
@@ -314,31 +822,49 @@
             designerLetters: 'designer-hidden',
             developerActive: true,
             currentColor: 'white',
+            notActiveFaces: {
+                'top': ['bottom','left', 'right', 'front', 'back', 'shadow'],
+                'bottom': ['top','left', 'right', 'front', 'back', 'shadow'],
+                'left': ['bottom','top', 'right', 'front', 'back'],
+                'right': ['bottom','left', 'top', 'front', 'back', 'shadow'],
+                'back': ['top','bottom','left', 'right', 'front', 'shadow'],
+                'front': ['bottom','left', 'right', 'top', 'back', 'shadow'],
+            },
         },
         methods:{
-            test(){
-                console.log('i have been clicked')
-            },
             goToSection(fromSection, toSection, fromShown, toShown, transformModifier){
-            	//changes the main cube class to the section we are going to, this starts the css transition
-                this.mainCubeClass = toSection;
+
                 //change the from shown property in the data object above to 'hidden', and then the to property to 'active'
                 this[fromShown] = 'hidden';
                 this[toShown] = 'active';
                 //if we are going to the bottom section, then hide the shadow
                 if(toSection === 'bottom') {
-                    this.shadowActive = 'hidden';
+                    gsap.to('.cube-face-shadow ', { opacity: 0, duration: 0.4 });
                 } else {
                     setTimeout(() => {
-                        this.shadowActive = 'active';
+                        gsap.to('.cube-face-shadow ', { opacity: 1, duration: 0.4 });
                     }, 600)
                 }
+
+
                 //case for handling hiding the content, used if the user clicks back or home
                 if(transformModifier === 'hideContent'){
                     this.hideContent();
+
+                    //false if we are going back or to home
+                    this.handleActiveCubeFace(false, toSection, fromSection)
+                } else {
+                    this.mainCubeClass = toSection;
+
+                    //debug line
+                    // document.querySelector('.main-cube').style.transform = activeCubeFaceAnimationData["debugCameraLookUpTable"][toSection]
+
+                    this.handleActiveCubeFace(true, toSection, fromSection)
                 }
+
             },
             goToShowContent(contentName){
+
             	if(this.mainSceneContentActive !== ''){
             		console.log('main scene is active')
                     appMainContent.transition = 'transition';
@@ -347,15 +873,17 @@
                     }, 800
                     )
                 }
+
                 this.mainSceneContentActive = 'content-active'
+
                 appMainContent.showContent = 'show-content';
-                console.log(content[contentName])
                 appMainContent.title = content[contentName].title
                 appMainContent.paragraphOne = content[contentName].paragraphOne;
                 appMainContent.paragraphTwo = content[contentName].paragraphTwo;
                 appMainContent.paragraphThree = content[contentName].paragraphThree;
                 appMainContent.showProjectLink = content[contentName].showProjectLink;
                 appMainContent.projectLink = content[contentName].projectLink;
+
                 setTimeout(() => {
                     appMainContent.showTitle = 'show';
                     appMainContent.showDivider = 'show';
@@ -366,8 +894,10 @@
 	                appMainContent.githubLink = content[contentName].githubLink;
 	                appMainContent.showGithubLink = content[contentName].showGithubLink;
                 }, 600)
+
             },
             hideContent(){
+
                 appMainContent.showTitle = 'hide';
                 appMainContent.showDivider = 'hide';
                 appMainContent.showParagraphOne = 'hide';
@@ -375,12 +905,16 @@
                 appMainContent.showParagraphThree = 'hide';
                 appMainContent.languagesUsed = [];
                 appMainContent.showGithubLink = false;
+
                 setTimeout(() => {
                     this.mainSceneContentActive = '';
                     appMainContent.showContent = 'hide-content';
                 }, 600)
+
             },
             developerDesignerLoop(){
+
+                //basic loop for the developer/designer text animation
             	setInterval(() => {
             		if(this.developerActive === true){
             			this.developerLetters = 'developer-hidden';
@@ -392,7 +926,93 @@
             			this.developerActive = true;
                     }
                 }, 3000)
-            }
+
+            },
+            handleActiveCubeFace(open, toSection, fromSection){
+
+                if(open === true){
+                    //create GSAP animation object
+                    let cubeFaceAnimationProperties = {
+                        duration: 0.8,
+                        transform: activeCubeFaceAnimationData["activeCubeFace"][toSection],
+                        height: activeCubeFaceAnimationData["activeHeight"][toSection],
+                        width: activeCubeFaceAnimationData["activeWidth"][toSection],
+                        boxShadow: activeCubeFaceAnimationData["activeCubeFaceBoxShadow"][toSection]
+                    }
+
+                    console.log(cubeFaceAnimationProperties)
+
+                    gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
+
+                    //adds classes to not-active faces, selected with the noneActiveFaces lookup table
+                    this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
+
+                } else if (open === false) {
+
+                    setTimeout(() => {
+                        this.mainCubeClass = toSection;
+                    }, 200)
+
+                    //create GSAP animation object
+                    let cubeFaceAnimationProperties = {
+                        duration: 0.8,
+                        transform: activeCubeFaceAnimationData["activeCubeFaceRemove"][fromSection],
+                        height: 300,
+                        width: 300,
+                        boxShadow: activeCubeFaceAnimationData["activeCubeFaceRemoveBoxShadow"][fromSection]
+                    }
+
+                    console.log('about to remove gsap transform', cubeFaceAnimationProperties)
+                    gsap.to(`.cube-face-${fromSection}`, cubeFaceAnimationProperties);
+
+                    if(toSection === 'back'){
+                        //create GSAP animation object
+                        let cubeFaceAnimationProperties = {
+                            duration: 0.8,
+                            transform: activeCubeFaceAnimationData["activeCubeFace"][toSection],
+                            height: activeCubeFaceAnimationData["activeHeight"][toSection],
+                            width: activeCubeFaceAnimationData["activeWidth"][toSection],
+                            boxShadow: activeCubeFaceAnimationData["activeCubeFaceBoxShadow"][toSection]
+                        }
+                        gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
+
+                        //edge case for if we are going to the back face from either the top or bottom
+                        this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
+
+                    } else {
+                        //removes classes from not-active faces, selected with the notActiveFaces lookup table
+                        this.removeNoneActiveClasses(this.notActiveFaces[fromSection], fromSection)
+
+                    }
+
+                }
+
+            },
+            addNoneActiveClasses(noneActiveFaces, toSection){
+
+                //add the class names
+                for(let face of noneActiveFaces){
+                    //basic GSAP to animation, with the parameters being the value of the index of the face
+                    //when passed into the notActiveFacesLookUpTable
+                    console.log(notActiveFacesAnimationLookUpTable[toSection][face])
+                    gsap.to(`.cube-face-${face}`, notActiveFacesAnimationLookUpTable[toSection][face]).then(() => {
+                        console.log(document.querySelector(`.cube-face-${face}`).style.cssText)
+                    })
+                }
+
+            },
+            removeNoneActiveClasses(noneActiveFaces, fromSection){
+                console.log('removing not active classes', fromSection)
+
+                //add the class names
+                for(let face of noneActiveFaces){
+                    //see comment in this.addNotActiveClasses
+                    console.log(notActiveFacesRemoveAnimationLookUpTable[fromSection][face])
+                    gsap.to(`.cube-face-${face}`, notActiveFacesRemoveAnimationLookUpTable[fromSection][face])
+                }
+
+            },
+
         },
         mounted(){
             this.developerDesignerLoop();
@@ -422,9 +1042,6 @@
             showDivider: 'hide',
 	        transition: '',
         },
-        methods:{
-
-        }
     })
 
 </script>
