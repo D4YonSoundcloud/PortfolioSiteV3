@@ -165,16 +165,48 @@
         <h1 class="cv-title-text">C.V - MATTHEW DAY</h1>
     </div>
 
+    <!-- cv skills -->
     <div class="skills cv-content-div">
-        <div class="cv-content-title"></div>
+        <div class="cv-content-title">
+            <h2 style="margin-bottom: 0">SKILLS</h2>
+            <div class="cv-title-line"></div>
+        </div>
+        <div class="cv-content-text-container">
+            <div class="cv-skills-container" v-for="(category, key) in skills" :key="key">
+                <div class="skill-key">
+                    <p><strong>{{key}}</strong></p>
+                </div>
+                <div class="skill-content">
+                    <div class="skill-content-text" v-for="(skill, index) in category">
+                        <p>{{skill}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- cv experience -->
     <div class="experience cv-content-div">
-        <div class="cv-content-title"></div>
+        <div class="cv-content-title">
+            <h2 style="margin-bottom: 0">EXPERIENCE</h2>
+            <div class="cv-title-line"></div>
+        </div>
+        <div class="cv-content-text-container">
+            <h3 style="margin-bottom: 0"> Red Meters | June 2020 - Now </h3>
+            <div class="cv-experience-text-container" v-for="(experience, index) in redMetersExperience" :key="index">
+                <p class="experience-text"> {{experience}} </p>
+            </div>
+        </div>
     </div>
 
     <div class="education cv-content-div">
-        <div class="cv-content-title"></div>
+        <div class="cv-content-title">
+            <h2 style="margin-bottom: 0">EDUCATION</h2>
+            <div class="cv-title-line"></div>
+        </div>
+        <div class="cv-content-text-container-education">
+            <h3> University of Central Florida - BS Web Design </h3> <p style="font-style: italic; color: white; font-size: 100%"> Aug 2021</p>
+        </div>
     </div>
     <!-- Go back to Home from CV button -->
     <p class="back-to-home-from-cv" @click="goBackToHomeFromCv('front')">BACK</p>
@@ -341,12 +373,11 @@
             showGithubLink: true,
         },
         "about":{
-            title: "BIO",
-            paragraphOne: 'I started my coding journey back in 2019 with PHP. At the very beginning of 2020 I started learning Javascript and have pretty much been consumed by it ever since (in a good way).',
-            paragraphTwo: 'In June 2020, I got my first development job as the only Front-End Software Developer at a small start-up called Red Meters, which is where I still currently am at. Working there has inexplicably increased ' +
-                'my development skills, in all aspects, from the program architecture, to the gotchas of the framework I use (Vue), and even digging deep under the hood of javascript itself. ',
-            paragraphThree: 'My current preferred stack for big and professional projects are Vue (and Vuetify if material design is wanted) + NodeJS, while for smaller projects I might just use a basic HTML file ' +
-                'with the Vue cdn link (and any others I might be using) included. Emphasis on preferred though, I am willing to work with almost any language, framework, or library (within reason).',
+            title: "ABOUT",
+            paragraphOne: 'Development, Kendama, and Climbing',
+            paragraphTwo: 'Incredibly passionate about either of the three above, could literally talk about the tiniest niche of any of them, all day long.',
+            paragraphThree: 'If you want to know more about my skills, education, and experience, visit the the C.V link on the home page.' +
+                ' If you think I might be the right fit for your team, have the skills that your solution needs, or even if you just want to talk about any of the three above, feel free to reach out at my email (mattd4y@gmail.com) or message me on LinkedIn!',
             showProjectLink: false,
             languagesUsed: [],
             githubLink: '',
@@ -602,7 +633,7 @@
         },
         'left':{
             duration: 0.8,
-            transform: 'translate(-50%, 0%) translate(300px, 0px) rotateY(-90deg)',
+            transform: 'translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)',
             height: '300px',
             width: '300px'
         },
@@ -1171,7 +1202,7 @@
                     duration: 0.8,
                     marginRight: 0,
                     perspective: 1600,
-                    marginBottom: '47%',
+                    marginBottom: '53%',
                 }
 
                 console.log(cubeFaceAnimationProperties)
@@ -1179,7 +1210,7 @@
                 gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
                 gsap.to(`.cube-face-${toSection}`, boxShadowAnimationProperties);
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
-                gsap.fromTo('.main-cv-container', { y: 100 }, { delay: 0.8, duration: 0.8, y: -20, opacity: 1 }).then(() => {
+                gsap.fromTo('.main-cv-container', { y: 100 }, { delay: 0.8, duration: 0.8, y: -70, opacity: 1 }).then(() => {
                     document.querySelector('.main-cv-container').classList.add('floating')
                     console.log('added')
                 })
@@ -1223,6 +1254,21 @@
 
     let appMainCv = new Vue({
         el: '#main-cv',
+        data:{
+            skills:{
+                'Front-End': ['HTML, ','CSS, ','JavaScript, ', 'Vue2, ', 'React16.8+, ', 'Angular2+'],
+                'Back-End': ['NodeJS, ','Express, ','MongoDB, ','MySQL'],
+                'Graphics': ['ThreeJS'],
+                'Data-Visualization': ['D3js, ', 'ChartJS'],
+                'Version Control/Shell/UX': ['GIT, ', 'Bash, ', 'Figma'],
+            },
+            redMetersExperience:[
+                '-Developed a new User Interface for the Red Meter Industrial Density Meter as the sole developer, replacing their previous, outdated User Interface',
+                '-Visualized data retrieved from custom back-end API to help customers easily understand their industrial processes using D3js',
+                '-Wrote Performant and well structured code that allows the User Interface to perform well, for and indefinite amount of time, on a very low performance pc (Raspberry Pi3b)',
+                '-Built a detailed 3D model of their main product, the red meter, to be displayed on their website using ThreeJS, helping customers visualize the red meter.'
+            ]
+        },
         methods:{
             goBackToHomeFromCv(toSection){
                 console.log('this is happening', appMainScene)

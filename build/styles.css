@@ -640,11 +640,11 @@ cv styles
 }
 
 .cv-title{
-    height: 15%;
-    width: 60%;
+    height: 9%;
+    width: 52%;
     padding: 8px 16px;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 .cv-title h1{
@@ -666,26 +666,26 @@ cv styles
     padding: 8px 16px;
     border-radius: 5px;
     box-shadow: 0 0 5px 1px rgb(232 150 246), inset 0 0 10px 1px rgb(165 112 174);
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     transition: 0.4s ease;
 }
 
 .skills{
-    height: 20%;
+    height: 30%;
 }
 
 .skills:hover{
-    height: 21%;
-    width: 51%;
+    height: 31%;
+    width: 50%;
 }
 
 .experience{
-    height: 25%;
+    height: 40%;
 }
 
 .experience:hover{
-    height: 26%;
-    width: 51%;
+    height: 41%;
+    width: 50%;
 }
 
 .education{
@@ -695,7 +695,8 @@ cv styles
 
 .education:hover{
     height: 11%;
-    width: 51%;
+    width: 50%;
+    margin-bottom: 16px;
 }
 
 .cv-content-title{
@@ -704,18 +705,117 @@ cv styles
     display: flex;
     flex-flow: row;
     justify-content: start;
+    align-items: center;
+}
+
+.cv-content-text-container{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+.cv-content-text-container h3{
+    font-size: 110%;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+}
+
+.experience-text{
+    font-size: 100%;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+}
+
+.cv-skills-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+    align-items: start;
+}
+
+.skill-key{
+    width: 25%;
+    height: 15%;
+}
+
+.skill-key p{
+    font-size: 110%;
+    cursor: default;
+    font-family: 'Russo One', sans-serif;
+    color: white;
+}
+
+.skill-content{
+    width: 75%;
+    display: flex;
+    height: 100%;
+    flex-flow: row;
+    justify-content: start;
+    margin-left: 4px;
+}
+
+.skill-content-text {
+    display: flex;
+    flex-flow: row;
+    height: 100%;
+    align-items: center;
+}
+
+.skill-content-text p{
+    font-size: 100%;
+    cursor: default;
+    margin-right: 8px;
+    font-family: 'Russo One', sans-serif;
+    color: white;
+}
+
+.cv-content-title h2{
+    font-family: 'Russo One', sans-serif;
+    cursor: default;
+    font-size: 1.15em;
+    margin-bottom: 2.5%;
+    color: white;
+    letter-spacing: 0.25vw;
+    text-shadow: 0 0 5px white;
+}
+
+.cv-title-line{
+    height: 0;
+    width: 100%;
+    margin-left: 4px;
+    border-top: 2px solid rgba(128, 91, 134, 1);
+    border-bottom: 2px solid rgba(128, 91, 134, 1);
+}
+
+.cv-content-text-container-education{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.cv-content-text-container-education h3{
+    font-size: 110%;
+    color: white;
+    font-family: 'Russo One', sans-serif;
 }
 
 p.back-to-home-from-cv{
     position: absolute;
-    bottom: 10%;
+    bottom: 1.25%;
     font-size: 1.5em;
     color: white;
     letter-spacing: 0.1vw;
 }
 p.back-to-home-from-cv:hover{
     position: absolute;
-    bottom: 10%;
+    bottom: 1.75%;
     font-size: 1.5em;
     color: white;
     letter-spacing: 0.15vw;
@@ -725,16 +825,16 @@ p.back-to-home-from-cv:hover{
 
 @keyframes cvFloat {
     0% {
-        transform: translateY(-20px);
+        transform: translateY(-70px);
     }
     33% {
-        transform: translateY(-15px);
+        transform: translateY(-65px);
     }
     66%{
-        transform: translateY(-25px);
+        transform: translateY(-75px);
     }
     100% {
-        transform: translateY(-20px);
+        transform: translateY(-70px);
     }
 }
 
