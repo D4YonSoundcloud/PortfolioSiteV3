@@ -257,6 +257,13 @@
 </div>
 
 <!-- JAVASCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-color@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-format@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-time@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-time-format@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-scale@4"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
 <script>
@@ -447,6 +454,7 @@
     let appMainScene = new Vue({
         el: '#main-scene',
         data: {
+            clientHeight: 0,
             mainCubeClass: 'front',
             contentFrontActive: 'active',
             contentBackActive: 'hidden',
@@ -466,8 +474,11 @@
                 'right': ['bottom','left', 'top', 'front', 'back', 'shadow'],
                 'back': ['top','bottom','left', 'right', 'front', 'shadow'],
                 'front': ['bottom','left', 'right', 'top', 'back', 'shadow'],
-                'cv':['bottom','left','top','back','front','shadow']
+                'cv':['bottom','left','top','back','front','shadow'],
             },
+            cvCubeMarginBottom: 0,
+            paddingScale: d3.scaleLinear().domain([475, 1322]).range([590, 1360]),
+            viewingCv: false,
         },
         methods:{
             goToSection(fromSection, toSection, fromShown, toShown, transformModifier){
@@ -686,6 +697,10 @@
                     boxShadow: activeCubeFaceAnimationData["activeCubeFaceBoxShadow"]["cv"]
                 }
 
+                let paddingScale = d3.scaleLinear().domain([475, 1322]).range([590, 1360])
+
+                console.log(paddingScale(this.clientHeight))
+
                 //need to make margin-bottom more responsive
                 let cubeSceneCvAnimationProperties = {
                     width: '100vw',
@@ -693,7 +708,7 @@
                     duration: 0.8,
                     marginRight: 0,
                     perspective: 1600,
-                    marginBottom: '53%',
+                    marginBottom: paddingScale(this.clientHeight),
                 }
 
                 console.log(cubeFaceAnimationProperties)
@@ -711,10 +726,35 @@
 
                 //change body flex to 'column'
                 document.querySelector('body').style.flexFlow = 'column';
+
+                this.viewingCv = true;
             },
         },
         mounted(){
             this.developerDesignerLoop();
+        },
+        created(){
+            this.clientHeight = document.documentElement.clientHeight
+            console.log(this.clientHeight)
+
+            //listens for resize event and then adjust the margin-bottom of the cube when the cv is viewed.
+            window.addEventListener('resize', () => {
+                if(this.viewingCv === true){
+                    this.clientHeight = document.documentElement.clientHeight
+
+                    let cubeSceneCvAnimationProperties = {
+                        width: '100vw',
+                        height: 100,
+                        duration: 0.2,
+                        marginRight: 0,
+                        perspective: 1600,
+                        marginBottom: this.paddingScale(this.clientHeight),
+                    }
+
+                    gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+
+                }
+            })
         }
     })
 
@@ -808,6 +848,8 @@
                 document.querySelector('body').style.flexFlow = 'row';
                 document.querySelector('body').style.justifyContent = 'space-evenly';
                 document.querySelector('body').style.alignItems = 'center';
+
+                appMainScene.viewingCv = false;
             }
         }
     })
