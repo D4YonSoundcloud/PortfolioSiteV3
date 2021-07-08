@@ -1431,11 +1431,11 @@ cv styles
     }
 
     .experience{
-        height: 40%;
+        height: 45%;
     }
 
     .experience:hover{
-        height: 41%;
+        height: 46%;
         width: 98%;
     }
 
@@ -1475,7 +1475,7 @@ cv styles
     }
 
     .experience-text{
-        font-size: 100%;
+        font-size: 90%;
         color: white;
         font-family: 'Russo One', sans-serif;
     }
@@ -1489,12 +1489,12 @@ cv styles
     }
 
     .skill-key{
-        width: 25%;
+        width: 20%;
         height: 15%;
     }
 
     .skill-key p{
-        font-size: 110%;
+        font-size: 90%;
         cursor: default;
         font-family: 'Russo One', sans-serif;
         color: white;
@@ -1517,7 +1517,7 @@ cv styles
     }
 
     .skill-content-text p{
-        font-size: 100%;
+        font-size: 85%;
         cursor: default;
         margin-right: 8px;
         font-family: 'Russo One', sans-serif;
@@ -1559,14 +1559,14 @@ cv styles
 
     p.back-to-home-from-cv{
         position: absolute;
-        bottom: 1.25%;
+        bottom: -5%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.1vw;
     }
-    p.back-to-home-from-cv:hover{
+    p.back-to-home-from-cv:focus{
         position: absolute;
-        bottom: 1.75%;
+        bottom: -4.75%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.15vw;

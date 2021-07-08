@@ -31,7 +31,6 @@
     }
 </style>
 <body>
-<img src="assets/image-for-linkedIn.png" alt="image-for-linkedIn" style="transform:scale(0.25); top:0; left: 0; position: absolute; opacity: 0;">
 
 <!-- CUBE + CUBE BUTTONS -->
 <div id="main-scene" :class="'main-scene ' + mainSceneContentActive">
@@ -175,7 +174,7 @@
     </div>
 
     <!-- CV SKILLS -->
-    <div class="skills cv-content-div">
+    <div class="skills cv-content-div" v-if="isMobile === false">
         <div class="cv-content-title">
             <h2 style="margin-bottom: 0">SKILLS</h2>
             <div class="cv-title-line"></div>
@@ -187,6 +186,26 @@
                 </div>
                 <div class="skill-content">
                     <div class="skill-content-text" v-for="(skill, index) in category" :key="skill">
+                        <p>{{skill}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CV SKILLS Mobile (iphoneX) -->
+    <div class="skills cv-content-div" v-if="isMobile === true">
+        <div class="cv-content-title">
+            <h2 style="margin-bottom: 0">SKILLS</h2>
+            <div class="cv-title-line"></div>
+        </div>
+        <div class="cv-content-text-container">
+            <div class="cv-skills-container" v-for="(category, key) in skillsMobile" :key="key">
+                <div class="skill-key">
+                    <p><strong>{{key}}</strong></p>
+                </div>
+                <div class="skill-content">
+                    <div class="skill-content-text" v-for="(skill, index) in category" :key="index">
                         <p>{{skill}}</p>
                     </div>
                 </div>
@@ -504,7 +523,7 @@
             paddingScale: d3.scaleLinear().domain([350, 1400]).range([400, 1400]),
             cvContentMarginTop: d3.scaleLinear().domain([475, 2550]).range([220, 180]),
             cvContentWidthDesktop: d3.scaleLinear().domain([500, 2550]).range([100, 40]),
-            cvTitleFontSizeDesktop: d3.scaleLinear().domain([375, 2550]).range([2, 3]),
+            cvTitleFontSizeDesktop: d3.scaleLinear().domain([375, 2550]).range([1.9, 3]),
             cvCubeSceneScale: d3.scaleLinear().domain([500, 2550]).range([500, 1200]),
             viewingCv: false,
             cvContentClasses: ['cv-title','skill cv-content-div',
@@ -883,12 +902,20 @@
                 'Data Visualization': ['D3js, ', 'ChartJS'],
                 'Version Control/Shell/UX': ['GIT, ', 'Bash, ', 'Figma'],
             },
+            skillsMobile:{
+                'FE': ['HTML,','CSS,','JS,', 'Vue,', 'React,', 'Angular,'],
+                'BE': ['NodeJS, ','Express, ','MongoDB, ','MySQL'],
+                'Graphics': ['ThreeJS'],
+                'Data Viz': ['D3js, ', 'ChartJS'],
+                'Tools': ['GIT, ', 'Bash, ', 'Figma'],
+            },
             redMetersExperience:[
                 '-Developed a new User Interface for the Red Meter Industrial Density Meter as the sole developer, replacing their previous, outdated User Interface',
                 '-Visualized data retrieved from custom back-end API to help customers easily understand their industrial processes using D3js',
                 '-Wrote Performant and well structured code that allows the User Interface to perform well, for and indefinite amount of time, on a very low performance pc (Raspberry Pi3b)',
                 '-Built a detailed 3D model of their main product, the red meter, to be displayed on their website using ThreeJS, helping customers visualize the red meter.'
-            ]
+            ],
+            isMobile: false,
         },
         methods:{
             goBackToHomeFromCv(toSection){
@@ -948,13 +975,21 @@
                 this.skills['Front End'] = ['HTML,','CSS,','JS,','Vue,','React,','Angular']
             }
 
+            if(iphoneMediaQuery.matches){
+                this.isMobile = true;
+            }
+
             window.addEventListener('resize', () => {
                 if(document.documentElement.clientWidth < 500){
                     this.skills['Front End'] = ['HTML,','CSS,','JS,','Vue,','React,','Angular']
                 } else {
                     this.skills['Front End'] = ['HTML, ','CSS, ','JavaScript, ', 'Vue2, ', 'React16.8+, ', 'Angular2+']
                 }
+
+                //is mobile is true is iphoneMediaQuery matches, false if not
+                this.isMobile = iphoneMediaQuery.matches;
             })
+
         }
     })
 
