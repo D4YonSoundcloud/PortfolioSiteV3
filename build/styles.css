@@ -1391,9 +1391,6 @@ cv styles
         z-index: 1;
         position: absolute;
     }
-    .main-cv-container.floating{
-        /*animation: cvFloatMobile 6s ease-in-out infinite;*/
-    }
 
     .cv-title{
         height: 9%;

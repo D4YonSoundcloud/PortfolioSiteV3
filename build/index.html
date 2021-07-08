@@ -496,9 +496,9 @@
             },
             cvCubeMarginBottom: 0,
             paddingScale: d3.scaleLinear().domain([350, 1400]).range([400, 1400]),
-            cvContentMarginTop: d3.scaleLinear().domain([475, 2550]).range([150, 200]),
+            cvContentMarginTop: d3.scaleLinear().domain([435, 2550]).range([325, 200]),
             cvContentWidthDesktop: d3.scaleLinear().domain([500, 2550]).range([100, 40]),
-            cvTitleFontSizeDesktop: d3.scaleLinear().domain([500, 2550]).range([2.6, 3]),
+            cvTitleFontSizeDesktop: d3.scaleLinear().domain([500, 2550]).range([2, 3]),
             cvCubeSceneScale: d3.scaleLinear().domain([500, 2550]).range([500, 1200]),
             viewingCv: false,
             cvContentClasses: ['cv-title','skill cv-content-div',
@@ -742,7 +742,8 @@
                 let yTransformAmount = iphoneMediaQuery.matches ? 100 : -70
                 let yTransformFrom = iphoneMediaQuery.matches ? 200 : 100
 
-                let cvContainerFromAnimationObject = { y: yTransformFrom }
+                let cvContainerFromAnimationObject = { y: yTransformFrom, marginTop: 0 }
+
                 let cvContainerToAnimationObject = {
                     "delay": 0.8,
                     "duration": 0.8,
