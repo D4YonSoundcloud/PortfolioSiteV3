@@ -19,20 +19,20 @@
   },
   "activeHeight": {
     "top": 500,
-    "bottom": 300,
+    "bottom": 250,
     "right": 225,
-    "left": 300,
-    "front": 300,
-    "back": 240,
+    "left": 250,
+    "front": 250,
+    "back": 210,
     "cv": 25
   },
   "activeWidth": {
     "top": 350,
-    "bottom": 300,
+    "bottom": 250,
     "right": 400,
-    "left": 300,
-    "front": 300,
-    "back": 300,
+    "left": 250,
+    "front": 250,
+    "back": 250,
     "cv": 1250
   },
   "debugCameraLookUpTable": {

@@ -1,3 +1,5 @@
+* {border:1px solid red}
+
 button {
     outline: none;
     border: none;
@@ -1215,6 +1217,11 @@ p.back-to-home-from-cv:hover{
         transform: translateZ(-100px) rotateX(270deg) translateX(2.5%);
     }
 
+    .cv {
+        transform: translateZ(-150px) rotateY(270deg) rotateZ(-3deg) rotateX(0deg);
+    }
+
+
     .cube-face {
         display: flex;
         flex-flow: column wrap;
@@ -1276,6 +1283,8 @@ p.back-to-home-from-cv:hover{
     /*    transform: rotateX(-90deg) translateZ(100px);*/
     /*    box-shadow: 0 0 20px 1px rgb(220 162 228);*/
     /*}*/
+
+
     .cube-face-shadow {
         position: relative;
         z-index: 1;
@@ -1413,7 +1422,7 @@ cv styles
         display: flex;
         flex-flow: column;
         justify-content: start;
-        width: 98%;
+        width: 365px;
         padding: 8px 16px;
         border-radius: 5px;
         box-shadow: 0 0 5px 1px rgb(232 150 246), inset 0 0 10px 1px rgb(165 112 174);
@@ -1431,21 +1440,21 @@ cv styles
     }
 
     .experience{
-        height: 45%;
+        height: 62%;
     }
 
     .experience:hover{
-        height: 46%;
+        height: 63%;
         width: 98%;
     }
 
     .education{
         margin-bottom: 16px;
-        height: 10%;
+        height: 15%;
     }
 
     .education:hover{
-        height: 11%;
+        height: 15%;
         width: 98%;
         margin-bottom: 16px;
     }
@@ -1552,14 +1561,14 @@ cv styles
     }
 
     .cv-content-text-container-education h3{
-        font-size: 110%;
+        font-size: 105%;
         color: white;
         font-family: 'Russo One', sans-serif;
     }
 
     p.back-to-home-from-cv{
         position: absolute;
-        bottom: -5%;
+        bottom: -7.5%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.1vw;

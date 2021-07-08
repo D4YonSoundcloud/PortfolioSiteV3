@@ -234,7 +234,7 @@
             <div class="cv-title-line"></div>
         </div>
         <div class="cv-content-text-container-education">
-            <h3> University of Central Florida - BS Web Design </h3> <p style="font-style: italic; color: white; font-size: 100%"> Aug 2017 - Aug 2021</p>
+            <h3> University of Central Florida, BS Web Design </h3> <p style="font-style: italic; color: white; font-size: 100%"> Aug 2017 - Aug 2021</p>
         </div>
     </div>
     <!-- Go back to Home from CV button -->
@@ -456,6 +456,7 @@
     fetch('./activeCubeFaceMobileAnimationData.json')
         .then(response => response.json())
         .then(data => activeCubeFaceMobileAnimationData = data);
+    console.log(activeCubeFaceAnimationData)
 
 
     //Fetch the animation data for each face not active whenever a face is active
@@ -756,7 +757,7 @@
                     marginRight: 0,
                     perspective: 1600,
                     marginBottom: iphoneMediaQuery.matches ? 935 : this.paddingScale(this.currentClientHeight),
-                    marginLeft: iphoneMediaQuery.matches ? 200 : 0
+                    marginLeft: iphoneMediaQuery.matches ? -200 : 0
                 }
 
                 console.log(cubeFaceAnimationProperties)
@@ -800,15 +801,19 @@
                 this.applyCvContentWidth();
 
                 this.viewingCv = true;
+
+                document.querySelector('.link-div').style.display = 'none';
             },
             checkIfMobile(){
                 return iphoneMediaQuery.matches;
             },
             applyCvContentWidth(){
                 //get animation data, cv content width is based on the desktop width
+                let cvContentWidth = this.checkIfMobile() ? 365 : this.cvContentWidthDesktop(this.currentClientWidth) + '%'
+
                 let animationData = {
                     duration: 0.2,
-                    width: this.cvContentWidthDesktop(this.currentClientWidth) + '%'
+                    width: cvContentWidth
                 }
                 let h1AnimationData = {
                     duration: 0.2,
@@ -846,13 +851,15 @@
 
                     let yTransformAmount = iphoneMediaQuery.matches ? -235 : -70
                     let yTransformFrom = iphoneMediaQuery.matches ? -235 : 100
+                    let cvMarginLeft = iphoneMediaQuery.matches ? -200 : 0
 
                     let cvContainerFromAnimationObject = { y: yTransformFrom, marginTop: 221 }
                     let cvContainerToAnimationObject = {
                         "duration": 0.2,
                         "y": yTransformAmount,
                         "opacity": 1,
-                        "marginTop": this.cvContentMarginTop(this.currentClientWidth)
+                        "marginTop": this.cvContentMarginTop(this.currentClientWidth),
+                        "marginLeft": cvMarginLeft
                     }
 
                     gsap.to('#main-scene', cubeSceneCvAnimationProperties)
@@ -922,19 +929,22 @@
 
                 gsap.to('.cube-face-shadow ', { opacity: 1, duration: 0.8 });
 
+                let activeCubeAnimationData = iphoneMediaQuery.matches ? activeCubeFaceMobileAnimationData : activeCubeFaceAnimationData
+                let bodyFlex = iphoneMediaQuery.matches ? 'start' : 'center'
+
                 let cubeFaceAnimationProperties = {
                     duration: 0.8,
                     delay: 0.1,
-                    transform: activeCubeFaceAnimationData["activeCubeFace"]["front"],
-                    height: activeCubeFaceAnimationData["activeHeight"]["front"],
-                    width: activeCubeFaceAnimationData["activeWidth"]["front"],
+                    transform: activeCubeAnimationData["activeCubeFace"]["front"],
+                    height: activeCubeAnimationData["activeHeight"]["front"],
+                    width: activeCubeAnimationData["activeWidth"]["front"],
                 }
 
                 //increase the box shadow on the right face
                 let boxShadowAnimationProperties = {
                     duration: 0.8,
                     delay: 0.1,
-                    boxShadow: activeCubeFaceAnimationData["activeCubeFaceRemoveBoxShadow"]["cv"]
+                    boxShadow: activeCubeAnimationData["activeCubeFaceRemoveBoxShadow"]["cv"]
                 }
 
                 //need to make margin-bottom more responsive
@@ -965,7 +975,7 @@
                 //change body flex to 'column'
                 document.querySelector('body').style.flexFlow = 'row';
                 document.querySelector('body').style.justifyContent = 'space-evenly';
-                document.querySelector('body').style.alignItems = 'center';
+                document.querySelector('body').style.alignItems = bodyFlex;
 
                 appMainScene.viewingCv = false;
             }
