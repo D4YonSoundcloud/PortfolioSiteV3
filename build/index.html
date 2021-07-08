@@ -827,6 +827,11 @@
         },
         mounted(){
             this.developerDesignerLoop();
+
+            if(this.checkIfMobile() === true){
+                this.mainCubeClass = 'front';
+                this.handleActiveCubeFace(true, 'front', 'back')
+            }
         },
         created(){
             this.currentClientHeight = document.documentElement.clientHeight;
