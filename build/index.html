@@ -836,6 +836,10 @@
 
             //listens for resize event and then adjust the margin-bottom of the cube when the cv is viewed.
             window.addEventListener('resize', () => {
+                if(this.isMobile() === true){
+                    return
+                }
+
                 if(this.viewingCv === true){
                     this.currentClientHeight = document.documentElement.clientHeight;
                     this.currentClientWidth = document.documentElement.clientWidth;
