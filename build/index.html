@@ -641,14 +641,18 @@
             },
             handleActiveCubeFace(open, toSection, fromSection){
 
+                let animationData = iphoneMediaQuery.matches ? activeCubeFaceMobileAnimationData : activeCubeFaceAnimationData
+                let faceWidth = iphoneMediaQuery.matches ? 275 : 300
+                let faceHeight = iphoneMediaQuery.matches ? 275 : 300
+
                 if(open === true){
                     //create GSAP animation object
                     let cubeFaceAnimationProperties = {
                         duration: 0.8,
-                        transform: activeCubeFaceAnimationData["activeCubeFace"][toSection],
-                        height: activeCubeFaceAnimationData["activeHeight"][toSection],
-                        width: activeCubeFaceAnimationData["activeWidth"][toSection],
-                        boxShadow: activeCubeFaceAnimationData["activeCubeFaceBoxShadow"][toSection]
+                        transform: animationData["activeCubeFace"][toSection],
+                        height: animationData["activeHeight"][toSection],
+                        width: animationData["activeWidth"][toSection],
+                        boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
                     }
 
                     console.log(cubeFaceAnimationProperties)
@@ -667,10 +671,10 @@
                     //create GSAP animation object
                     let cubeFaceAnimationProperties = {
                         duration: 0.8,
-                        transform: activeCubeFaceAnimationData["activeCubeFaceRemove"][fromSection],
-                        height: 300,
-                        width: 300,
-                        boxShadow: activeCubeFaceAnimationData["activeCubeFaceRemoveBoxShadow"][fromSection]
+                        transform: animationData["activeCubeFaceRemove"][fromSection],
+                        height: faceHeight,
+                        width: faceWidth,
+                        boxShadow: animationData["activeCubeFaceRemoveBoxShadow"][fromSection]
                     }
 
                     console.log('about to remove gsap transform', cubeFaceAnimationProperties)
@@ -680,10 +684,10 @@
                         //create GSAP animation object
                         let cubeFaceAnimationProperties = {
                             duration: 0.8,
-                            transform: activeCubeFaceAnimationData["activeCubeFace"][toSection],
-                            height: activeCubeFaceAnimationData["activeHeight"][toSection],
-                            width: activeCubeFaceAnimationData["activeWidth"][toSection],
-                            boxShadow: activeCubeFaceAnimationData["activeCubeFaceBoxShadow"][toSection]
+                            transform: animationData["activeCubeFace"][toSection],
+                            height: animationData["activeHeight"][toSection],
+                            width: animationData["activeWidth"][toSection],
+                            boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
                         }
                         gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
 
@@ -715,13 +719,14 @@
 
             },
             removeNoneActiveClasses(noneActiveFaces, fromSection){
-                console.log('removing not active classes', fromSection)
+
+                let animationData = iphoneMediaQuery.matches ? notActiveCubeFacesMobileAnimationData : notActiveCubeFacesAnimationData
 
                 //add the class names
                 for(let face of noneActiveFaces){
 
 	                let section = notActiveFacesRemoveAnimationLookUpTable[fromSection];
-	                let animationData = notActiveCubeFacesAnimationData[section][face];
+                    let gsapAnimation = animationData[section][face];
                     //see comment in this.addNotActiveClasses
                     console.log(animationData)
                     gsap.to(`.cube-face-${face}`, animationData)
@@ -830,7 +835,10 @@
 
             if(this.checkIfMobile() === true){
                 this.mainCubeClass = 'front';
-                this.handleActiveCubeFace(true, 'front', 'back')
+                console.log(this.mainCubeClass)
+                setTimeout(() => {
+                    this.handleActiveCubeFace(true, 'front', 'front')
+                }, 50)
             }
         },
         created(){
@@ -841,7 +849,7 @@
 
             //listens for resize event and then adjust the margin-bottom of the cube when the cv is viewed.
             window.addEventListener('resize', () => {
-                if(this.isMobile() === true){
+                if(this.checkIfMobile() === true){
                     return
                 }
 
