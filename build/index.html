@@ -765,7 +765,7 @@
                 gsap.to(`.cube-face-${toSection}`, boxShadowAnimationProperties);
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
 
-                let yTransformAmount = iphoneMediaQuery.matches ? -215 : -70
+                let yTransformAmount = iphoneMediaQuery.matches ? -235 : -70
                 let yTransformFrom = iphoneMediaQuery.matches ? 200 : 100
                 let yMarginTop = iphoneMediaQuery.matches ? 221 : this.cvContentMarginTop
 
@@ -844,10 +844,10 @@
                         marginBottom: this.paddingScale(this.currentClientHeight),
                     }
 
-                    let yTransformAmount = iphoneMediaQuery.matches ? 100 : -70
+                    let yTransformAmount = iphoneMediaQuery.matches ? -235 : -70
                     let yTransformFrom = iphoneMediaQuery.matches ? 200 : 100
 
-                    let cvContainerFromAnimationObject = { y: yTransformFrom }
+                    let cvContainerFromAnimationObject = { y: yTransformFrom, marginTop: 221 }
                     let cvContainerToAnimationObject = {
                         "duration": 0.2,
                         "y": yTransformAmount,
