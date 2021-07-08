@@ -626,7 +626,6 @@ cv styles
 .main-cv-container.hidden{
     width: 100vw;
     height: 95%;
-    margin-top: 10%;
     display: flex;
     flex-flow: column;
     justify-content: start;
@@ -641,7 +640,6 @@ cv styles
 
 .cv-title{
     height: 9%;
-    width: 52%;
     padding: 8px 16px;
     display: flex;
     justify-content: start;
@@ -867,8 +865,6 @@ p.back-to-home-from-cv:hover{
         height: 100vh;
         width: 100vw;
         display: flex;
-        flex-flow: column !important;
-        justify-content: start !important;
         align-items: center;
         background-color: rgb(22, 22, 22);
     }
@@ -1225,8 +1221,8 @@ p.back-to-home-from-cv:hover{
         justify-content: center;
         align-content: center;
         position: absolute;
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
         box-shadow: 0 0 5px 1px rgb(220 162 228);
         color: white;
         background-color: rgba(128, 91, 134, 1)
@@ -1257,29 +1253,29 @@ p.back-to-home-from-cv:hover{
         opacity: 1;
     }
 
-    .cube-face-front {
-        transform: rotateY(  0deg) translateZ(100px);
-    }
+    /*.cube-face-front {*/
+    /*    transform: rotateY(  0deg) translateZ(100px);*/
+    /*}*/
 
-    .cube-face-right {
-        transform: rotateY( 90deg) translateZ(100px);
-    }
+    /*.cube-face-right {*/
+    /*    transform: rotateY( 90deg) translateZ(100px);*/
+    /*}*/
 
-    .cube-face-back {
-        transform: rotateY(180deg) translateZ(100px);
-    }
+    /*.cube-face-back {*/
+    /*    transform: rotateY(180deg) translateZ(100px);*/
+    /*}*/
 
-    .cube-face-left {
-        transform: rotateY(-90deg) translateZ(100px);
-    }
+    /*.cube-face-left {*/
+    /*    transform: rotateY(-90deg) translateZ(100px);*/
+    /*}*/
 
-    .cube-face-top {
-        transform: rotateX( 90deg) translateZ(100px);
-    }
-    .cube-face-bottom{
-        transform: rotateX(-90deg) translateZ(100px);
-        box-shadow: 0 0 20px 1px rgb(220 162 228);
-    }
+    /*.cube-face-top {*/
+    /*    transform: rotateX( 90deg) translateZ(100px);*/
+    /*}*/
+    /*.cube-face-bottom{*/
+    /*    transform: rotateX(-90deg) translateZ(100px);*/
+    /*    box-shadow: 0 0 20px 1px rgb(220 162 228);*/
+    /*}*/
     .cube-face-shadow {
         position: relative;
         z-index: 1;
@@ -1379,4 +1375,240 @@ p.back-to-home-from-cv:hover{
         height: 80px;
         top: 20px;
     }
+
+    /**
+cv styles
+ */
+    .main-cv-container.hidden{
+        width: 100vw;
+        height: 95%;
+        margin-top: 10%;
+        display: flex;
+        flex-flow: column;
+        justify-content: start;
+        align-items: center;
+        opacity: 0;
+        z-index: 1;
+        position: absolute;
+    }
+    .main-cv-container.floating{
+        /*animation: cvFloatMobile 6s ease-in-out infinite;*/
+    }
+
+    .cv-title{
+        height: 9%;
+        width: 52%;
+        padding: 8px 16px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+    .cv-title h1{
+        font-family: 'Russo One', sans-serif;
+        cursor: default;
+        font-size: 3em;
+        margin-top: 2.5%;
+        margin-bottom: 2.5%;
+        color: white;
+        letter-spacing: 0.25vw;
+        text-shadow: 0 0 5px white;
+    }
+
+    .cv-content-div{
+        display: flex;
+        flex-flow: column;
+        justify-content: start;
+        width: 98%;
+        padding: 8px 16px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px 1px rgb(232 150 246), inset 0 0 10px 1px rgb(165 112 174);
+        margin-bottom: 16px;
+        transition: 0.4s ease;
+    }
+
+    .skills{
+        height: 30%;
+    }
+
+    .skills:hover{
+        height: 31%;
+        width: 98%;
+    }
+
+    .experience{
+        height: 40%;
+    }
+
+    .experience:hover{
+        height: 41%;
+        width: 98%;
+    }
+
+    .education{
+        margin-bottom: 16px;
+        height: 10%;
+    }
+
+    .education:hover{
+        height: 11%;
+        width: 98%;
+        margin-bottom: 16px;
+    }
+
+    .cv-content-title{
+        width: 100%;
+        height: 15%;
+        display: flex;
+        flex-flow: row;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .cv-content-text-container{
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+        align-items: start;
+    }
+
+    .cv-content-text-container h3{
+        font-size: 110%;
+        color: white;
+        font-family: 'Russo One', sans-serif;
+    }
+
+    .experience-text{
+        font-size: 100%;
+        color: white;
+        font-family: 'Russo One', sans-serif;
+    }
+
+    .cv-skills-container {
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .skill-key{
+        width: 25%;
+        height: 15%;
+    }
+
+    .skill-key p{
+        font-size: 110%;
+        cursor: default;
+        font-family: 'Russo One', sans-serif;
+        color: white;
+    }
+
+    .skill-content{
+        width: 75%;
+        display: flex;
+        height: 100%;
+        flex-flow: row;
+        justify-content: start;
+        margin-left: 4px;
+    }
+
+    .skill-content-text {
+        display: flex;
+        flex-flow: row;
+        height: 100%;
+        align-items: center;
+    }
+
+    .skill-content-text p{
+        font-size: 100%;
+        cursor: default;
+        margin-right: 8px;
+        font-family: 'Russo One', sans-serif;
+        color: white;
+    }
+
+    .cv-content-title h2{
+        font-family: 'Russo One', sans-serif;
+        cursor: default;
+        font-size: 1.15em;
+        margin-bottom: 2.5%;
+        color: white;
+        letter-spacing: 0.25vw;
+        text-shadow: 0 0 5px white;
+    }
+
+    .cv-title-line{
+        height: 0;
+        width: 100%;
+        margin-left: 4px;
+        border-top: 2px solid rgba(128, 91, 134, 1);
+        border-bottom: 2px solid rgba(128, 91, 134, 1);
+    }
+
+    .cv-content-text-container-education{
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-flow: row;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .cv-content-text-container-education h3{
+        font-size: 110%;
+        color: white;
+        font-family: 'Russo One', sans-serif;
+    }
+
+    p.back-to-home-from-cv{
+        position: absolute;
+        bottom: 1.25%;
+        font-size: 1.5em;
+        color: white;
+        letter-spacing: 0.1vw;
+    }
+    p.back-to-home-from-cv:hover{
+        position: absolute;
+        bottom: 1.75%;
+        font-size: 1.5em;
+        color: white;
+        letter-spacing: 0.15vw;
+    }
+
+
+
+    @keyframes cvFloat {
+        0% {
+            transform: translateY(-70px);
+        }
+        33% {
+            transform: translateY(-65px);
+        }
+        66%{
+            transform: translateY(-75px);
+        }
+        100% {
+            transform: translateY(-70px);
+        }
+    }
+
+    @keyframes cvFloatMobile {
+        0% {
+            transform: translateY(-70px);
+        }
+        33% {
+            transform: translateY(-65px);
+        }
+        66%{
+            transform: translateY(-75px);
+        }
+        100% {
+            transform: translateY(-70px);
+        }
+    }
+
+
+
 }

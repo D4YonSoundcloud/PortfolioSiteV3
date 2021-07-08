@@ -172,7 +172,7 @@
         <h1 class="cv-title-text">C.V - MATTHEW DAY</h1>
     </div>
 
-    <!-- cv skills -->
+    <!-- CV SKILLS -->
     <div class="skills cv-content-div">
         <div class="cv-content-title">
             <h2 style="margin-bottom: 0">SKILLS</h2>
@@ -184,7 +184,7 @@
                     <p><strong>{{key}}</strong></p>
                 </div>
                 <div class="skill-content">
-                    <div class="skill-content-text" v-for="(skill, index) in category">
+                    <div class="skill-content-text" v-for="(skill, index) in category" :key="skill">
                         <p>{{skill}}</p>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
         </div>
     </div>
 
-    <!-- cv experience -->
+    <!-- CV EXPERIENCE -->
     <div class="experience cv-content-div">
         <div class="cv-content-title">
             <h2 style="margin-bottom: 0">EXPERIENCE</h2>
@@ -206,6 +206,7 @@
         </div>
     </div>
 
+    <!-- CV EDUCATION  -->
     <div class="education cv-content-div">
         <div class="cv-content-title">
             <h2 style="margin-bottom: 0">EDUCATION</h2>
@@ -273,9 +274,9 @@
     */
 
     // Create a media condition that targets viewports for iphone
-    const mediaQuery = window.matchMedia('(max-device-width: 375px)')
+    const iphoneMediaQuery = window.matchMedia('(min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3)')
     // Check if the media query is true
-    if (mediaQuery.matches) {
+    if (iphoneMediaQuery.matches) {
     	console.log('this is iphone')
 	    // Then trigger an alert
 	    // iphone initial styles
@@ -285,6 +286,9 @@
 	    gsap.set('.cube-face-left', { transform: 'translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)'})
 	    gsap.set('.cube-face-bottom', { transform: 'translate3d(0px, 150px, 0px) rotateX(90deg)'})
 	    gsap.set('.cube-face-top', { transform: 'translateZ(-100px) rotateX(270deg) translateX(2.5%)'})
+
+        document.querySelector('body').style.flexFlow = 'column';
+        document.querySelector('body').style.justifyContent = 'start';
     } else {
 	    console.log('this is desktop')
 	    gsap.set('.cube-face-front', { transform: 'rotateY(  0deg) translateZ(150px)'})
@@ -415,17 +419,30 @@
     }
 
     let activeCubeFaceAnimationData;
+    let activeCubeFaceMobileAnimationData;
     let notActiveCubeFacesAnimationData;
+    let notActiveCubeFacesMobileAnimationData;
 
     //Fetch the animation data for each face
     fetch('./activeCubeFaceAnimationData.json')
         .then(response => response.json())
         .then(data => activeCubeFaceAnimationData = data);
 
+    //mobile data
+    fetch('./activeCubeFaceMobileAnimationData.json')
+        .then(response => response.json())
+        .then(data => activeCubeFaceMobileAnimationData = data);
+
+
     //Fetch the animation data for each face not active whenever a face is active
     fetch('./notActiveCubeFaceAnimationData.json')
 	    .then(response => response.json())
 	    .then(data => notActiveCubeFacesAnimationData = data);
+
+    //mobile data
+    fetch('./notActiveCubeFaceMobileAnimationData.json')
+        .then(response => response.json())
+        .then(data => notActiveCubeFacesMobileAnimationData = data);
 
     //decides which animation look up table to use for the current not active faces
     let notActiveFacesAnimationLookUpTable = {
@@ -454,7 +471,8 @@
     let appMainScene = new Vue({
         el: '#main-scene',
         data: {
-            clientHeight: 0,
+            currentClientHeight: 0,
+            currentClientWidth: 0,
             mainCubeClass: 'front',
             contentFrontActive: 'active',
             contentBackActive: 'hidden',
@@ -477,8 +495,14 @@
                 'cv':['bottom','left','top','back','front','shadow'],
             },
             cvCubeMarginBottom: 0,
-            paddingScale: d3.scaleLinear().domain([475, 1322]).range([590, 1360]),
+            paddingScale: d3.scaleLinear().domain([350, 1400]).range([400, 1400]),
+            cvContentMarginTop: d3.scaleLinear().domain([475, 2550]).range([150, 200]),
+            cvContentWidthDesktop: d3.scaleLinear().domain([500, 2550]).range([100, 40]),
+            cvTitleFontSizeDesktop: d3.scaleLinear().domain([500, 2550]).range([2.6, 3]),
+            cvCubeSceneScale: d3.scaleLinear().domain([500, 2550]).range([500, 1200]),
             viewingCv: false,
+            cvContentClasses: ['cv-title','skill cv-content-div',
+                'experience cv-content-div','education cv-content-div'],
         },
         methods:{
             goToSection(fromSection, toSection, fromShown, toShown, transformModifier){
@@ -512,7 +536,7 @@
                     this.mainCubeClass = toSection;
 
                     //debug line
-                    // document.querySelector('.main-cube').style.transform = activeCubeFaceAnimationData["debugCameraLookUpTable"][toSection]
+                    // document.querySelector('.main-cube').style.transform = activeCubeFaceMobileAnimationData.json["debugCameraLookUpTable"][toSection]
 
                     this.handleActiveCubeFace(true, toSection, fromSection)
                 }
@@ -651,14 +675,16 @@
             },
             addNoneActiveClasses(noneActiveFaces, toSection){
 
+                let animationData = iphoneMediaQuery.matches ? notActiveCubeFacesMobileAnimationData : notActiveCubeFacesAnimationData
+
                 //add the class names
                 for(let face of noneActiveFaces){
 
                     let section = notActiveFacesAnimationLookUpTable[toSection];
-	                let animationData = notActiveCubeFacesAnimationData[section][face];
+                    let gsapAnimation = animationData[section][face];
                     //basic GSAP to animation, with the parameters being the value of the index of the face
                     //when passed into the notActiveFacesLookUpTable
-                    gsap.to(`.cube-face-${face}`, animationData)
+                    gsap.to(`.cube-face-${face}`, gsapAnimation)
                 }
 
             },
@@ -697,18 +723,14 @@
                     boxShadow: activeCubeFaceAnimationData["activeCubeFaceBoxShadow"]["cv"]
                 }
 
-                let paddingScale = d3.scaleLinear().domain([475, 1322]).range([590, 1360])
-
-                console.log(paddingScale(this.clientHeight))
-
                 //need to make margin-bottom more responsive
                 let cubeSceneCvAnimationProperties = {
-                    width: '100vw',
+                    width: this.cvCubeSceneScale(this.currentClientWidth),
                     height: 100,
                     duration: 0.8,
                     marginRight: 0,
                     perspective: 1600,
-                    marginBottom: paddingScale(this.clientHeight),
+                    marginBottom: this.paddingScale(this.currentClientHeight),
                 }
 
                 console.log(cubeFaceAnimationProperties)
@@ -716,7 +738,20 @@
                 gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
                 gsap.to(`.cube-face-${toSection}`, boxShadowAnimationProperties);
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
-                gsap.fromTo('.main-cv-container', { y: 100 }, { delay: 0.8, duration: 0.8, y: -70, opacity: 1 }).then(() => {
+
+                let yTransformAmount = iphoneMediaQuery.matches ? 100 : -70
+                let yTransformFrom = iphoneMediaQuery.matches ? 200 : 100
+
+                let cvContainerFromAnimationObject = { y: yTransformFrom }
+                let cvContainerToAnimationObject = {
+                    "delay": 0.8,
+                    "duration": 0.8,
+                    "y": yTransformAmount,
+                    "opacity": 1,
+                    "marginTop": this.cvContentMarginTop(this.currentClientWidth)
+                }
+
+                gsap.fromTo('.main-cv-container', cvContainerFromAnimationObject, cvContainerToAnimationObject).then(() => {
                     document.querySelector('.main-cv-container').classList.add('floating')
                     console.log('added')
                 })
@@ -726,32 +761,73 @@
 
                 //change body flex to 'column'
                 document.querySelector('body').style.flexFlow = 'column';
+                if (iphoneMediaQuery.matches) {
+                    document.querySelector('body').style.justifyContent = 'center';
+                }
+
+                this.applyCvContentWidth();
 
                 this.viewingCv = true;
             },
+            checkIfMobile(){
+                return iphoneMediaQuery.matches;
+            },
+            applyCvContentWidth(){
+                //get animation data, cv content width is based on the desktop width
+                let animationData = {
+                    duration: 0.2,
+                    width: this.cvContentWidthDesktop(this.currentClientWidth) + '%'
+                }
+                let h1AnimationData = {
+                    duration: 0.2,
+                    fontSize: this.cvTitleFontSizeDesktop(this.currentClientWidth) + 'em',
+                }
+
+                gsap.to(".cv-content-div", animationData)
+                gsap.to(".cv-title", animationData)
+                gsap.to(".cv-title h1", h1AnimationData)
+            }
         },
         mounted(){
             this.developerDesignerLoop();
         },
         created(){
-            this.clientHeight = document.documentElement.clientHeight
+            this.currentClientHeight = document.documentElement.clientHeight;
+            this.currentClientWidth = document.documentElement.clientWidth;
             console.log(this.clientHeight)
 
             //listens for resize event and then adjust the margin-bottom of the cube when the cv is viewed.
             window.addEventListener('resize', () => {
                 if(this.viewingCv === true){
-                    this.clientHeight = document.documentElement.clientHeight
+                    this.currentClientHeight = document.documentElement.clientHeight;
+                    this.currentClientWidth = document.documentElement.clientWidth;
 
                     let cubeSceneCvAnimationProperties = {
-                        width: '100vw',
+                        width: this.cvCubeSceneScale(this.currentClientWidth),
                         height: 100,
-                        duration: 0.2,
+                        "duration": 0.2,
                         marginRight: 0,
                         perspective: 1600,
-                        marginBottom: this.paddingScale(this.clientHeight),
+                        marginBottom: this.paddingScale(this.currentClientHeight),
+                    }
+
+                    let yTransformAmount = iphoneMediaQuery.matches ? 100 : -70
+                    let yTransformFrom = iphoneMediaQuery.matches ? 200 : 100
+
+                    let cvContainerFromAnimationObject = { y: yTransformFrom }
+                    let cvContainerToAnimationObject = {
+                        "duration": 0.2,
+                        "y": yTransformAmount,
+                        "opacity": 1,
+                        "marginTop": this.cvContentMarginTop(this.currentClientWidth)
                     }
 
                     gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+                    gsap.fromTo('.main-cv-container', cvContainerFromAnimationObject, cvContainerToAnimationObject).then(() => {
+                        document.querySelector('.main-cv-container').classList.add('floating')
+                        console.log('added')
+                    })
+                    this.applyCvContentWidth()
 
                 }
             })
