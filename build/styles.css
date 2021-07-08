@@ -1163,7 +1163,7 @@ p.back-to-home-from-cv:hover{
         height: 300px;
         perspective: 550px;
         transition: 0.8s ease;
-        animation: float 6s ease-in-out infinite;
+        animation: none !important;
         margin-right: -5%;
         margin-top: 45%;
     }
