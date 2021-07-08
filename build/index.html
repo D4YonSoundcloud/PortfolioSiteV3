@@ -496,7 +496,7 @@
             },
             cvCubeMarginBottom: 0,
             paddingScale: d3.scaleLinear().domain([350, 1400]).range([400, 1400]),
-            cvContentMarginTop: d3.scaleLinear().domain([375, 2550]).range([325, 200]),
+            cvContentMarginTop: d3.scaleLinear().domain([475, 2550]).range([220, 180]),
             cvContentWidthDesktop: d3.scaleLinear().domain([500, 2550]).range([100, 40]),
             cvTitleFontSizeDesktop: d3.scaleLinear().domain([375, 2550]).range([2, 3]),
             cvCubeSceneScale: d3.scaleLinear().domain([500, 2550]).range([500, 1200]),
@@ -864,10 +864,10 @@
         el: '#main-cv',
         data:{
             skills:{
-                'Front-End': ['HTML, ','CSS, ','JavaScript, ', 'Vue2, ', 'React16.8+, ', 'Angular2+'],
-                'Back-End': ['NodeJS, ','Express, ','MongoDB, ','MySQL'],
+                'Front End': ['HTML, ','CSS, ','JavaScript, ', 'Vue2, ', 'React16.8+, ', 'Angular2+'],
+                'Back End': ['NodeJS, ','Express, ','MongoDB, ','MySQL'],
                 'Graphics': ['ThreeJS'],
-                'Data-Visualization': ['D3js, ', 'ChartJS'],
+                'Data Visualization': ['D3js, ', 'ChartJS'],
                 'Version Control/Shell/UX': ['GIT, ', 'Bash, ', 'Figma'],
             },
             redMetersExperience:[
@@ -928,6 +928,19 @@
 
                 appMainScene.viewingCv = false;
             }
+        },
+        created(){
+            if(document.documentElement.clientWidth < 500){
+                this.skills['Front End'] = ['HTML,','CSS,','JS,','Vue,','React,','Angular']
+            }
+
+            window.addEventListener('resize', () => {
+                if(document.documentElement.clientWidth < 500){
+                    this.skills['Front End'] = ['HTML,','CSS,','JS,','Vue,','React,','Angular']
+                } else {
+                    this.skills['Front End'] = ['HTML, ','CSS, ','JavaScript, ', 'Vue2, ', 'React16.8+, ', 'Angular2+']
+                }
+            })
         }
     })
 
