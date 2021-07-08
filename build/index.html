@@ -468,6 +468,7 @@
     * END OF UGLY DATA ZONE
     */
 
+
     let appMainScene = new Vue({
         el: '#main-scene',
         data: {
@@ -730,7 +731,8 @@
                     duration: 0.8,
                     marginRight: 0,
                     perspective: 1600,
-                    marginBottom: this.paddingScale(this.currentClientHeight),
+                    marginBottom: iphoneMediaQuery.matches ? 935 : this.paddingScale(this.currentClientHeight),
+                    marginLeft: iphoneMediaQuery.matches ? 200 : 0
                 }
 
                 console.log(cubeFaceAnimationProperties)
