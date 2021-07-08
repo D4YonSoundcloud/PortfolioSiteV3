@@ -1164,7 +1164,7 @@ p.back-to-home-from-cv:hover{
         perspective: 550px;
         transition: 0.8s ease;
         animation: float 6s ease-in-out infinite;
-        margin-right: -20%;
+        margin-right: -5%;
         margin-top: 45%;
     }
 
@@ -1382,12 +1382,10 @@ cv styles
     .main-cv-container.hidden{
         width: 100vw;
         height: 95%;
-        margin-top: 10%;
         display: flex;
         flex-flow: column;
         justify-content: start;
         align-items: center;
-        opacity: 0;
         z-index: 1;
         position: absolute;
     }

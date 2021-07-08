@@ -289,6 +289,9 @@
 
         document.querySelector('body').style.flexFlow = 'column';
         document.querySelector('body').style.justifyContent = 'start';
+
+        gsap.set('.main-cv-container', {transform: 'translateY(200px)', marginTop: 221, opacity: 0})
+
     } else {
 	    console.log('this is desktop')
 	    gsap.set('.cube-face-front', { transform: 'rotateY(  0deg) translateZ(150px)'})
@@ -741,10 +744,11 @@
                 gsap.to(`.cube-face-${toSection}`, boxShadowAnimationProperties);
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
 
-                let yTransformAmount = iphoneMediaQuery.matches ? 100 : -70
+                let yTransformAmount = iphoneMediaQuery.matches ? -60 : -70
                 let yTransformFrom = iphoneMediaQuery.matches ? 200 : 100
+                let yMarginTop = iphoneMediaQuery.matches ? 221 : this.cvContentMarginTop
 
-                let cvContainerFromAnimationObject = { y: yTransformFrom, marginTop: 0 }
+                let cvContainerFromAnimationObject = { y: yTransformFrom, marginTop: yMarginTop }
 
                 let cvContainerToAnimationObject = {
                     "delay": 0.8,
@@ -755,8 +759,12 @@
                 }
 
                 gsap.fromTo('.main-cv-container', cvContainerFromAnimationObject, cvContainerToAnimationObject).then(() => {
-                    document.querySelector('.main-cv-container').classList.add('floating')
-                    console.log('added')
+
+                    if(iphoneMediaQuery.matches === false){
+                        document.querySelector('.main-cv-container').classList.add('floating')
+                        console.log('added')
+                    }
+
                 })
 
                 //adds classes to not-active faces, selected with the noneActiveFaces lookup table
@@ -797,7 +805,8 @@
         created(){
             this.currentClientHeight = document.documentElement.clientHeight;
             this.currentClientWidth = document.documentElement.clientWidth;
-            console.log(this.clientHeight)
+
+
 
             //listens for resize event and then adjust the margin-bottom of the cube when the cv is viewed.
             window.addEventListener('resize', () => {
@@ -908,6 +917,7 @@
                     marginRight: '10%',
                     perspective: 550,
                     marginBottom: '0',
+                    marginLeft: '0',
                 }
 
                 gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
