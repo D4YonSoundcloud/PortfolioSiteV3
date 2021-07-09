@@ -1,3 +1,4 @@
+*{ border: 1px solid red }
 
 button {
     outline: none;
@@ -1389,7 +1390,7 @@ p.back-to-home-from-cv:hover{
 cv styles
  */
     .main-cv-container.hidden{
-        width: 100vw;
+        width: 370px !important;
         height: 95%;
         display: flex;
         flex-flow: column;
