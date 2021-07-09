@@ -1203,7 +1203,7 @@ p.back-to-home-from-cv:hover{
     }
 
     .back{
-        transform: translateZ(-100px) rotateY(-200deg) rotateX(-5deg)
+        transform: translateZ(-100px) rotateY(-230deg) rotateX(-5deg)
         translateX(90px);
     }
 
