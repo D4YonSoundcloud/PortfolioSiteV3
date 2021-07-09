@@ -1569,14 +1569,14 @@ cv styles
 
     p.back-to-home-from-cv{
         position: absolute;
-        bottom: -11.5%;
+        bottom: -15%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.1vw;
     }
     p.back-to-home-from-cv:focus{
         position: absolute;
-        bottom: -11.75%;
+        bottom: -15.5%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.15vw;
