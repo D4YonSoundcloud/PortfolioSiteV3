@@ -1441,11 +1441,11 @@ cv styles
     }
 
     .experience{
-        height: 65%;
+        height: 68%;
     }
 
     .experience:hover{
-        height: 66%;
+        height: 69%;
         width: 98%;
     }
 
@@ -1569,14 +1569,14 @@ cv styles
 
     p.back-to-home-from-cv{
         position: absolute;
-        bottom: -15%;
+        bottom: -20%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.1vw;
     }
     p.back-to-home-from-cv:focus{
         position: absolute;
-        bottom: -15.5%;
+        bottom: -20.5%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.15vw;
