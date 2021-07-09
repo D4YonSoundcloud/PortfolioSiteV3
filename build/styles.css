@@ -1415,7 +1415,7 @@ cv styles
         margin-bottom: 2.5%;
         color: white;
         letter-spacing: 0.25vw;
-        text-shadow: 0 0 2px white;
+        text-shadow: 0 0 1px white;
     }
 
     .cv-content-div{
@@ -1440,21 +1440,21 @@ cv styles
     }
 
     .experience{
-        height: 62%;
+        height: 65%;
     }
 
     .experience:hover{
-        height: 63%;
+        height: 66%;
         width: 98%;
     }
 
     .education{
         margin-bottom: 16px;
-        height: 15%;
+        height: 17%;
     }
 
     .education:hover{
-        height: 15%;
+        height: 18%;
         width: 98%;
         margin-bottom: 16px;
     }
@@ -1568,14 +1568,14 @@ cv styles
 
     p.back-to-home-from-cv{
         position: absolute;
-        bottom: -7.5%;
+        bottom: -10.5%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.1vw;
     }
     p.back-to-home-from-cv:focus{
         position: absolute;
-        bottom: -4.75%;
+        bottom: -10.75%;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.15vw;
