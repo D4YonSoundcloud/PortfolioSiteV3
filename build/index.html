@@ -58,6 +58,7 @@
             </div>
         </div>
 
+        <!-- FRONT FACE -->
         <!-- front face - contains the projects and about links + Github/LinkedIn image links-->
         <div class="cube-face cube-face-front">
             <div :class="'content-div ' + 'content-back ' + contentFrontActive">
@@ -79,10 +80,12 @@
             </div>
         </div>
 
+        <!-- BACK FACE -->
         <!-- back face - used to contained the buttons for professional/hobby projects, moved to left face -->
         <div class="cube-face cube-face-back">
         </div>
 
+        <!-- RIGHT FACE -->
         <div class="cube-face cube-face-right">
             <div :class="'content-div ' + 'content-back ' + contentRightActive">
                 <h5 @click="">ABOUT</h5>
@@ -93,6 +96,7 @@
             </div>
         </div>
 
+        <!-- LEFT FACE -->
         <!-- left face - technically the old back face, changed 7-4-21 -->
         <div class="cube-face cube-face-left">
             <div :class="'content-div ' + 'content-back ' + contentBackActive">
@@ -105,6 +109,7 @@
             </div>
         </div>
 
+        <!-- TOP FACE -->
         <!-- top face - hobby projects -->
         <div class="cube-face cube-face-top">
             <div :class="'content-div ' + 'content-back ' + contentTopActive">
@@ -140,6 +145,7 @@
             </div>
         </div>
 
+        <!-- BOTTOM FACE -->
         <!-- bottom face - professional projects -->
         <div class="cube-face cube-face-bottom">
             <div :class="'content-div ' + 'content-back ' + contentBottomActive">
@@ -160,6 +166,7 @@
             </div>
         </div>
 
+        <!-- SHADOW -->
         <!-- cube shadow-->
         <div :class="'cube-face ' + 'cube-face-shadow '">
         </div>
@@ -265,7 +272,7 @@
         <div :class="'scene-link ' + showParagraphThree + transition">
             <div class="box-main">
                 <div class="box-face box-face-front">
-                    <a v-if="showProjectLink === true" :href="projectLink">LIVE PROJECT</a>
+                    <a v-if="showProjectLink === true" :href="projectLink" target="_blank">LIVE PROJECT</a>
                 </div>
                 <div class="box-face box-face-back"></div>
                 <div class="box-face box-shadow"></div>
@@ -301,12 +308,12 @@
     	console.log('this is iphone')
 	    // Then trigger an alert
 	    // iphone initial styles
-	    gsap.set('.cube-face-front', { transform: 'translate3d(0px, 0px, 165px) rotateY(355deg)'})
-	    gsap.set('.cube-face-right', { transform: 'translate3d(150px, 0px, 27px) rotateY(270deg)'})
-	    gsap.set('.cube-face-back', { transform: 'translate3d(5px, 0px, 150px) rotate(-180deg) rotateY(0deg) rotateX(180deg)'})
-	    gsap.set('.cube-face-left', { transform: 'translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)'})
-	    gsap.set('.cube-face-bottom', { transform: 'translate3d(0px, 150px, 0px) rotateX(90deg)'})
-	    gsap.set('.cube-face-top', { transform: 'translateZ(-100px) rotateX(270deg) translateX(2.5%)'})
+	    gsap.set('.cube-face-front', { transform: 'translate3d(0px, 0px, 150px) rotateY(0deg)'})
+	    gsap.set('.cube-face-right', { transform: 'translate3d(125px, 0px, 25px) rotateY(-90deg)'})
+	    gsap.set('.cube-face-back', { transform: 'translate3d(0px, 0px, -100px) rotateY(180deg)'})
+	    gsap.set('.cube-face-left', { transform: 'translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)'})
+	    gsap.set('.cube-face-bottom', { transform: 'translate(0px, 125px) translateZ(25px) rotateX(270deg)'})
+	    gsap.set('.cube-face-top', { transform: 'translate(0%, -50%) translateZ(25px) rotateX(90deg)'})
 
         document.querySelector('body').style.flexFlow = 'column';
         document.querySelector('body').style.justifyContent = 'start';
@@ -493,7 +500,6 @@
     * END OF UGLY DATA ZONE
     */
 
-
     let appMainScene = new Vue({
         el: '#main-scene',
         data: {
@@ -524,7 +530,7 @@
             paddingScale: d3.scaleLinear().domain([350, 1400]).range([400, 1400]),
             cvContentMarginTop: d3.scaleLinear().domain([475, 2550]).range([220, 180]),
             cvContentWidthDesktop: d3.scaleLinear().domain([500, 2550]).range([100, 40]),
-            cvTitleFontSizeDesktop: d3.scaleLinear().domain([375, 2550]).range([1.9, 3]),
+            cvTitleFontSizeDesktop: d3.scaleLinear().domain([375, 2550]).range([1.85, 3]),
             cvCubeSceneScale: d3.scaleLinear().domain([500, 2550]).range([500, 1200]),
             viewingCv: false,
             cvContentClasses: ['cv-title','skill cv-content-div',

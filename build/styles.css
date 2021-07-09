@@ -312,6 +312,7 @@ a.show{
     justify-content: center;
     align-items: center;
     padding-right: 3.5%;
+    z-index: 5;
 }
 
 .main-content-div.show-content{
@@ -1165,7 +1166,7 @@ p.back-to-home-from-cv:hover{
         perspective: 550px;
         transition: 0.8s ease;
         animation: none !important;
-        margin-right: -5%;
+        margin-right: 5%;
         margin-top: 45%;
     }
 
@@ -1414,7 +1415,7 @@ cv styles
         margin-bottom: 2.5%;
         color: white;
         letter-spacing: 0.25vw;
-        text-shadow: 0 0 5px white;
+        text-shadow: 0 0 2px white;
     }
 
     .cv-content-div{
@@ -1539,7 +1540,7 @@ cv styles
         margin-bottom: 2.5%;
         color: white;
         letter-spacing: 0.25vw;
-        text-shadow: 0 0 5px white;
+        text-shadow: 0 0 1px white;
     }
 
     .cv-title-line{
