@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Home | Matt Day Web Dev</title>
+    <title>Home | Matt Day | Developer-Designer </title>
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
     <link rel="stylesheet" href="styles.css">
@@ -172,6 +172,7 @@
         </div>
 
     </div>
+
 </div>
 
 <!-- CV DIV-->
@@ -339,6 +340,7 @@
             projectLink: 'https://www.youtube.com/watch?v=RW_KBUUvBK8',
             githubLink: '',
             showGithubLink: false,
+            "htmlTitleText": "Red Meter UI - Professional Work"
         },
         "red meter 3d model":{
             title: "RED METER 3D MODEL",
@@ -352,6 +354,7 @@
             projectLink: 'https://redmeters.com/product/',
             githubLink: '',
             showGithubLink: false,
+            "htmlTitleText": "RM 3D Model - Professional Work"
         },
         "SSR2099 (Online Game)":{
             title: "SoundCloud Stardum Royale 2099",
@@ -371,6 +374,7 @@
             showProjectLink: true,
             githubLink: 'https://github.com/D4YonSoundcloud/Vue-Game-Test',
             showGithubLink: true,
+            "htmlTitleText": "SSR2099 - Hobby Project"
         },
         "SSR2099 map maker":{
             title: "SSR2099 Custom Map Maker",
@@ -385,6 +389,7 @@
             showProjectLink: true,
             githubLink: 'https://github.com/D4YonSoundcloud/SSR2099-Map-Maker',
             showGithubLink: true,
+            "htmlTitleText": "SSR2099 Map-Maker - Hobby Project"
         },
         "kh3k":{
             title: "KENDAMA HONER 3000 (KH3K)",
@@ -399,6 +404,7 @@
             showProjectLink: true,
             githubLink: 'https://github.com/D4YonSoundcloud/KendamaHoner3000-KH3K',
             showGithubLink: true,
+            "htmlTitleText": "KH3K - Hobby Project"
         },
         "portfolio site v3":{
             title: "PORTFOLIO SITE V3",
@@ -412,6 +418,7 @@
             showProjectLink: true,
             githubLink: 'https://github.com/D4YonSoundcloud/PortfolioSiteV3',
             showGithubLink: true,
+            "htmlTitleText": "Portfolio V3 - Hobby Project"
         },
         "pokeBerryDex":{
             title: "POKÉBERRYDEX",
@@ -428,6 +435,7 @@
             showProjectLink: true,
             githubLink: 'https://github.com/D4YonSoundcloud/PokeBerryDex',
             showGithubLink: true,
+            "htmlTitleText": "PokeBerryDex - Hobby Project"
         },
         "about":{
             title: "ABOUT",
@@ -439,6 +447,7 @@
             languagesUsed: [],
             githubLink: '',
             showGithubLink: false,
+            "htmlTitleText": "About"
         }
     }
 
@@ -540,11 +549,11 @@
             titleLookUpTable: {
                 'top': 'Hobby Projects',
                 'bottom': 'Professional Work',
-                'left': 'C.V',
+                'left': 'CV',
                 'right': 'About',
                 'back': 'Projects',
                 'front': 'Home',
-                'cv':'C.V',
+                'cv':'CV',
             },
             cvCubeMarginBottom: 0,
             paddingScale: gsap.utils.mapRange(350, 1400,400, 1400),
@@ -583,7 +592,12 @@
                     }, 600)
                 }
 
-                document.title = `${this.titleLookUpTable[toSection]} | Matt Day Web Dev `;
+                if(toSection === 'front') {
+                    document.title = `${this.titleLookUpTable[toSection]} | Matt Day | Developer-Designer `;
+                } else {
+                    document.title = `${this.titleLookUpTable[toSection]}`;
+                }
+
 
                 //case for handling hiding the content, used if the user clicks back or home
                 if(transformModifier === 'hideContent'){
@@ -636,7 +650,7 @@
 
                 this.mainSceneContentActive = 'content-active'
 
-                document.title = `${this.titleLookUpTable[toSection]} | Matt Day Web Dev `;
+                document.title = `${content[contentName]["htmlTitleText"]}`;
 
                 appMainContent.showContent = 'show-content';
                 appMainContent.title = content[contentName].title
@@ -809,6 +823,7 @@
                 this['contentFrontActive'] = 'hidden';
                 this.mainCubeClass = 'cv';
 
+                document.title = ` CV | Curriculum Vitae `;
                 gsap.to('.cube-face-shadow ', { opacity: 0, duration: 0.4 });
 
                 let cubeFaceAnimationProperties = {
@@ -1015,7 +1030,11 @@
         methods:{
             goBackToHomeFromCv(toSection){
 
+                //bring back shadow
                 gsap.to('.cube-face-shadow ', { opacity: 1, duration: 0.8 });
+
+                //change title back to home
+                document.title = ` Home | Matt Day | Developer-Designer `;
 
                 let activeCubeAnimationData = iphoneMediaQuery.matches ? activeCubeFaceMobileAnimationData : activeCubeFaceAnimationData
                 let bodyFlex = iphoneMediaQuery.matches ? 'start' : 'center'
