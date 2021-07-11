@@ -890,7 +890,7 @@
 
                 this.viewingCv = true;
 
-                document.querySelector('.link-div').style.display = 'none';
+                gsap.to('.link-div',{ duration: 0.2, opacity: 0 });
             },
             checkIfMobile(){
                 return iphoneMediaQuery.matches;
@@ -1029,6 +1029,9 @@
 
                 //bring back shadow
                 gsap.to('.cube-face-shadow ', { opacity: 1, duration: 0.8 });
+
+                // bring links back
+                gsap.to('.link-div',{ delay: 0.4, duration: 0.2, opacity: 1 });
 
                 //change title back to home
                 document.title = ` Home | Matt Day | Developer-Designer `;
