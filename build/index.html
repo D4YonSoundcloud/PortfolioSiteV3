@@ -286,19 +286,12 @@
 </div>
 
 <!-- JAVASCRIPT -->
-<script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-color@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-format@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-time@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-time-format@4"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-scale@4"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
 <script>
 
     /*
-    * START OF YE OL' UGLY DATE ZONE, ENTER IF YA DARE! (end line: 447)
+    * START OF YE OL' UGLY DATE ZONE, ENTER IF YA DARE! (end line: 514)
     */
 
     // Create a media condition that targets viewports for iphone
@@ -415,7 +408,7 @@
                 ', with less than 600 lines of Javascript code needed for all the current logic this site has (vs 1000+ of my past portfolio site that did much, much less)',
             paragraphThree: '',
             projectLink: 'https://d4yonsoundcloud.github.io/RandomMiniProjects-Portfolio-Site/',
-            languagesUsed: ['HTML', 'CSS', 'Vue (CDN)', 'D3js', 'GSAP'],
+            languagesUsed: ['HTML', 'CSS', 'Vue (CDN)', 'GSAP'],
             showProjectLink: true,
             githubLink: 'https://github.com/D4YonSoundcloud/PortfolioSiteV3',
             showGithubLink: true,
@@ -454,6 +447,26 @@
     let notActiveCubeFacesAnimationData;
     let notActiveCubeFacesMobileAnimationData;
 
+    let cubeCameraAnglesDesktop = {
+        "front": "translateZ(-150px) rotateY(30deg)",
+        "top": "translateZ(-150px) rotateX(270deg)",
+        "bottom": "translateZ(-150px) rotateX(90deg)",
+        "left": "translateZ(-150px) rotateY(30deg)",
+        "right": "translateZ(-150px) rotateY(285deg) rotateX(0deg)",
+        "back": "translateZ(-150px) rotateY(121deg) rotateX(-2deg)",
+        "cv": "translateZ(-150px)  rotateY(270deg) rotateZ(-3deg) rotateX(0deg)",
+    }
+    let cubeCameraAnglesMobile = {
+        "front": "translateZ(-100px) rotateY(30deg)",
+        "top": "translateZ(-100px) rotateX(270deg) translateX(2.5%)",
+        "bottom": "translateZ(-100px) rotateX(90deg) translateX(2.5%)",
+        "left": "translateZ(-150px) rotateY(30deg)",
+        "right": "translateY(25%) translateZ(-100px) translateX(-25%) rotateY(285deg) rotateX(0deg)",
+        "back": "translateZ(-100px) rotateY(-230deg) rotateX(-5deg) translateX(90px)",
+        "cv": "translateZ(-150px) rotateY(270deg) rotateZ(-3deg) rotateX(0deg)"
+    }
+
+
     //Fetch the animation data for each face
     fetch('./activeCubeFaceAnimationData.json')
         .then(response => response.json())
@@ -463,8 +476,6 @@
     fetch('./activeCubeFaceMobileAnimationData.json')
         .then(response => response.json())
         .then(data => activeCubeFaceMobileAnimationData = data);
-    console.log(activeCubeFaceAnimationData)
-
 
     //Fetch the animation data for each face not active whenever a face is active
     fetch('./notActiveCubeFaceAnimationData.json')
@@ -527,17 +538,20 @@
                 'cv':['bottom','left','top','back','front','shadow'],
             },
             cvCubeMarginBottom: 0,
-            paddingScale: d3.scaleLinear().domain([350, 1400]).range([400, 1400]),
-            cvContentMarginTop: d3.scaleLinear().domain([475, 2550]).range([220, 180]),
-            cvContentWidthDesktop: d3.scaleLinear().domain([500, 2550]).range([100, 40]),
-            cvTitleFontSizeDesktop: d3.scaleLinear().domain([375, 2550]).range([1.75, 3]),
-            cvCubeSceneScale: d3.scaleLinear().domain([500, 2550]).range([500, 1200]),
+            paddingScale: gsap.utils.mapRange(350, 1400,400, 1400),
+            cvContentMarginTop: gsap.utils.mapRange(475, 2550,220, 180),
+            cvContentWidthDesktop: gsap.utils.mapRange(500, 2550,100, 40),
+            cvTitleFontSizeDesktop: gsap.utils.mapRange(375, 2550,1.75, 3),
+            cvCubeSceneScale: gsap.utils.mapRange(500, 2550,500, 1200),
             viewingCv: false,
             cvContentClasses: ['cv-title','skill cv-content-div',
                 'experience cv-content-div','education cv-content-div'],
         },
         methods:{
             goToSection(fromSection, toSection, fromShown, toShown, transformModifier){
+
+                console.log(fromSection, toSection)
+
 
             	//make sure the cube's margin is set back to 10 if we are coming from viewing content
                 let cubeSceneCvAnimationProperties = {
@@ -566,6 +580,11 @@
                     this.handleActiveCubeFace(false, toSection, fromSection)
                 } else {
                     this.mainCubeClass = toSection;
+
+                    let newCameraAngleData = {
+                        duration: 1.6,
+                        transform: iphoneMediaQuery.match ? cubeCameraAnglesMobile[toSection] : cubeCameraAnglesDesktop[toSection]
+                    }
 
                     //debug line
                     // document.querySelector('.main-cube').style.transform = activeCubeFaceMobileAnimationData.json["debugCameraLookUpTable"][toSection]
@@ -648,8 +667,8 @@
             handleActiveCubeFace(open, toSection, fromSection){
 
                 let animationData = iphoneMediaQuery.matches ? activeCubeFaceMobileAnimationData : activeCubeFaceAnimationData
-                let faceWidth = iphoneMediaQuery.matches ? 275 : 300
-                let faceHeight = iphoneMediaQuery.matches ? 275 : 300
+                let faceWidth = iphoneMediaQuery.matches ? 250 : 300
+                let faceHeight = iphoneMediaQuery.matches ? 250 : 300
 
                 if(open === true){
                     //create GSAP animation object
@@ -709,26 +728,38 @@
             addNoneActiveClasses(noneActiveFaces, toSection){
 
                 let animationData = iphoneMediaQuery.matches ? notActiveCubeFacesMobileAnimationData : notActiveCubeFacesAnimationData
+                let section = notActiveFacesAnimationLookUpTable[toSection];
+                console.log(section, animationData, animationData[section])
+
+                if("scene" in animationData[section]){
+                    console.log("there is a scene here", animationData[section]["scene"])
+                    gsap.to('#main-scene', animationData[section]["scene"]);
+                }
 
                 //add the class names
                 for(let face of noneActiveFaces){
 
-                    let section = notActiveFacesAnimationLookUpTable[toSection];
                     let gsapAnimation = animationData[section][face];
                     //basic GSAP to animation, with the parameters being the value of the index of the face
                     //when passed into the notActiveFacesLookUpTable
                     gsap.to(`.cube-face-${face}`, gsapAnimation)
+
                 }
 
             },
             removeNoneActiveClasses(noneActiveFaces, fromSection){
 
                 let animationData = iphoneMediaQuery.matches ? notActiveCubeFacesMobileAnimationData : notActiveCubeFacesAnimationData
+                let section = notActiveFacesRemoveAnimationLookUpTable[fromSection];
+
+                if("scene" in animationData[section]){
+                    console.log("there is a scene here", animationData[section]["scene"])
+                    gsap.to('#main-scene', animationData[section]["scene"]);
+                }
 
                 //add the class names
                 for(let face of noneActiveFaces){
 
-	                let section = notActiveFacesRemoveAnimationLookUpTable[fromSection];
                     let gsapAnimation = animationData[section][face];
                     //see comment in this.addNotActiveClasses
                     gsap.to(`.cube-face-${face}`, gsapAnimation)
@@ -836,9 +867,9 @@
             this.developerDesignerLoop();
 
             if(this.checkIfMobile() === true){
-                this.mainCubeClass = 'front';
-                console.log(this.mainCubeClass)
+                console.log(this.mainCubeClass, cubeCameraAnglesMobile["front"])
                 setTimeout(() => {
+                    // gsap.to(`.main-cube`, { transform: cubeCameraAnglesMobile["front"] })
                     this.handleActiveCubeFace(true, 'front', 'front')
                 }, 50)
             }

@@ -11,7 +11,7 @@
   "activeCubeFaceRemove": {
     "top": "translate(0%, -50%) translate(0px, 0px) rotateX(90deg)",
     "bottom": "rotateX(-90deg) translateZ(150px)",
-    "back": "rotateY(180deg) translateZ(150px)",
+    "back": "translate3d(0px, 0px, -100px) rotateY(180deg)",
     "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
     "left": "rotateY(-90deg) translateZ(150px)",
     "right": "rotateY( 90deg) translateZ(150px)",
@@ -32,7 +32,7 @@
     "right": 400,
     "left": 250,
     "front": 250,
-    "back": 250,
+    "back": 220,
     "cv": 1250
   },
   "debugCameraLookUpTable": {
