@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>MATT DAY | WEB DEV </title>
+    <title>Home | Matt Day Web Dev</title>
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
     <link rel="stylesheet" href="styles.css">
@@ -64,7 +64,7 @@
             <div :class="'content-div ' + 'content-back ' + contentFrontActive">
                 <h5 @click="goToSection('front', 'back', 'contentFrontActive', 'contentBackActive')">PROJECTS<button id="front-projects-button"></button></h5>
                 <h5 @click="goToSection('front', 'right', 'contentFrontActive', 'contentRightActive'); goToShowContent('about')">ABOUT<button id="front-about-button"></button></h5>
-                <h5 @click="goToCV('right')">C.V<button id="front-cv-button"></button></h5>
+                <h5 @click="goToCV('right')">CV<button id="front-cv-button"></button></h5>
                 <div class="link-div">
                     <a class="icon-link" href="https://github.com/D4YonSoundcloud">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@
         <!-- left face - technically the old back face, changed 7-4-21 -->
         <div class="cube-face cube-face-left">
             <div :class="'content-div ' + 'content-back ' + contentBackActive">
-                <h5 @click="goToSection('back', 'bottom', 'contentBackActive', 'contentBottomActive')">PROFESSIONAL PROJECTS<button id="back-big-projects-button"></button></h5>
+                <h5 @click="goToSection('back', 'bottom', 'contentBackActive', 'contentBottomActive')">PROFESSIONAL WORK<button id="back-big-projects-button"></button></h5>
                 <h5 @click="goToSection('back', 'top', 'contentBackActive', 'contentTopActive')">HOBBY PROJECTS<button id="back-small-projects-button"></button></h5>
                 <div class="back-home-div">
                     <p @click="goToSection('back','front','contentBackActive','contentFrontActive', 'hideContent')">BACK <button></button></p>
@@ -177,7 +177,7 @@
 <!-- CV DIV-->
 <div id="main-cv" class="main-cv-container hidden">
     <div class="cv-title">
-        <h1 class="cv-title-text">C.V - MATTHEW DAY</h1>
+        <h1 class="cv-title-text">CV - MATTHEW DAY</h1>
     </div>
 
     <!-- CV SKILLS -->
@@ -537,6 +537,15 @@
                 'front': ['bottom','left', 'right', 'top', 'back', 'shadow'],
                 'cv':['bottom','left','top','back','front','shadow'],
             },
+            titleLookUpTable: {
+                'top': 'Hobby Projects',
+                'bottom': 'Professional Work',
+                'left': 'C.V',
+                'right': 'About',
+                'back': 'Projects',
+                'front': 'Home',
+                'cv':'C.V',
+            },
             cvCubeMarginBottom: 0,
             paddingScale: gsap.utils.mapRange(350, 1400,400, 1400),
             cvContentMarginTop: gsap.utils.mapRange(475, 2550,220, 180),
@@ -573,6 +582,8 @@
                         gsap.to('.cube-face-shadow ', { opacity: 1, duration: 0.4 });
                     }, 600)
                 }
+
+                document.title = `${this.titleLookUpTable[toSection]} | Matt Day Web Dev `;
 
                 //case for handling hiding the content, used if the user clicks back or home
                 if(transformModifier === 'hideContent'){
@@ -625,7 +636,7 @@
 
                 this.mainSceneContentActive = 'content-active'
 
-
+                document.title = `${this.titleLookUpTable[toSection]} | Matt Day Web Dev `;
 
                 appMainContent.showContent = 'show-content';
                 appMainContent.title = content[contentName].title
