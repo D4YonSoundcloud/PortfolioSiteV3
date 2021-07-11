@@ -36,6 +36,10 @@
       "duration": 0.8,
       "height": 300,
       "width": 300
+    },
+    "scene":{
+      "duration": 0.8,
+      "x": "+=25"
     }
   },
   "notTopFacesRemoveAnimationLookUpTable": {
@@ -73,6 +77,10 @@
       "duration": 0.8,
       "height": 250,
       "width": 250
+    },
+    "scene":{
+      "duration": 0.8,
+      "x": "-=25"
     }
   },
   "notBackFacesAnimationLookUpTable": {
@@ -111,10 +119,6 @@
       "duration": 0.8,
       "height": 400,
       "width": 220
-    },
-    "scene": {
-      "duration": 0.8,
-      "y": "-=200"
     }
   },
   "notBackFacesRemoveAnimationLookUpTable": {
@@ -152,10 +156,6 @@
       "duration": 0.8,
       "height": 250,
       "width": 250
-    },
-    "scene": {
-      "duration": 0.8,
-      "y": "+=200"
     }
   },
   "notBottomFacesAnimationLookUpTable": {

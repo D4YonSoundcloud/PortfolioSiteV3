@@ -553,11 +553,13 @@
                 console.log(fromSection, toSection)
 
 
-            	//make sure the cube's margin is set back to 10 if we are coming from viewing content
-                let cubeSceneCvAnimationProperties = {
-                    marginRight: '10%',
+                if(iphoneMediaQuery.matches === false){
+                    //make sure the cube's margin is set back to 10 if we are coming from viewing content
+                    let cubeSceneCvAnimationProperties = {
+                        marginRight: '10%',
+                    }
+                    gsap.to('#main-scene', cubeSceneCvAnimationProperties)
                 }
-                gsap.to('#main-scene', cubeSceneCvAnimationProperties)
 
                 //change the from shown property in the data object above to 'hidden', and then the to property to 'active'
                 this[fromShown] = 'hidden';
@@ -574,17 +576,22 @@
 
                 //case for handling hiding the content, used if the user clicks back or home
                 if(transformModifier === 'hideContent'){
-                    this.hideContent();
+                    //hide content only if content is actually active
+                    if((fromSection === 'top' || fromSection === 'bottom' || fromSection === 'right') && appMainContent.showContent === 'show-content'){
+                        this.hideContent();
+                    }
 
                     //false if we are going back or to home
                     this.handleActiveCubeFace(false, toSection, fromSection)
                 } else {
                     this.mainCubeClass = toSection;
 
-                    let newCameraAngleData = {
-                        duration: 1.6,
-                        transform: iphoneMediaQuery.match ? cubeCameraAnglesMobile[toSection] : cubeCameraAnglesDesktop[toSection]
-                    }
+                    // let newCameraAngleData = {
+                    //     duration: 1.6,
+                    //     transform: iphoneMediaQuery.match ? cubeCameraAnglesMobile[toSection] : cubeCameraAnglesDesktop[toSection]
+                    // }
+                    //
+                    // gsap.to('.main-cube', newCameraAngleData)
 
                     //debug line
                     // document.querySelector('.main-cube').style.transform = activeCubeFaceMobileAnimationData.json["debugCameraLookUpTable"][toSection]
@@ -604,13 +611,21 @@
                     )
                 }
 
+                //move whole cube up 200 px if it is mobile, or increase the margin if desktop
+                //need to change margin animation to transform X
+                if(iphoneMediaQuery.matches){
+                    console.log('this is happening')
+                    gsap.to('#main-scene', { duration: 0.8, y: '+=100' });
+                } else {
+                    let cubeSceneCvAnimationProperties = {
+                        marginRight: '50%',
+                    }
+                    gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+                }
 
                 this.mainSceneContentActive = 'content-active'
 
-                let cubeSceneCvAnimationProperties = {
-                    marginRight: '50%',
-                }
-                gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+
 
                 appMainContent.showContent = 'show-content';
                 appMainContent.title = content[contentName].title
@@ -641,6 +656,12 @@
                 appMainContent.showParagraphThree = 'hide';
                 appMainContent.languagesUsed = [];
                 appMainContent.showGithubLink = false;
+
+                //move the cube back to where it originally was
+                if(iphoneMediaQuery.matches){
+                    console.log('this is happening')
+                    gsap.to('#main-scene', { duration: 0.8, y: '-=100' });
+                }
 
                 setTimeout(() => {
                     this.mainSceneContentActive = '';
@@ -715,6 +736,12 @@
 
                         //edge case for if we are going to the back face from either the top or bottom
                         this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
+                        //edge case for if we are on mobile and transitioning from the top
+                        if(iphoneMediaQuery.matches && fromSection === 'top'){
+                            gsap.to('#main-scene', { duration: 0.8, x: '-=25' });
+                        }
+
+
 
                     } else {
                         //removes classes from not-active faces, selected with the notActiveFaces lookup table
@@ -725,7 +752,7 @@
                 }
 
             },
-            addNoneActiveClasses(noneActiveFaces, toSection){
+            async addNoneActiveClasses(noneActiveFaces, toSection){
 
                 let animationData = iphoneMediaQuery.matches ? notActiveCubeFacesMobileAnimationData : notActiveCubeFacesAnimationData
                 let section = notActiveFacesAnimationLookUpTable[toSection];
