@@ -1167,7 +1167,8 @@ p.back-to-home-from-cv:hover{
         perspective: 550px;
         transition: 0.8s ease;
         animation: none !important;
-        margin-right: 5%;
+        margin-right: 0;
+        transform: translate(-10px, 0);
         margin-top: 45%;
     }
 
@@ -1390,7 +1391,7 @@ cv styles
  */
     .main-cv-container.hidden{
         width: 370px !important;
-        height: 95%;
+        height: 100%;
         display: flex;
         flex-flow: column;
         justify-content: start;
@@ -1567,15 +1568,15 @@ cv styles
     }
 
     p.back-to-home-from-cv{
-        position: absolute;
-        bottom: -20%;
+        position: relative;
+        margin-top: 16px;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.1vw;
     }
     p.back-to-home-from-cv:focus{
-        position: absolute;
-        bottom: -20.5%;
+        margin-top: 16px;
+        position: relative;
         font-size: 1.5em;
         color: white;
         letter-spacing: 0.15vw;

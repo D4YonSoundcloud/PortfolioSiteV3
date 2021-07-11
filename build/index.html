@@ -847,8 +847,8 @@
                     duration: 0.8,
                     marginRight: 0,
                     perspective: 1600,
-                    marginBottom: iphoneMediaQuery.matches ? 935 : this.paddingScale(this.currentClientHeight),
-                    marginLeft: iphoneMediaQuery.matches ? -200 : 0
+                    marginBottom: iphoneMediaQuery.matches ? 0 : this.paddingScale(this.currentClientHeight),
+                    marginLeft: iphoneMediaQuery.matches ? 0 : 0,
                 }
 
                 console.log(cubeFaceAnimationProperties)
@@ -885,9 +885,6 @@
 
                 //change body flex to 'column'
                 document.querySelector('body').style.flexFlow = 'column';
-                if (iphoneMediaQuery.matches) {
-                    document.querySelector('body').style.justifyContent = 'center';
-                }
 
                 this.applyCvContentWidth();
 
@@ -1060,10 +1057,12 @@
                     height: 300,
                     duration: 0.8,
                     delay: 0.1,
-                    marginRight: '10%',
+                    marginRight: iphoneMediaQuery.matches ? 0 : "10%",
                     perspective: 550,
-                    marginBottom: '0',
-                    marginLeft: '0',
+                    marginBottom: 0,
+                    marginLeft: 0,
+                    x: iphoneMediaQuery.matches ? "+=190" : 0,
+                    y: iphoneMediaQuery.matches ? "+=190" : 0,
                 }
 
                 gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
@@ -1080,9 +1079,12 @@
                 }, 100)
 
                 //change body flex to 'column'
-                document.querySelector('body').style.flexFlow = 'row';
-                document.querySelector('body').style.justifyContent = 'space-evenly';
-                document.querySelector('body').style.alignItems = bodyFlex;
+                if(iphoneMediaQuery.matches === false){
+                    document.querySelector('body').style.flexFlow = 'row';
+                    document.querySelector('body').style.justifyContent = 'space-evenly';
+                    document.querySelector('body').style.alignItems = 'center';
+                }
+
 
                 appMainScene.viewingCv = false;
             }

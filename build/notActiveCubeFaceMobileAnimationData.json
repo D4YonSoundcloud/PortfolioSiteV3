@@ -492,6 +492,11 @@
       "duration": 0.8,
       "height": 400,
       "width": 300
+    },
+    "scene": {
+      "duration": 0.8,
+      "y": "-=190",
+      "x": "-=190"
     }
   },
   "cvFacesRemoveAnimationLookUpTable": {
@@ -529,6 +534,11 @@
       "duration": 0.8,
       "height": 250,
       "width": 250
+    },
+    "scene": {
+      "duration": 0.8,
+      "y": "+=190",
+      "x": "+=190"
     }
   }
 }
