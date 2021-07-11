@@ -289,7 +289,11 @@
 <!-- JAVASCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/ScrollToPlugin.min.js"></script>
 <script>
+
+    //include ScrollToPlugin
+    gsap.registerPlugin(ScrollToPlugin);
 
     /*
     * START OF YE OL' UGLY DATE ZONE, ENTER IF YA DARE! (end line: 514)
@@ -639,13 +643,20 @@
                 //move whole cube up 200 px if it is mobile, or increase the margin if desktop
                 //need to change margin animation to transform X
                 if(iphoneMediaQuery.matches){
-                    console.log('this is happening')
-                    gsap.to('#main-scene', { duration: 0.8, y: '+=100' });
+
+                    if(this.mainCubeClass === 'top'){
+                        gsap.to('#main-scene', {  y: "-=15" });
+                    } else {
+                        gsap.to('#main-scene', {  y: '+=100' });
+                    }
+
                 } else {
+
                     let cubeSceneCvAnimationProperties = {
                         marginRight: '50%',
                     }
                     gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+
                 }
 
                 this.mainSceneContentActive = 'content-active'
@@ -669,6 +680,7 @@
                     appMainContent.languagesUsed = content[contentName].languagesUsed
                     appMainContent.githubLink = content[contentName].githubLink;
                     appMainContent.showGithubLink = content[contentName].showGithubLink;
+
                 }, 600)
 
             },
