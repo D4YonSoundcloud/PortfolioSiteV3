@@ -38,7 +38,7 @@
     <!-- MAIN CUBE -->
     <div id="main-cube" :class="'main-cube ' + mainCubeClass">
         <div :class="'matt-day-div ' + contentFrontActive">
-            <h1>MATT DAY</h1>
+            <h1 id="matt-day-title">MATT DAY</h1>
             <div class="developer-designer-div">
                 <p :class="'dev-des d '">D</p>
                 <p :class="'dev-des e '">E</p>
@@ -319,6 +319,8 @@
 
         gsap.set('.main-cv-container', {transform: 'translateY(200px)', marginTop: 221, opacity: 0})
 
+        gsap.set('#matt-day-title', { transform: 'translate3d(0px, 55px, 10px)' })
+        gsap.set('.developer-designer-div', { transform: 'translate3d(0px, 55px, 10px)' })
     } else {
 	    console.log('this is desktop')
 	    gsap.set('.cube-face-front', { transform: 'rotateY(  0deg) translateZ(150px)'})
@@ -644,7 +646,7 @@
                 //move whole cube up 200 px if it is mobile, or increase the margin if desktop
                 //need to change margin animation to transform X
                 if(iphoneMediaQuery.matches){
-                    if(this.mainCubeClass === 'top'){
+                    if(this.mainCubeClass === 'top' && appMainContent.showContent !== "show-content"){
                         gsap.to('#main-scene', {  y: "-=15"});
                     } else {
                         gsap.to('#main-scene', {  y: '+=100' });
@@ -935,6 +937,8 @@
 
             if(this.checkIfMobile() === true){
                 gsap.set('.main-scene', { x: -10 })
+                gsap.to('.developer-designer-div', { delay: 0.4, duration: 0.4, z: 0, y: 0 })
+                gsap.to('#matt-day-title', { delay: 0.8, duration: 0.4, z: 15, y: 0 })
                 console.log(this.mainCubeClass, cubeCameraAnglesMobile["front"])
                 setTimeout(() => {
                     // gsap.to(`.main-cube`, { transform: cubeCameraAnglesMobile["front"] })
@@ -945,8 +949,6 @@
         created(){
             this.currentClientHeight = document.documentElement.clientHeight;
             this.currentClientWidth = document.documentElement.clientWidth;
-
-
 
             //listens for resize event and then adjust the margin-bottom of the cube when the cv is viewed.
             window.addEventListener('resize', () => {
