@@ -649,7 +649,7 @@
                     if(this.mainCubeClass === 'top' && appMainContent.showContent !== "show-content"){
                         gsap.to('#main-scene', {  y: "-=15"});
                     } else {
-                        gsap.to('#main-scene', {  y: '+=100' });
+                        gsap.to('#main-scene', {  y: '+=30' });
                     }
 
                 } else {
@@ -703,7 +703,7 @@
                         console.log('this is about to happen')
                         gsap.to('#main-scene', {  y: "+=15"});
                     } else {
-                        gsap.to('#main-scene', {  y: '-=100' });
+                        gsap.to('#main-scene', {  y: '-=30' });
                     }
                 }
 
@@ -781,8 +781,9 @@
                         //edge case for if we are going to the back face from either the top or bottom
                         this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
                         //edge case for if we are on mobile and transitioning from the top
-                        if(iphoneMediaQuery.matches && fromSection === 'top'){
-                            gsap.to('#main-scene', { duration: 0.8, x: '-=20' });
+                        if(iphoneMediaQuery.matches){
+                            if(fromSection === 'top') gsap.to('#main-scene', { duration: 0.8, x: '-=20' });
+                            if(fromSection === 'bottom') gsap.to('#main-scene', { duration: 0.8, x: '-=30' });
                         }
 
 
