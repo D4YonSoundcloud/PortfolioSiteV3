@@ -61,6 +61,9 @@
         <!-- FRONT FACE -->
         <!-- front face - contains the projects and about links + Github/LinkedIn image links-->
         <div class="cube-face cube-face-front">
+            <!-- cube face start, transform this for performant transforms-->
+            <div class="cube-face-start-column cube-face-start-front"></div>
+
             <div :class="'content-div ' + 'content-back ' + contentFrontActive">
                 <h5 @click="goToSection('front', 'back', 'contentFrontActive', 'contentBackActive')">PROJECTS<button id="front-projects-button"></button></h5>
                 <h5 @click="goToSection('front', 'right', 'contentFrontActive', 'contentRightActive'); goToShowContent('about')">ABOUT<button id="front-about-button"></button></h5>
@@ -78,15 +81,31 @@
                     </a>
                 </div>
             </div>
+
+            <!-- cube face end, transform this for performant transforms-->
+            <div class="cube-face-end-column cube-face-end-front"></div>
         </div>
+        <!-- absolutely positioned box shadow for good animation performance -->
+        <div class="cube-face-box-shadow-front"></div>
+
 
         <!-- BACK FACE -->
         <!-- back face - used to contained the buttons for professional/hobby projects, moved to left face -->
         <div class="cube-face cube-face-back">
+            <!-- cube face start, transform this for performant transforms-->
+            <div class="cube-face-start-column cube-face-start-back"></div>
+            <!-- cube face end, transform this for performant transforms-->
+            <div class="cube-face-end-column cube-face-end-back"></div>
         </div>
+        <!-- absolutely positioned box shadow for good animation performance -->
+        <div class="cube-face-box-shadow-back"></div>
+
 
         <!-- RIGHT FACE -->
         <div class="cube-face cube-face-right">
+            <!-- cube face start, transform this for performant transforms-->
+            <div class="cube-face-start-row cube-face-start-right"></div>
+
             <div :class="'content-div ' + 'content-back ' + contentRightActive">
                 <h5 @click="">ABOUT</h5>
                 <div class="back-home-div">
@@ -94,11 +113,20 @@
                     <p @click="goToSection('right','front','contentRightActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
                 </div>
             </div>
+
+            <!-- cube face end, transform this for performant transforms-->
+            <div class="cube-face-end-row cube-face-end-right"></div>
         </div>
+        <!-- absolutely positioned box shadow for good animation performance -->
+        <div class="cube-face-box-shadow-right"></div>
+
 
         <!-- LEFT FACE -->
         <!-- left face - technically the old back face, changed 7-4-21 -->
         <div class="cube-face cube-face-left">
+            <!-- cube face start, transform this for performant transforms-->
+            <div class="cube-face-start-row cube-face-start-left"></div>
+
             <div :class="'content-div ' + 'content-back ' + contentBackActive">
                 <h5 @click="goToSection('back', 'bottom', 'contentBackActive', 'contentBottomActive')">PROFESSIONAL WORK<button id="back-big-projects-button"></button></h5>
                 <h5 @click="goToSection('back', 'top', 'contentBackActive', 'contentTopActive')">HOBBY PROJECTS<button id="back-small-projects-button"></button></h5>
@@ -107,11 +135,20 @@
                     <p @click="goToSection('back','front','contentBackActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
                 </div>
             </div>
+
+            <!-- cube face end, transform this for performant transforms-->
+            <div class="cube-face-end-row cube-face-end-left"></div>
         </div>
+        <!-- absolutely positioned box shadow for good animation performance -->
+        <div class="cube-face-box-shadow-left"></div>
+
 
         <!-- TOP FACE -->
         <!-- top face - hobby projects -->
         <div class="cube-face cube-face-top">
+            <!-- cube face start, transform this for performant transforms-->
+            <div class="cube-face-start-column cube-face-start-top"></div>
+
             <div :class="'content-div ' + 'content-back ' + contentTopActive">
                 <h5 @click="goToShowContent('SSR2099 (Online Game)')">SSR2099
                     <svg style="width:18px;height:18px" viewBox="0 0 24 24">
@@ -143,11 +180,20 @@
                     <p @click="goToSection('top','front','contentTopActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
                 </div>
             </div>
+
+            <!-- cube face end, transform this for performant transforms-->
+            <div class="cube-face-end-column cube-face-end-top"></div>
         </div>
+        <!-- absolutely positioned box shadow for good animation performance -->
+        <div class="cube-face-box-shadow-top"></div>
+
 
         <!-- BOTTOM FACE -->
         <!-- bottom face - professional projects -->
         <div class="cube-face cube-face-bottom">
+            <!-- cube face start, transform this for performant transforms-->
+            <div class="cube-face-start-column cube-face-start-bottom"></div>
+
             <div :class="'content-div ' + 'content-back ' + contentBottomActive">
                 <h5 @click="goToShowContent('red meter interface')">RED METER INTERFACE
                     <svg style="width:18px;height:18px" viewBox="0 0 24 24">
@@ -164,13 +210,20 @@
                     <p @click="goToSection('bottom','front','contentBottomActive','contentFrontActive', 'hideContent')">HOME<button></button></p>
                 </div>
             </div>
+
+            <!-- cube face end, transform this for performant transforms-->
+            <div class="cube-face-end-column cube-face-end-bottom"></div>
         </div>
+        <!-- absolutely positioned box shadow for good animation performance -->
+        <div class="cube-face-box-shadow-bottom"></div>
+
 
         <!-- SHADOW -->
         <!-- cube shadow-->
         <div :class="'cube-face ' + 'cube-face-shadow '">
         </div>
-
+        <!-- absolutely positioned box shadow for good animation performance -->
+        <div class="cube-face-box-shadow-shadow"></div>
     </div>
 
 </div>
@@ -303,16 +356,42 @@
     const iphoneMediaQuery = window.matchMedia('(min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3)')
     // Check if the media query is true
     if (iphoneMediaQuery.matches) {
-    	console.log('this is iphone')
-	    // Then trigger an alert
 	    // iphone initial styles
-	    gsap.set('.cube-face-front', { transform: 'translate3d(0px, 0px, 150px) rotateY(0deg)'})
-	    gsap.set('.cube-face-right', { transform: 'translate3d(125px, 0px, 25px) rotateY(-90deg)'})
-	    gsap.set('.cube-face-back', { transform: 'translate3d(0px, 0px, -100px) rotateY(180deg)'})
-	    gsap.set('.cube-face-left', { transform: 'translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)'})
-	    gsap.set('.cube-face-bottom', { transform: 'translate(0px, 125px) translateZ(25px) rotateX(270deg)'})
-	    gsap.set('.cube-face-top', { transform: 'translate(0%, -50%) translateZ(25px) rotateX(90deg)'})
+    	console.log('this is iphone')
+        let faces = ['top','back','front','right','left','bottom','top', 'shadow']
+        let transformLookUpTable = {
+    		"front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
+    		"right": "translate3d(125px, 0px, 25px) rotateY(-90deg)",
+    		"back": "translate3d(0px, 0px, -100px) rotateY(180deg)",
+    		"left": "translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)",
+    		"bottom": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
+    		"top": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
+            "shadow": "rotateX(-90deg) translateZ(-10px)"
+        }
+        let flexFlowLookUpTable = {
+	        "front": "column wrap",
+	        "right": "row wrap",
+	        "back": "column wrap",
+	        "left": "row wrap",
+	        "bottom": "column wrap",
+	        "top": "column wrap",
+	        "shadow": "column wrap"
+        }
 
+        for(let face of faces){
+	        let cubeFaceBoxShadowStyle = {
+		        position: 'absolute',
+		        pointerEvents: 'none',
+		        boxShadow: '0 0 5px 1px rgb(220 162 228)',
+		        backgroundColor: 'transparent',
+		        width: 250,
+		        height: 250,
+                transform: transformLookUpTable[face]
+	        }
+
+        	gsap.set(`.cube-face-${face}`, { transform: transformLookUpTable[face], flexFlow: flexFlowLookUpTable[face] })
+        	gsap.set(`.cube-face-box-shadow-${face}`, cubeFaceBoxShadowStyle )
+        }
 
         document.querySelector('body').style.flexFlow = 'column';
         document.querySelector('body').style.justifyContent = 'start';
@@ -321,6 +400,7 @@
 
         gsap.set('#matt-day-title', { transform: 'translate3d(0px, 55px, 10px)' })
         gsap.set('.developer-designer-div', { transform: 'translate3d(0px, 55px, 10px)' })
+
     } else {
 	    console.log('this is desktop')
 	    gsap.set('.cube-face-front', { transform: 'rotateY(  0deg) translateZ(150px)'})
@@ -732,20 +812,27 @@
             handleActiveCubeFace(open, toSection, fromSection){
 
                 let animationData = iphoneMediaQuery.matches ? activeCubeFaceMobileAnimationData : activeCubeFaceAnimationData
-                let faceWidth = iphoneMediaQuery.matches ? 250 : 300
-                let faceHeight = iphoneMediaQuery.matches ? 250 : 300
 
                 if(open === true){
                     //create GSAP animation object
                     let cubeFaceAnimationProperties = {
                         duration: 0.8,
                         transform: animationData["activeCubeFace"][toSection],
-                        height: animationData["activeHeight"][toSection],
-                        width: animationData["activeWidth"][toSection],
+                        scaleX: animationData["activeScaleX"][toSection],
+                        scaleY: animationData["activeScaleY"][toSection],
                         boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
                     }
 
+                    let cubeFaceStartEndScales = {
+                    	duration: 0.8,
+                        scaleX: animationData["activeFaceStartScaleX"][toSection],
+                        scaleY: animationData["activeFaceStartScaleY"][toSection],
+                    }
+
                     gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
+	                gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceAnimationProperties);
+	                gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales);
+	                gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
 
                     //adds classes to not-active faces, selected with the noneActiveFaces lookup table
                     this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
@@ -760,23 +847,42 @@
                     let cubeFaceAnimationProperties = {
                         duration: 0.8,
                         transform: animationData["activeCubeFaceRemove"][fromSection],
-                        height: faceHeight,
-                        width: faceWidth,
+                        scaleX: 1,
+                        scaleY: 1,
                         boxShadow: animationData["activeCubeFaceRemoveBoxShadow"][fromSection]
                     }
 
+	                let cubeFaceStartEndScales = {
+		                duration: 0.8,
+		                scaleX: animationData["activeFaceStartScaleX"][toSection],
+		                scaleY: animationData["activeFaceStartScaleY"][toSection],
+	                }
+
                     gsap.to(`.cube-face-${fromSection}`, cubeFaceAnimationProperties);
+	                gsap.to(`.cube-face-box-shadow-${fromSection}`, cubeFaceAnimationProperties);
+	                gsap.to(`.cube-face-start-${fromSection}`, cubeFaceStartEndScales);
+	                gsap.to(`.cube-face-end-${fromSection}`, cubeFaceStartEndScales);
 
                     if(toSection === 'back'){
                         //create GSAP animation object
                         let cubeFaceAnimationProperties = {
                             duration: 0.8,
                             transform: animationData["activeCubeFace"][toSection],
-                            height: animationData["activeHeight"][toSection],
-                            width: animationData["activeWidth"][toSection],
+	                        scaleX: animationData["activeScaleX"][toSection],
+	                        scaleY: animationData["activeScaleY"][toSection],
                             boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
                         }
+
+	                    let cubeFaceStartEndScales = {
+		                    duration: 0.8,
+		                    scaleX: animationData["activeFaceStartScaleX"][toSection],
+		                    scaleY: animationData["activeFaceStartScaleY"][toSection],
+	                    }
+
                         gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
+                        gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceAnimationProperties);
+	                    gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales);
+	                    gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
 
                         //edge case for if we are going to the back face from either the top or bottom
                         this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
@@ -812,10 +918,19 @@
                 for(let face of noneActiveFaces){
 
                     let gsapAnimation = animationData[section][face];
+                    if(face !== 'shadow'){
+                        let faceStartAnimation = animationData[section]['start-' + face]
+                        let faceEndAnimation = animationData[section]['end-' + face]
+                        let boxShadowAnimation = animationData[section]['scale-box-shadow-' + face]
+	                    gsap.to(`.cube-face-start-${face}`, faceStartAnimation)
+	                    gsap.to(`.cube-face-end-${face}`, faceEndAnimation)
+	                    gsap.to(`.cube-face-box-shadow-${face}`, boxShadowAnimation)
+	                    console.log(face, faceStartAnimation, faceEndAnimation, boxShadowAnimation)
+                    }
+
                     //basic GSAP to animation, with the parameters being the value of the index of the face
                     //when passed into the notActiveFacesLookUpTable
                     gsap.to(`.cube-face-${face}`, gsapAnimation)
-
                 }
 
             },
@@ -833,8 +948,19 @@
                 for(let face of noneActiveFaces){
 
                     let gsapAnimation = animationData[section][face];
+                    if(face !== 'shadow'){
+	                    let faceStartAnimation = animationData[section]['start-' + face]
+	                    let faceEndAnimation = animationData[section]['end-' + face]
+	                    let boxShadowAnimation = animationData[section]['scale-box-shadow-' + face]
+	                    gsap.to(`.cube-face-start-${face}`, faceStartAnimation)
+	                    gsap.to(`.cube-face-end-${face}`, faceEndAnimation)
+	                    gsap.to(`.cube-face-box-shadow-${face}`, boxShadowAnimation)
+	                    console.log(faceStartAnimation, faceEndAnimation, boxShadowAnimation)
+                    }
+
                     //see comment in this.addNotActiveClasses
                     gsap.to(`.cube-face-${face}`, gsapAnimation)
+	                gsap.to(`.cube-face-box-shadow-${face}`, gsapAnimation)
                 }
 
             },
@@ -1064,8 +1190,8 @@
                     duration: 0.8,
                     delay: 0.1,
                     transform: activeCubeAnimationData["activeCubeFace"]["front"],
-                    height: activeCubeAnimationData["activeHeight"]["front"],
-                    width: activeCubeAnimationData["activeWidth"]["front"],
+                    scaleX: activeCubeAnimationData["activeScaleX"]["front"],
+                    scaleY: activeCubeAnimationData["activeScaleY"]["front"],
                 }
 
                 //increase the box shadow on the right face

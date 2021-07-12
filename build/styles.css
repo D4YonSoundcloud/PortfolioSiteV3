@@ -411,12 +411,49 @@ a.show{
     background-color: rgba(128, 91, 134, 1);
 }
 
+.cube-face-box-shadow{
+    position: absolute;
+    pointer-events: none;
+    box-shadow: 0 0 5px 1px rgb(220 162 228);
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+}
+
+.cube-face-start-column{
+    pointer-events: none;
+    background-color: rgba(128, 91, 134, 1);
+    width: 300px;
+    height: 1px;
+}
+.cube-face-end-column{
+    pointer-events: none;
+    background-color: rgba(128, 91, 134, 1);
+    width: 300px;
+    height: 1px;
+}
+
+.cube-face-start-row{
+    pointer-events: none;
+    background-color: rgba(128, 91, 134, 1);
+    width: 1px;
+    height: 300px;
+}
+.cube-face-end-row{
+    pointer-events: none;
+    background-color: rgba(128, 91, 134, 1);
+    width: 1px;
+    height: 300px;
+}
+
+
+
 .content-div{
     position: relative;
     font-family: 'Russo One', sans-serif;
     letter-spacing: 0.25vw;
-    width: 100%;
-    height: 100%;
+    width: 298px;
+    height: 298px;
     display: flex;
     font-size: 1.9em;
     flex-flow: column wrap;
@@ -1229,17 +1266,52 @@ p.back-to-home-from-cv:hover{
         position: absolute;
         width: 250px;
         height: 250px;
-        box-shadow: 0 0 5px 1px rgb(220 162 228);
+        box-shadow: 0 0 0px 0px rgb(220 162 228);
         color: white;
         background-color: rgba(128, 91, 134, 1)
+    }
+
+    .cube-face-box-shadow{
+        position: absolute;
+        pointer-events: none;
+        box-shadow: 0 0 5px 1px rgb(220 162 228);
+        background-color: transparent;
+        width: 250px;
+        height: 250px;
+    }
+
+    .cube-face-start-column{
+        pointer-events: none;
+        background-color: rgba(128, 91, 134, 1);
+        width: 250px;
+        height: 1px;
+    }
+    .cube-face-end-column{
+        pointer-events: none;
+        background-color: rgba(128, 91, 134, 1);
+        width: 250px;
+        height: 1px;
+    }
+
+    .cube-face-start-row{
+        pointer-events: none;
+        background-color: rgba(128, 91, 134, 1);
+        width: 1px;
+        height: 250px;
+    }
+    .cube-face-end-row{
+        pointer-events: none;
+        background-color: rgba(128, 91, 134, 1);
+        width: 1px;
+        height: 250px;
     }
 
     .content-div{
         position: relative;
         font-family: 'Russo One', sans-serif;
         letter-spacing: 0.25vw;
-        width: 100%;
-        height: 100%;
+        width: 248px;
+        height: 248px;
         display: flex;
         font-size: 1.9em;
         flex-flow: column wrap;
@@ -1292,6 +1364,10 @@ p.back-to-home-from-cv:hover{
         transform: rotateX(-90deg) translateZ(-10px);
         animation: shadowFloat 6s ease-in-out infinite;
         pointer-events: none;
+    }
+
+    .cube-face-box-shadow-shadow{
+        display: none;
     }
 
     .scene-link-div{
