@@ -313,6 +313,7 @@
 	    gsap.set('.cube-face-bottom', { transform: 'translate(0px, 125px) translateZ(25px) rotateX(270deg)'})
 	    gsap.set('.cube-face-top', { transform: 'translate(0%, -50%) translateZ(25px) rotateX(90deg)'})
 
+
         document.querySelector('body').style.flexFlow = 'column';
         document.querySelector('body').style.justifyContent = 'start';
 
@@ -607,7 +608,7 @@
                 if(transformModifier === 'hideContent'){
                     //hide content only if content is actually active
                     if((fromSection === 'top' || fromSection === 'bottom' || fromSection === 'right') && appMainContent.showContent === 'show-content'){
-                        this.hideContent();
+                        this.hideContent(toSection);
                     }
 
                     //false if we are going back or to home
@@ -644,7 +645,7 @@
                 //need to change margin animation to transform X
                 if(iphoneMediaQuery.matches){
                     if(this.mainCubeClass === 'top'){
-                        gsap.to('#main-scene', {  y: "-=15", x: "+=50" });
+                        gsap.to('#main-scene', {  y: "-=15"});
                     } else {
                         gsap.to('#main-scene', {  y: '+=100' });
                     }
@@ -696,7 +697,12 @@
                 //move the cube back to where it originally was
                 if(iphoneMediaQuery.matches){
                     console.log('this is happening')
-                    gsap.to('#main-scene', { duration: 0.8, y: '-=100' });
+                    if(this.mainCubeClass === 'top'){
+                        console.log('this is about to happen')
+                        gsap.to('#main-scene', {  y: "+=15"});
+                    } else {
+                        gsap.to('#main-scene', {  y: '-=100' });
+                    }
                 }
 
                 setTimeout(() => {
@@ -774,7 +780,7 @@
                         this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
                         //edge case for if we are on mobile and transitioning from the top
                         if(iphoneMediaQuery.matches && fromSection === 'top'){
-                            gsap.to('#main-scene', { duration: 0.8, x: '-=25' });
+                            gsap.to('#main-scene', { duration: 0.8, x: '-=20' });
                         }
 
 
@@ -928,6 +934,7 @@
             this.developerDesignerLoop();
 
             if(this.checkIfMobile() === true){
+                gsap.set('.main-scene', { x: -10 })
                 console.log(this.mainCubeClass, cubeCameraAnglesMobile["front"])
                 setTimeout(() => {
                     // gsap.to(`.main-cube`, { transform: cubeCameraAnglesMobile["front"] })

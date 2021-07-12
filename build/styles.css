@@ -1167,9 +1167,8 @@ p.back-to-home-from-cv:hover{
         width: 300px;
         height: 300px;
         perspective: 550px;
-        /*animation: none !important;*/
+        animation: none !important;
         margin-right: 0;
-        transform: translate(-10px, 0);
         margin-top: 45%;
     }
 
