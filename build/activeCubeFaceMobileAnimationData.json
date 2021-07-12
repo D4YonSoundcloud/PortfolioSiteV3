@@ -18,7 +18,7 @@
     "cv": "rotateY( 90deg) translateZ(150px)"
   },
   "activeHeight": {
-    "top": 500,
+    "top": 450,
     "bottom": 250,
     "right": 225,
     "left": 250,

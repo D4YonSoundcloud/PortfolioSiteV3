@@ -643,9 +643,8 @@
                 //move whole cube up 200 px if it is mobile, or increase the margin if desktop
                 //need to change margin animation to transform X
                 if(iphoneMediaQuery.matches){
-
                     if(this.mainCubeClass === 'top'){
-                        gsap.to('#main-scene', {  y: "-=15" });
+                        gsap.to('#main-scene', {  y: "-=15", x: "+=50" });
                     } else {
                         gsap.to('#main-scene', {  y: '+=100' });
                     }
