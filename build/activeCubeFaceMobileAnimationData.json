@@ -5,7 +5,7 @@
     "back": "translate3d(-12px, 0px, -125px) rotateY(180deg)",
     "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
     "left": "rotateY(-90deg) translateZ(150px)",
-    "right": "translate(105px, 0px) rotateY(90deg)",
+    "right": "translate(130px, 0px) translateZ(25px) rotateY(90deg)",
     "cv": "translate(-310px, 0px) rotateY(90deg)"
   },
   "activeCubeFaceRemove": {
@@ -36,58 +36,76 @@
     "cv": 1250
   },
   "activeScaleX": {
-    "top": 450,
-    "bottom": 250,
-    "right": 225,
-    "left": 250,
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
     "front": 1,
     "back": 0.88,
     "cv": 0.1
   },
   "activeScaleY": {
-    "top": 450,
-    "bottom": 250,
-    "right": 225,
-    "left": 250,
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
     "front": 1,
-    "back": 0.88,
+    "back": 1,
     "cv": 5
   },
   "activeFaceStartScaleX": {
-    "top": 450,
-    "bottom": 250,
-    "right": 225,
-    "left": 250,
+    "top": 1,
+    "bottom": 1,
+    "right": 252,
+    "left": 1,
     "front": 1,
     "back": 1,
     "cv": 1
   },
   "activeFaceEndScaleX": {
-    "top": 450,
-    "bottom": 250,
-    "right": 225,
-    "left": 250,
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
     "front": 1,
     "back": 1,
     "cv": 1
   },
   "activeFaceStartScaleY": {
-    "top": 450,
-    "bottom": 250,
-    "right": 225,
-    "left": 250,
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
+    "front": 1,
+    "back": 250,
+    "cv": 1
+  },
+  "activeFaceEndScaleY": {
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
     "front": 1,
     "back": 1,
     "cv": 1
   },
-  "activeFaceEndScaleY": {
-    "top": 450,
-    "bottom": 250,
-    "right": 225,
-    "left": 250,
+  "activeBoxShadowScaleX": {
+    "top": 1,
+    "bottom": 1,
+    "right": 2,
+    "left": 1,
+    "front": 1,
+    "back": 0.88,
+    "cv": 0.1
+  },
+  "activeBoxShadowScaleY": {
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
     "front": 1,
     "back": 1,
-    "cv": 1
+    "cv": 0.1
   },
   "debugCameraLookUpTable": {
     "top": "translateZ(-150px) rotateX(357deg) rotateZ(360deg) rotateY(266deg)",

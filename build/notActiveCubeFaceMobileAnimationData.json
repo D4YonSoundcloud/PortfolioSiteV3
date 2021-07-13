@@ -86,48 +86,49 @@
   "notBackFacesAnimationLookUpTable": {
     "bottom":{
       "duration": 0.8,
-      "transform": "translate3d(0px, 20px, 70px) rotateX(-90deg)",
-      "height": 400,
-      "width": 250,
-      "boxShadow": "0 0 25px 1px rgba(220 162 228,0)"
+      "transform": "translate3d(-12px, 125px, 70px) rotateX(-90deg)",
+      "scaleX": 0.88
     },
     "start-bottom":{
       "duration": 0.8,
-      "scaleX": 1
+      "scaleX": 1,
+      "scaleY": 150
     },
     "end-bottom":{
       "duration": 0.8,
-      "scaleX": 1
+      "scaleX": 1,
+      "scaleY": 150
     },
     "scale-box-shadow-bottom": {
       "duration": 0.8,
-      "transform": "translate3d(0px, 20px, 70px) rotateX(-90deg)",
+      "transform": "translate3d(-12px, 125px, 75px) rotateX(-90deg)",
       "scaleY": 1.6,
-      "scaleX": 1
+      "scaleX": 0.88
     },
     "top":{
       "duration": 0.8,
-      "transform": "translate(0%, -50%) translate3d(0px, 0px, 75px) rotateX(90deg)",
-      "height": 400,
-      "width": 250
+      "transform": "translate(0%, -50%) translate3d(-12px, 0px, 75px) rotateX(90deg)",
+      "scaleX": 0.88
     },
     "start-top":{
       "duration": 0.8,
-      "scaleX": 1
+      "scaleX": 1,
+      "scaleY": 150
     },
     "end-top":{
       "duration": 0.8,
-      "scaleX": 1
+      "scaleX": 1,
+      "scaleY": 150
     },
     "scale-box-shadow-top": {
       "duration": 0.8,
-      "transform": "translate(0%, -50%) translate3d(0px, 0px, 75px) rotateX(90deg)",
+      "transform": "translate(0%, -50%) translate3d(-12px, 0px, 75px) rotateX(90deg) scale(0.88, 1.6)",
       "scaleY": 1.6,
-      "scaleX": 1
+      "scaleX": 0.88
     },
     "left":{
       "duration": 0.8,
-      "transform": "translate(-50%, 0%) translate3d(0px, 0px, 75px) rotateY(-90deg)"
+      "transform": "translate(-50%, 0%) translate3d(2px, 0px, 75px) rotateY(-90deg)"
     },
     "start-left":{
       "duration": 0.8,
@@ -139,15 +140,13 @@
     },
     "scale-box-shadow-left": {
       "duration": 0.8,
-      "transform": "translate(-50%, 0%) translate3d(0px, 0px, 75px) rotateY(-90deg)",
-      "scaleX": 1.6,
+      "transform": "translate(-50%, 0%) translate3d(2px, 0px, 75px) rotateY(-90deg)",
+      "scaleX": 1.59,
       "scaleY": 1
     },
     "right":{
       "duration": 0.8,
-      "transform": "translate3d(20px, 0px, 75px) rotateY(270deg)",
-      "height": 250,
-      "width": 400
+      "transform": "translate3d(100px, 0px, 75px) rotateY(90deg)"
     },
     "start-right":{
       "duration": 0.8,
@@ -159,15 +158,14 @@
     },
     "scale-box-shadow-right": {
       "duration": 0.8,
-      "transform": "translate3d(20px, 0px, 75px) rotateY(270deg)",
-      "scaleX": 1.6,
+      "transform": "translate3d(100px, 0px, 75px) rotateY(90deg)",
+      "scaleX": 1.59,
       "scaleY": 1
     },
     "front":{
       "duration": 0.8,
-      "transform": "translate3d(0px, 0px, 275px)",
-      "height": 250,
-      "width": 250
+      "transform": "translate3d(-12px, 0px, 275px)",
+      "scaleX": 0.88
     },
     "start-front":{
       "duration": 0.8,
@@ -179,30 +177,35 @@
     },
     "scale-box-shadow-front": {
       "duration": 0.8,
-      "transform": "translate3d(0px, 0px, 275px)",
-      "scaleX": 1,
+      "transform": "translate3d(-12px, 0px, 275px)",
+      "scaleX": 0.88,
       "scaleY": 1
     },
     "shadow":{
+      "transform": "translate(-25px, 175px) translateZ(25px) rotateX(-90deg)",
       "duration": 0.8,
-      "height": 400,
-      "width": 220
+      "scaleX": 0.88,
+      "scaleY": 1.6
+    },
+    "scene": {
+      "scale": 0.95
     }
   },
   "notBackFacesRemoveAnimationLookUpTable": {
     "bottom":{
       "duration": 0.8,
       "transform": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1
     },
     "start-bottom":{
       "duration": 0.8,
-      "scaleX": 1
+      "scaleX": 1,
+      "scaleY": 1
     },
     "end-bottom":{
       "duration": 0.8,
-      "scaleX": 1
+      "scaleX": 1,
+      "scaleY": 1
     },
     "scale-box-shadow-bottom": {
       "transform": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
@@ -213,16 +216,17 @@
     "top":{
       "duration": 0.8,
       "transform": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1
     },
     "start-top":{
       "duration": 0.8,
-      "scaleX": 1
+      "scaleX": 1,
+      "scaleY": 1
     },
     "end-top":{
       "duration": 0.8,
-      "scaleX": 1
+      "scaleX": 1,
+      "scaleY": 1
     },
     "scale-box-shadow-top": {
       "transform": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
@@ -250,7 +254,7 @@
     },
     "right":{
       "duration": 0.8,
-      "transform": "translate3d(125px, 0px, 25px) rotateY(-90deg)",
+      "transform": "translate3d(125px, 0px, 25px) rotateY(90deg)",
       "height": 250,
       "width": 250
     },
@@ -263,7 +267,7 @@
       "scaleX": 1
     },
     "scale-box-shadow-right": {
-      "transform": "translate3d(125px, 0px, 25px) rotateY(-90deg)",
+      "transform": "translate3d(125px, 0px, 25px) rotateY(90deg)",
       "duration": 0.8,
       "scaleX": 1,
       "scaleY": 1
@@ -290,8 +294,11 @@
     },
     "shadow":{
       "duration": 0.8,
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "scene": {
+      "scale": 1
     }
   },
   "notBottomFacesAnimationLookUpTable": {
@@ -378,74 +385,75 @@
     "bottom":{
       "duration": 0.8,
       "transform": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     },
     "top":{
       "duration": 0.8,
       "transform": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     },
     "left":{
       "duration": 0.8,
       "transform": "translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     },
     "right":{
       "duration": 0.8,
-      "transform": "translate3d(125px, 0px, 25px) rotateY(-90deg)",
-      "height": 250,
-      "width": 250
+      "transform": "translate3d(125px, 0px, 25px) rotateY(90deg)",
+      "scaleX": 1,
+      "scaleY": 1
     },
     "back":{
       "duration": 0.8,
       "transform": "translate3d(0px, 0px, -100px) rotateY(180deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     },
     "shadow":{
+      "transform": "rotateX(-90deg) translateZ(175px)",
       "duration": 0.8,
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     }
   },
   "notFrontFacesRemoveAnimationLookUpTable": {
     "bottom":{
       "duration": 0.8,
       "transform": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     },
     "top":{
       "duration": 0.8,
       "transform": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     },
     "left":{
       "duration": 0.8,
       "transform": "translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     },
     "right":{
       "duration": 0.8,
-      "transform": "translate3d(125px, 0px, 25px) rotateY(-90deg)",
-      "height": 250,
-      "width": 250
+      "transform": "translate3d(125px, 0px, 25px) rotateY(90deg)",
+      "scaleX": 1,
+      "scaleY": 1
     },
     "back":{
       "duration": 0.8,
       "transform": "translate3d(0px, 0px, -100px) rotateY(180deg)",
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     },
     "shadow":{
       "duration": 0.8,
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
     }
   },
   "notLeftFacesAnimationLookUpTable": {
@@ -526,76 +534,241 @@
   "notRightFacesAnimationLookUpTable": {
     "bottom":{
       "duration": 0.8,
-      "transform": "translate(0px, 30px) rotateX(-90deg)",
-      "height": 400,
-      "width": 300,
-      "boxShadow": "0 0 25px 1px rgba(220 162 228,0)"
+      "transform": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
+      "scaleX": 1
+    },
+    "start-bottom":{
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "end-bottom":{
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "scale-box-shadow-bottom": {
+      "transform": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "top":{
       "duration": 0.8,
-      "transform": "rotateX( 90deg) translateZ(150px)",
-      "height": 300,
-      "width": 300
+      "transform": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
+      "scaleX": 1
+    },
+    "start-top":{
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "end-top":{
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "scale-box-shadow-top": {
+      "transform": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "left":{
       "duration": 0.8,
-      "transform": "translate(-50%, 0%) rotateY(-90deg)",
-      "height": 225,
-      "width": 400
+      "transform": "translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)"
     },
-    "back":{
+    "start-left":{
       "duration": 0.8,
-      "transform": "rotateY(180deg) translateZ(200px)",
-      "height": 225,
-      "width": 300
+      "scaleX": 1
+    },
+    "end-left":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "scale-box-shadow-left": {
+      "transform": "translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "front":{
       "duration": 0.8,
-      "transform": "translate3d(0px, 0px, 200px)",
-      "height": 225,
-      "width": 300
+      "transform": "translate(0px, 0px) translateZ(150px) rotateX(0deg)",
+      "height": 250,
+      "width": 250
+    },
+    "start-front":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "end-front":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "scale-box-shadow-front": {
+      "transform": "translate(0px, 0px) translateZ(150px) rotateX(0deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "back":{
+      "duration": 0.8,
+      "transform": "translate3d(0px, 0px, -100px) rotateY(180deg)",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "start-back":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "end-back":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "scale-box-shadow-back": {
+      "transform": "translate3d(0px, 0px, -100px) rotateY(180deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "shadow":{
       "duration": 0.8,
-      "height": 400,
-      "width": 300
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "scene": {
+      "x": "+=15"
     }
   },
   "notRightFacesRemoveAnimationLookUpTable": {
     "bottom":{
       "duration": 0.8,
-      "transform": "rotateX(-90deg) translateZ(150px)",
-      "height": 250,
-      "width": 250
+      "transform": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
+      "scaleX": 1
+    },
+    "start-bottom":{
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "end-bottom":{
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "scale-box-shadow-bottom": {
+      "transform": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "top":{
       "duration": 0.8,
-      "transform": "rotateX( 90deg) translateZ(150px)",
-      "height": 250,
-      "width": 250
+      "transform": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
+      "scaleX": 1
+    },
+    "start-top":{
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "end-top":{
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "scale-box-shadow-top": {
+      "transform": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "left":{
       "duration": 0.8,
-      "transform": "rotateY(-90deg) translateZ(150px)",
-      "height": 250,
-      "width": 250
+      "transform": "translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)"
+    },
+    "start-left":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "end-left":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "scale-box-shadow-left": {
+      "transform": "translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "right":{
       "duration": 0.8,
-      "transform": "rotateY( 90deg) translateZ(150px)",
+      "transform": "translate3d(125px, 0px, 25px) rotateY(90deg)",
       "height": 250,
       "width": 250
+    },
+    "start-right":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "end-right":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "scale-box-shadow-right": {
+      "transform": "translate3d(125px, 0px, 25px) rotateY(90deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "front":{
+      "duration": 0.8,
+      "transform": "translate(0px, 0px) translateZ(150px) rotateX(0deg)",
+      "height": 250,
+      "width": 250
+    },
+    "start-front":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "end-front":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "scale-box-shadow-front": {
+      "transform": "translate(0px, 0px) translateZ(150px) rotateX(0deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "back":{
       "duration": 0.8,
-      "transform": "rotateY(180deg) translateZ(150px)",
-      "height": 250,
-      "width": 250
+      "transform": "translate3d(0px, 0px, -100px) rotateY(180deg)",
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "start-back":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "end-back":{
+      "duration": 0.8,
+      "scaleX": 1
+    },
+    "scale-box-shadow-back": {
+      "transform": "translate3d(0px, 0px, -100px) rotateY(180deg)",
+      "duration": 0.8,
+      "scaleX": 1,
+      "scaleY": 1
     },
     "shadow":{
       "duration": 0.8,
-      "height": 250,
-      "width": 250
+      "scaleX": 1,
+      "scaleY": 1
+    },
+    "scene": {
+      "x": "-=15"
     }
   },
   "cvFacesAnimationLookUpTable": {

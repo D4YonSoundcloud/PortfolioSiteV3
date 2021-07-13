@@ -1243,7 +1243,7 @@ p.back-to-home-from-cv:hover{
     }
 
     .right{
-        transform: translateY(25%) translateZ(-100px) translateX(-25%) rotateY(285deg) rotateX(0deg)
+        transform: translateZ(-100px) rotateY(270deg) rotateX(0deg)
     }
 
     .bottom{
@@ -1361,8 +1361,8 @@ p.back-to-home-from-cv:hover{
         z-index: 1;
         box-shadow: 0 0 200px 1px rgb(220 162 228);
         background-color: rgba(0,0,0,0);
-        transform: rotateX(-90deg) translateZ(-10px);
-        animation: shadowFloat 6s ease-in-out infinite;
+        transform: rotateX(-90deg) translateZ(175px);
+        animation: none !important;
         pointer-events: none;
     }
 

@@ -351,6 +351,8 @@
     /*
     * START OF YE OL' UGLY DATE ZONE, ENTER IF YA DARE! (end line: 514)
     */
+    //set GSAP defaults
+    gsap.defaults({ duration: 0.8 });
 
     // Create a media condition that targets viewports for iphone
     const iphoneMediaQuery = window.matchMedia('(min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3)')
@@ -361,7 +363,7 @@
         let faces = ['top','back','front','right','left','bottom','top', 'shadow']
         let transformLookUpTable = {
     		"front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
-    		"right": "translate3d(125px, 0px, 25px) rotateY(-90deg)",
+    		"right": "translate3d(125px, 0px, 25px) rotateY(90deg)",
     		"back": "translate3d(0px, 0px, -100px) rotateY(180deg)",
     		"left": "translate(-50%, 0%) translate3d(0px, 0px, 25px) rotateY(-90deg)",
     		"bottom": "translate(0px, 125px) translateZ(25px) rotateX(270deg)",
@@ -816,21 +818,26 @@
                 if(open === true){
                     //create GSAP animation object
                     let cubeFaceAnimationProperties = {
-                        duration: 0.8,
                         transform: animationData["activeCubeFace"][toSection],
                         scaleX: animationData["activeScaleX"][toSection],
                         scaleY: animationData["activeScaleY"][toSection],
                         boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
                     }
 
+                    let cubeFaceBoxShadow = {
+	                    transform: animationData["activeCubeFace"][toSection],
+	                    scaleX: animationData["activeBoxShadowScaleX"][toSection],
+	                    scaleY: animationData["activeBoxShadowScaleY"][toSection],
+	                    boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
+                    }
+
                     let cubeFaceStartEndScales = {
-                    	duration: 0.8,
                         scaleX: animationData["activeFaceStartScaleX"][toSection],
                         scaleY: animationData["activeFaceStartScaleY"][toSection],
                     }
 
                     gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
-	                gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceAnimationProperties);
+	                gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceBoxShadow);
 	                gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales);
 	                gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
 
@@ -845,42 +852,51 @@
 
                     //create GSAP animation object
                     let cubeFaceAnimationProperties = {
-                        duration: 0.8,
                         transform: animationData["activeCubeFaceRemove"][fromSection],
                         scaleX: 1,
                         scaleY: 1,
                         boxShadow: animationData["activeCubeFaceRemoveBoxShadow"][fromSection]
                     }
 
+	                let cubeFaceBoxShadow = {
+		                transform: animationData["activeCubeFaceRemove"][fromSection],
+		                scaleX: animationData["activeBoxShadowScaleX"][fromSection],
+		                scaleY: animationData["activeBoxShadowScaleY"][fromSection],
+		                boxShadow: animationData["activeCubeFaceBoxShadow"][fromSection]
+	                }
+
 	                let cubeFaceStartEndScales = {
-		                duration: 0.8,
 		                scaleX: animationData["activeFaceStartScaleX"][toSection],
 		                scaleY: animationData["activeFaceStartScaleY"][toSection],
 	                }
 
                     gsap.to(`.cube-face-${fromSection}`, cubeFaceAnimationProperties);
-	                gsap.to(`.cube-face-box-shadow-${fromSection}`, cubeFaceAnimationProperties);
+	                gsap.to(`.cube-face-box-shadow-${fromSection}`, cubeFaceBoxShadow);
 	                gsap.to(`.cube-face-start-${fromSection}`, cubeFaceStartEndScales);
 	                gsap.to(`.cube-face-end-${fromSection}`, cubeFaceStartEndScales);
 
                     if(toSection === 'back'){
                         //create GSAP animation object
                         let cubeFaceAnimationProperties = {
-                            duration: 0.8,
                             transform: animationData["activeCubeFace"][toSection],
 	                        scaleX: animationData["activeScaleX"][toSection],
 	                        scaleY: animationData["activeScaleY"][toSection],
-                            boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
                         }
 
+	                    let cubeFaceBoxShadow = {
+		                    transform: animationData["activeCubeFace"][toSection],
+		                    scaleX: animationData["activeBoxShadowScaleX"][toSection],
+		                    scaleY: animationData["activeBoxShadowScaleY"][toSection],
+		                    boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
+	                    }
+
 	                    let cubeFaceStartEndScales = {
-		                    duration: 0.8,
 		                    scaleX: animationData["activeFaceStartScaleX"][toSection],
 		                    scaleY: animationData["activeFaceStartScaleY"][toSection],
 	                    }
 
                         gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
-                        gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceAnimationProperties);
+                        gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceBoxShadow);
 	                    gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales);
 	                    gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
 
@@ -888,8 +904,8 @@
                         this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
                         //edge case for if we are on mobile and transitioning from the top
                         if(iphoneMediaQuery.matches){
-                            if(fromSection === 'top') gsap.to('#main-scene', { duration: 0.8, x: '-=20' });
-                            if(fromSection === 'bottom') gsap.to('#main-scene', { duration: 0.8, x: '-=30' });
+                            if(fromSection === 'top') gsap.to('#main-scene', { x: '-=20' });
+                            if(fromSection === 'bottom') gsap.to('#main-scene', { x: '-=30' });
                         }
 
 
@@ -1187,7 +1203,6 @@
                 let bodyFlex = iphoneMediaQuery.matches ? 'start' : 'center'
 
                 let cubeFaceAnimationProperties = {
-                    duration: 0.8,
                     delay: 0.1,
                     transform: activeCubeAnimationData["activeCubeFace"]["front"],
                     scaleX: activeCubeAnimationData["activeScaleX"]["front"],
@@ -1196,15 +1211,12 @@
 
                 //increase the box shadow on the right face
                 let boxShadowAnimationProperties = {
-                    duration: 0.8,
                     delay: 0.1,
                     boxShadow: activeCubeAnimationData["activeCubeFaceRemoveBoxShadow"]["cv"]
                 }
 
                 //need to make margin-bottom more responsive
                 let cubeSceneCvAnimationProperties = {
-                    width: 300,
-                    height: 300,
                     duration: 0.8,
                     delay: 0.1,
                     marginRight: iphoneMediaQuery.matches ? 0 : "10%",
