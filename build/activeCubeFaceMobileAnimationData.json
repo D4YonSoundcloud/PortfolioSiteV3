@@ -14,7 +14,7 @@
     "back": "translate3d(0px, 0px, -100px) rotateY(180deg)",
     "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
     "left": "rotateY(-90deg) translateZ(150px)",
-    "right": "rotateY( 90deg) translateZ(150px)",
+    "right": "translate(125px, 0px) translateZ(20px) rotateY(90deg)",
     "cv": "rotateY( 90deg) translateZ(150px)"
   },
   "activeHeight": {
@@ -99,7 +99,7 @@
     "cv": 0.1
   },
   "activeBoxShadowScaleY": {
-    "top": 1,
+    "top": 2,
     "bottom": 1,
     "right": 1,
     "left": 1,

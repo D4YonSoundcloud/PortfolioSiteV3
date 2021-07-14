@@ -916,10 +916,11 @@ p.back-to-home-from-cv:hover{
 
     h5, h6{
         cursor: pointer;
-        margin-top: 5%;
-        margin-bottom: 5%;
+        margin-top: 2.5%;
+        margin-bottom: 2.5%;
         transition: 0.4s ease;
         font-size: 0.65em;
+        width: 100%;
     }
 
     h5:hover{
@@ -1078,7 +1079,7 @@ p.back-to-home-from-cv:hover{
     p{
         font-size: 0.55em;
         cursor: pointer;
-        margin-left: 2.5%;
+        margin-left: 0;
         margin-right: 2.5%;
         transition: 0.8s ease;
     }
@@ -1225,13 +1226,15 @@ p.back-to-home-from-cv:hover{
 
     .back-home-div {
         position: absolute;
-        bottom: 2.5%;
+        padding-left: 10%;
+        bottom: 0;
         height: 15%;
         width: 100%;
         display: flex;
         flex-flow: row;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
+        z-index: 150;
     }
 
     .front{
@@ -1239,7 +1242,8 @@ p.back-to-home-from-cv:hover{
     }
 
     .back{
-        transform: translateZ(-100px) rotateY(-230deg) rotateX(-5deg) translateX(90px);
+        /*transform: translateZ(-100px) rotateY(-230deg) rotateX(-5deg) translateX(90px);*/
+        transform: translateZ(-100px) rotateY(-305deg) rotateX(-1deg) translateX(90px);
     }
 
     .right{
@@ -1317,9 +1321,9 @@ p.back-to-home-from-cv:hover{
         flex-flow: column wrap;
         align-items: center;
         justify-content: center;
-        padding: 10%;
+        padding: 5% 10% 15%;
         transition: 0.8s ease;
-        text-align: center;
+        text-align: left;
         z-index: 100;
     }
 
