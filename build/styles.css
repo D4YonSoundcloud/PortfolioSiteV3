@@ -1254,7 +1254,7 @@ p.back-to-home-from-cv:hover{
         transform: translateZ(-100px) rotateX(90deg) translateX(2.5%);
     }
     .top{
-        transform: translateZ(-100px) rotateX(270deg) translateX(2.5%);
+        transform: translateZ(-100px) rotateX(285deg) translateX(2.5%);
     }
 
     .cv {

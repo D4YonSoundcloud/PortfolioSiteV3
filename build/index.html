@@ -388,10 +388,12 @@
 		        backgroundColor: 'transparent',
 		        width: 250,
 		        height: 250,
-                transform: transformLookUpTable[face]
+                transform: transformLookUpTable[face],
+                scaleX: 1,
+                scaleY: 1,
 	        }
 
-        	gsap.set(`.cube-face-${face}`, { transform: transformLookUpTable[face], flexFlow: flexFlowLookUpTable[face] })
+        	gsap.set(`.cube-face-${face}`, { transform: transformLookUpTable[face], flexFlow: flexFlowLookUpTable[face], scaleX: 1, scaleY: 1 })
         	gsap.set(`.cube-face-box-shadow-${face}`, cubeFaceBoxShadowStyle )
         }
 
@@ -828,7 +830,6 @@
 	                    transform: animationData["activeCubeFace"][toSection],
 	                    scaleX: animationData["activeBoxShadowScaleX"][toSection],
 	                    scaleY: animationData["activeBoxShadowScaleY"][toSection],
-	                    boxShadow: animationData["activeCubeFaceBoxShadow"][toSection]
                     }
 
                     let cubeFaceStartEndScales = {
@@ -838,8 +839,10 @@
 
                     console.log(cubeFaceBoxShadow, toSection)
                     gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
-	                gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceBoxShadow);
-	                gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales);
+	                gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceBoxShadow).then(() => {
+	                	console.log(document.querySelector(`.cube-face-box-shadow-${toSection}`).style.cssText)
+                    });
+	                gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales)
 	                gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
 
                     //adds classes to not-active faces, selected with the noneActiveFaces lookup table
@@ -860,14 +863,14 @@
 
 	                let cubeFaceBoxShadow = {
 		                transform: animationData["activeCubeFaceRemove"][fromSection],
-		                scaleX: animationData["activeBoxShadowScaleX"][fromSection],
-		                scaleY: animationData["activeBoxShadowScaleY"][fromSection],
+		                scaleX: animationData["activeBoxShadowRemoveScaleX"][fromSection],
+		                scaleY: animationData["activeBoxShadowRemoveScaleY"][fromSection],
 		                boxShadow: animationData["activeCubeFaceBoxShadow"][fromSection]
 	                }
 
 	                let cubeFaceStartEndScales = {
-		                scaleX: animationData["activeFaceStartScaleX"][fromSection],
-		                scaleY: animationData["activeFaceStartScaleY"][fromSection],
+		                scaleX: animationData["activeFaceStartRemoveScaleX"][fromSection],
+		                scaleY: animationData["activeFaceStartRemoveScaleY"][fromSection],
 	                }
 
 	                console.log(cubeFaceBoxShadow, fromSection)
@@ -905,7 +908,7 @@
                         this.addNoneActiveClasses(this.notActiveFaces[toSection], toSection)
                         //edge case for if we are on mobile and transitioning from the top
                         if(iphoneMediaQuery.matches){
-                            if(fromSection === 'top') gsap.to('#main-scene', { x: '-=20' });
+                            if(fromSection === 'top') gsap.to('#main-scene', { x: '-165' });
                             if(fromSection === 'bottom') gsap.to('#main-scene', { x: '-=30' });
                         }
 
@@ -936,13 +939,14 @@
 
                     let gsapAnimation = animationData[section][face];
                     if(face !== 'shadow'){
+                    	console.log('face',`.cube-face-start-${face}`)
                         let faceStartAnimation = animationData[section]['start-' + face]
                         let faceEndAnimation = animationData[section]['end-' + face]
                         let boxShadowAnimation = animationData[section]['scale-box-shadow-' + face]
 	                    gsap.to(`.cube-face-start-${face}`, faceStartAnimation)
 	                    gsap.to(`.cube-face-end-${face}`, faceEndAnimation)
 	                    gsap.to(`.cube-face-box-shadow-${face}`, boxShadowAnimation)
-	                    console.log(face, faceStartAnimation, faceEndAnimation, boxShadowAnimation)
+                        console.log(boxShadowAnimation)
                     }
 
                     //basic GSAP to animation, with the parameters being the value of the index of the face
@@ -972,7 +976,6 @@
 	                    gsap.to(`.cube-face-start-${face}`, faceStartAnimation)
 	                    gsap.to(`.cube-face-end-${face}`, faceEndAnimation)
 	                    gsap.to(`.cube-face-box-shadow-${face}`, boxShadowAnimation)
-	                    console.log(faceStartAnimation, faceEndAnimation, boxShadowAnimation)
                     }
 
                     //see comment in this.addNotActiveClasses

@@ -1,12 +1,21 @@
 {
   "activeCubeFace": {
-    "top": "translate(0%, -50%) translate(-25px, -5px) rotateX(90deg)",
+    "top": "translate(0%, -50%) translate3d(0px, 0px, 25px) rotateX(90deg)",
     "bottom": "rotateX(-90deg) translateZ(125px)",
     "back": "translate3d(-12px, 0px, -125px) rotateY(180deg)",
     "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
     "left": "rotateY(-90deg) translateZ(150px)",
     "right": "translate(130px, 0px) translateZ(25px) rotateY(90deg)",
     "cv": "translate(-310px, 0px) rotateY(90deg)"
+  },
+  "activeCubeFaceBoxShadowTransformScale": {
+    "top": "translate(0%, -50%) translate(0px, -5px) rotateX(90deg) scale(1,1.5)",
+    "bottom": "rotateX(-90deg) translateZ(125px)",
+    "back": "translate3d(-12px, 0px, -125px) rotateY(180deg) scaleX(0.88)",
+    "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
+    "left": "rotateY(-90deg) translateZ(150px)",
+    "right": "translate(130px, 0px) translateZ(25px) rotateY(90deg) scaleX(2)",
+    "cv": "translate(-310px, 0px) rotateY(90deg) scaleY(0.1)"
   },
   "activeCubeFaceRemove": {
     "top": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
@@ -16,6 +25,15 @@
     "left": "rotateY(-90deg) translateZ(150px)",
     "right": "translate(125px, 0px) translateZ(20px) rotateY(90deg)",
     "cv": "rotateY( 90deg) translateZ(150px)"
+  },
+  "activeCubeFaceRemoveBoxShadowTransformScale": {
+    "top": "translate(0%, -50%) translateZ(25px) rotateX(90deg) scale(1,1)",
+    "bottom": "rotateX(-90deg) translateZ(150px)",
+    "back": "translate3d(0px, 0px, -100px) rotateY(180deg) scaleX(1)",
+    "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
+    "left": "rotateY(-90deg) translateZ(150px)",
+    "right": "translate(125px, 0px) translateZ(20px) rotateY(90deg) scaleX(1)",
+    "cv": "rotateY( 90deg) translateZ(150px) scaleY(1)"
   },
   "activeHeight": {
     "top": 450,
@@ -44,6 +62,15 @@
     "back": 0.88,
     "cv": 0.1
   },
+  "removeActiveScaleX": {
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
+    "front": 1,
+    "back": 1,
+    "cv": 1
+  },
   "activeScaleY": {
     "top": 1,
     "bottom": 1,
@@ -53,10 +80,28 @@
     "back": 1,
     "cv": 5
   },
+  "removeActiveScaleY": {
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
+    "front": 1,
+    "back": 1,
+    "cv": 1
+  },
   "activeFaceStartScaleX": {
     "top": 1,
     "bottom": 1,
     "right": 252,
+    "left": 1,
+    "front": 1,
+    "back": 1,
+    "cv": 1
+  },
+  "activeFaceStartRemoveScaleX": {
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
     "left": 1,
     "front": 1,
     "back": 1,
@@ -71,13 +116,31 @@
     "back": 1,
     "cv": 1
   },
-  "activeFaceStartScaleY": {
+  "activeFaceEndRemoveScaleX": {
     "top": 1,
     "bottom": 1,
     "right": 1,
     "left": 1,
     "front": 1,
+    "back": 1,
+    "cv": 1
+  },
+  "activeFaceStartScaleY": {
+    "top": 125,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
+    "front": 1,
     "back": 250,
+    "cv": 1
+  },
+  "activeFaceStartRemoveScaleY": {
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
+    "front": 1,
+    "back": 1,
     "cv": 1
   },
   "activeFaceEndScaleY": {
@@ -89,8 +152,17 @@
     "back": 1,
     "cv": 1
   },
-  "activeBoxShadowScaleX": {
+  "activeFaceEndRemoveScaleY": {
     "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
+    "front": 1,
+    "back": 1,
+    "cv": 1
+  },
+  "activeBoxShadowScaleX": {
+    "top": 0.88,
     "bottom": 1,
     "right": 2,
     "left": 1,
@@ -98,14 +170,32 @@
     "back": 0.88,
     "cv": 0.1
   },
+  "activeBoxShadowRemoveScaleX": {
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
+    "front": 1,
+    "back": 1,
+    "cv": 1
+  },
   "activeBoxShadowScaleY": {
-    "top": 2,
+    "top": 1.5,
     "bottom": 1,
     "right": 1,
     "left": 1,
     "front": 1,
     "back": 1,
     "cv": 0.1
+  },
+  "activeBoxShadowRemoveScaleY": {
+    "top": 1,
+    "bottom": 1,
+    "right": 1,
+    "left": 1,
+    "front": 1,
+    "back": 1,
+    "cv": 1
   },
   "debugCameraLookUpTable": {
     "top": "translateZ(-150px) rotateX(357deg) rotateZ(360deg) rotateY(266deg)",
@@ -117,7 +207,7 @@
   },
   "activeCubeFaceBoxShadow":{
     "top": "0 0 5px 1px rgb(220 162 228)",
-    "bottom": "0 0 125px 1px rgb(220 162 228)",
+    "bottom": "0 0 5px 1px rgb(220 162 228)",
     "left": "0 0 5px 1px rgb(220 162 228)",
     "right": "0 0 5px 1px rgb(220 162 228)",
     "back": "0 0 5px 1px rgb(220 162 228)",
