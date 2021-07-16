@@ -1,7 +1,7 @@
 {
   "activeCubeFace": {
     "top": "translate(0%, -50%) translate3d(0px, 0px, 25px) rotateX(90deg)",
-    "bottom": "rotateX(-90deg) translateZ(125px)",
+    "bottom": "translate(0px, 125px) translateZ(25px) rotateX(-90deg)",
     "back": "translate3d(-12px, 0px, -125px) rotateY(180deg)",
     "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
     "left": "rotateY(-90deg) translateZ(150px)",
@@ -19,7 +19,7 @@
   },
   "activeCubeFaceRemove": {
     "top": "translate(0%, -50%) translateZ(25px) rotateX(90deg)",
-    "bottom": "rotateX(-90deg) translateZ(150px)",
+    "bottom": "translate(0px, 125px) translateZ(25px) rotateX(-90deg)",
     "back": "translate3d(0px, 0px, -100px) rotateY(180deg)",
     "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
     "left": "rotateY(-90deg) translateZ(150px)",
@@ -126,8 +126,8 @@
     "cv": 1
   },
   "activeFaceStartScaleY": {
-    "top": 125,
-    "bottom": 1,
+    "top": 66,
+    "bottom": 66,
     "right": 1,
     "left": 1,
     "front": 1,
@@ -162,7 +162,7 @@
     "cv": 1
   },
   "activeBoxShadowScaleX": {
-    "top": 0.88,
+    "top": 1,
     "bottom": 1,
     "right": 2,
     "left": 1,
@@ -180,8 +180,8 @@
     "cv": 1
   },
   "activeBoxShadowScaleY": {
-    "top": 1.5,
-    "bottom": 1,
+    "top": 1.25,
+    "bottom": 1.25,
     "right": 1,
     "left": 1,
     "front": 1,
