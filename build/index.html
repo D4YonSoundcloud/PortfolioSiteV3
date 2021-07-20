@@ -986,6 +986,8 @@
 
             },
             goToCV(toSection){
+                let animationData = iphoneMediaQuery.matches ? activeCubeFaceMobileAnimationData : activeCubeFaceAnimationData
+
                 //hide front-content
                 this['contentFrontActive'] = 'hidden';
                 this.mainCubeClass = 'cv';
@@ -993,11 +995,22 @@
                 document.title = ` CV | Curriculum Vitae `;
                 gsap.to('.cube-face-shadow ', { opacity: 0, duration: 0.4 });
 
+
                 let cubeFaceAnimationProperties = {
-                    duration: 0.8,
-                    transform: activeCubeFaceAnimationData["activeCubeFace"]["cv"],
-                    height: activeCubeFaceAnimationData["activeHeight"]["cv"],
-                    width: activeCubeFaceAnimationData["activeWidth"]["cv"],
+                    scaleX: animationData["activeScaleX"]["cv"],
+                    scaleY: animationData["activeScaleY"]["cv"],
+                    transform: animationData["activeCubeFace"]["cv"],
+                }
+
+                let cubeFaceBoxShadow = {
+                    scaleX: animationData["activeBoxShadowScaleX"]["cv"],
+                    scaleY: animationData["activeBoxShadowScaleY"]["cv"],
+                    transform: animationData["activeCubeFace"]["cv"],
+                }
+
+                let cubeFaceStartEndScales = {
+                    scaleX: animationData["activeFaceStartScaleX"]["cv"],
+                    scaleY: animationData["activeFaceStartScaleY"]["cv"],
                 }
 
                 //increase the box shadow on the right face
@@ -1022,6 +1035,9 @@
 
                 gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
                 gsap.to(`.cube-face-${toSection}`, boxShadowAnimationProperties);
+                gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceBoxShadow);
+                gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales)
+                gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
 
                 let yTransformAmount = iphoneMediaQuery.matches ? -200 : -70
@@ -1204,20 +1220,30 @@
                 //change title back to home
                 document.title = ` Home | Matt Day | Developer-Designer `;
 
-                let activeCubeAnimationData = iphoneMediaQuery.matches ? activeCubeFaceMobileAnimationData : activeCubeFaceAnimationData
+                let animationData = iphoneMediaQuery.matches ? activeCubeFaceMobileAnimationData : activeCubeFaceAnimationData
                 let bodyFlex = iphoneMediaQuery.matches ? 'start' : 'center'
 
                 let cubeFaceAnimationProperties = {
-                    delay: 0.1,
-                    transform: activeCubeAnimationData["activeCubeFace"]["front"],
-                    scaleX: activeCubeAnimationData["activeScaleX"]["front"],
-                    scaleY: activeCubeAnimationData["activeScaleY"]["front"],
+                    scaleX: animationData["activeScaleX"]["cv"],
+                    scaleY: animationData["activeScaleY"]["cv"],
+                    transform: animationData["activeCubeFace"]["cv"],
+                }
+
+                let cubeFaceBoxShadow = {
+                    scaleX: animationData["activeBoxShadowRemoveScaleX"]["cv"],
+                    scaleY: animationData["activeBoxShadowRemoveScaleY"]["cv"],
+                    transform: animationData["activeCubeFaceRemove"]["cv"],
+                }
+
+                let cubeFaceStartEndScales = {
+                    scaleX: animationData["activeFaceStartRemoveScaleX"]["cv"],
+                    scaleY: animationData["activeFaceStartRemoveScaleY"]["cv"],
                 }
 
                 //increase the box shadow on the right face
                 let boxShadowAnimationProperties = {
                     delay: 0.1,
-                    boxShadow: activeCubeAnimationData["activeCubeFaceRemoveBoxShadow"]["cv"]
+                    boxShadow: animationData["activeCubeFaceRemoveBoxShadow"]["cv"]
                 }
 
                 //need to make margin-bottom more responsive
@@ -1234,6 +1260,9 @@
 
                 gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
                 gsap.to(`.cube-face-right`, boxShadowAnimationProperties);
+                gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceBoxShadow);
+                gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales)
+                gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
                 gsap.to('.main-cv-container',{ duration: 0.6, y: 200, opacity: 0})
 
