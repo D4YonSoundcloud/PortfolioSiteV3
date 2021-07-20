@@ -35,24 +35,6 @@
     "back": 300,
     "cv": 1250
   },
-  "activeScaleX": {
-    "top": 450,
-    "bottom": 250,
-    "right": 225,
-    "left": 250,
-    "front": 1,
-    "back": 0.88,
-    "cv": 0.1
-  },
-  "activeScaleY": {
-    "top": 450,
-    "bottom": 250,
-    "right": 225,
-    "left": 250,
-    "front": 1,
-    "back": 0.8,
-    "cv": 5
-  },
   "debugCameraLookUpTable": {
     "top": "translateZ(-150px) rotateX(357deg) rotateZ(360deg) rotateY(266deg)",
     "bottom": "translateZ(-150px) rotateY(285deg) rotateZ(0deg) rotateX(0deg)",

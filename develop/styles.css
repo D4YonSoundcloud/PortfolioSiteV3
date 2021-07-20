@@ -411,12 +411,49 @@ a.show{
     background-color: rgba(128, 91, 134, 1);
 }
 
+.cube-face-box-shadow{
+    position: absolute;
+    pointer-events: none;
+    box-shadow: 0 0 5px 1px rgb(220 162 228);
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+}
+
+.cube-face-start-column{
+    pointer-events: none;
+    background-color: rgba(128, 91, 134, 1);
+    width: 300px;
+    height: 1px;
+}
+.cube-face-end-column{
+    pointer-events: none;
+    background-color: rgba(128, 91, 134, 1);
+    width: 300px;
+    height: 1px;
+}
+
+.cube-face-start-row{
+    pointer-events: none;
+    background-color: rgba(128, 91, 134, 1);
+    width: 1px;
+    height: 300px;
+}
+.cube-face-end-row{
+    pointer-events: none;
+    background-color: rgba(128, 91, 134, 1);
+    width: 1px;
+    height: 300px;
+}
+
+
+
 .content-div{
     position: relative;
     font-family: 'Russo One', sans-serif;
     letter-spacing: 0.25vw;
-    width: 100%;
-    height: 100%;
+    width: 298px;
+    height: 298px;
     display: flex;
     font-size: 1.9em;
     flex-flow: column wrap;
@@ -879,10 +916,11 @@ p.back-to-home-from-cv:hover{
 
     h5, h6{
         cursor: pointer;
-        margin-top: 5%;
-        margin-bottom: 5%;
+        margin-top: 2.5%;
+        margin-bottom: 2.5%;
         transition: 0.4s ease;
         font-size: 0.65em;
+        width: 100%;
     }
 
     h5:hover{
@@ -1041,7 +1079,7 @@ p.back-to-home-from-cv:hover{
     p{
         font-size: 0.55em;
         cursor: pointer;
-        margin-left: 2.5%;
+        margin-left: 0;
         margin-right: 2.5%;
         transition: 0.8s ease;
     }
@@ -1188,13 +1226,15 @@ p.back-to-home-from-cv:hover{
 
     .back-home-div {
         position: absolute;
-        bottom: 2.5%;
+        padding-left: 10%;
+        bottom: 0;
         height: 15%;
         width: 100%;
         display: flex;
         flex-flow: row;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
+        z-index: 150;
     }
 
     .front{
@@ -1202,11 +1242,12 @@ p.back-to-home-from-cv:hover{
     }
 
     .back{
-        transform: translateZ(-100px) rotateY(-230deg) rotateX(-5deg) translateX(90px);
+        /*transform: translateZ(-100px) rotateY(-230deg) rotateX(-5deg) translateX(90px);*/
+        transform: translateZ(-100px) rotateY(-305deg) rotateX(-1deg) translateX(90px);
     }
 
     .right{
-        transform: translateY(25%) translateZ(-100px) translateX(-25%) rotateY(285deg) rotateX(0deg)
+        transform: translateZ(-100px) rotateY(270deg) rotateX(0deg)
     }
 
     .bottom{
@@ -1229,25 +1270,60 @@ p.back-to-home-from-cv:hover{
         position: absolute;
         width: 250px;
         height: 250px;
-        box-shadow: 0 0 5px 1px rgb(220 162 228);
+        box-shadow: 0 0 0px 0px rgb(220 162 228);
         color: white;
         background-color: rgba(128, 91, 134, 1)
+    }
+
+    .cube-face-box-shadow{
+        position: absolute;
+        pointer-events: none;
+        box-shadow: 0 0 5px 1px rgb(220 162 228);
+        background-color: transparent;
+        width: 250px;
+        height: 250px;
+    }
+
+    .cube-face-start-column{
+        pointer-events: none;
+        background-color: rgba(128, 91, 134, 1);
+        width: 250px;
+        height: 1px;
+    }
+    .cube-face-end-column{
+        pointer-events: none;
+        background-color: rgba(128, 91, 134, 1);
+        width: 250px;
+        height: 1px;
+    }
+
+    .cube-face-start-row{
+        pointer-events: none;
+        background-color: rgba(128, 91, 134, 1);
+        width: 1px;
+        height: 250px;
+    }
+    .cube-face-end-row{
+        pointer-events: none;
+        background-color: rgba(128, 91, 134, 1);
+        width: 1px;
+        height: 250px;
     }
 
     .content-div{
         position: relative;
         font-family: 'Russo One', sans-serif;
         letter-spacing: 0.25vw;
-        width: 100%;
-        height: 100%;
+        width: 248px;
+        height: 248px;
         display: flex;
         font-size: 1.9em;
         flex-flow: column wrap;
         align-items: center;
         justify-content: center;
-        padding: 10%;
+        padding: 5% 10% 15%;
         transition: 0.8s ease;
-        text-align: center;
+        text-align: left;
         z-index: 100;
     }
 
@@ -1289,9 +1365,13 @@ p.back-to-home-from-cv:hover{
         z-index: 1;
         box-shadow: 0 0 200px 1px rgb(220 162 228);
         background-color: rgba(0,0,0,0);
-        transform: rotateX(-90deg) translateZ(-10px);
-        animation: shadowFloat 6s ease-in-out infinite;
+        transform: rotateX(-90deg) translateZ(175px);
+        animation: none !important;
         pointer-events: none;
+    }
+
+    .cube-face-box-shadow-shadow{
+        display: none;
     }
 
     .scene-link-div{
