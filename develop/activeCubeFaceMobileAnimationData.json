@@ -6,7 +6,7 @@
     "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
     "left": "rotateY(-90deg) translateZ(150px)",
     "right": "translate(130px, 0px) translateZ(25px) rotateY(90deg)",
-    "cv": "translate(0px,0px) translateZ(176px) rotateY(90deg)"
+    "cv": "translate3d(0px, 0px, 200px) rotateY(90deg)"
   },
   "activeCubeFaceBoxShadowTransformScale": {
     "top": "translate(0%, -50%) translate(0px, -5px) rotateX(90deg) scale(1,1.5)",
@@ -60,7 +60,7 @@
     "left": 1,
     "front": 1,
     "back": 0.88,
-    "cv": 1
+    "cv": 5
   },
   "removeActiveScaleX": {
     "top": 1,
