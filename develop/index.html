@@ -396,7 +396,7 @@
         document.querySelector('body').style.flexFlow = 'column';
         document.querySelector('body').style.justifyContent = 'start';
 
-        gsap.set('.main-cv-container', {transform: 'translateY(200px)', marginTop: 221, opacity: 0})
+        gsap.set('.main-cv-container', {transform: 'translateY(200px)', opacity: 0})
 
         gsap.set('#matt-day-title', { transform: 'translate3d(0px, 55px, 10px)' })
         gsap.set('.developer-designer-div', { transform: 'translate3d(0px, 55px, 10px)' })
@@ -1034,18 +1034,17 @@
                 gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
 
-                let yTransformAmount = iphoneMediaQuery.matches ? -200 : -70
+                let yTransformAmount = iphoneMediaQuery.matches ? 15 : -70
                 let yTransformFrom = iphoneMediaQuery.matches ? 200 : 100
                 let yMarginTop = iphoneMediaQuery.matches ? 221 : this.cvContentMarginTop
 
-                let cvContainerFromAnimationObject = { y: yTransformFrom, marginTop: yMarginTop }
+                let cvContainerFromAnimationObject = { y: yTransformFrom }
 
                 let cvContainerToAnimationObject = {
                     "delay": 0.8,
                     "duration": 0.8,
                     "y": yTransformAmount,
                     "opacity": 1,
-                    "marginTop": this.cvContentMarginTop(this.currentClientWidth)
                 }
 
                 gsap.fromTo('.main-cv-container', cvContainerFromAnimationObject, cvContainerToAnimationObject).then(() => {
@@ -1257,7 +1256,9 @@
                 gsap.to(`.cube-face-box-shadow-${toSection}`, cubeFaceBoxShadow);
                 gsap.to(`.cube-face-start-${toSection}`, cubeFaceStartEndScales)
                 gsap.to(`.cube-face-end-${toSection}`, cubeFaceStartEndScales);
+
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+
                 gsap.to('.main-cv-container',{ duration: 0.6, y: 200, opacity: 0})
 
                 setTimeout(() => {
