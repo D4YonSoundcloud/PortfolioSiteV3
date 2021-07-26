@@ -334,13 +334,9 @@ a.show{
     height: 300px;
     perspective: 550px;
     /*transition: 0.8s ease;*/
-    animation: float 6s ease-in-out infinite;
+    /*animation: float 6s ease-in-out infinite;*/
     margin-right: 10%;
     z-index: 10;
-}
-
-.main-scene.content-active {
-    margin-right: 50%;
 }
 
 .main-cube {
@@ -368,7 +364,7 @@ a.show{
 }
 
 .back{
-    transform: translateZ(-150px) rotateY(121deg) rotateX(-2deg);
+    transform: translateZ(-150px) rotateY(58deg) rotateX(0deg);
 }
 
 .right{
@@ -395,7 +391,6 @@ a.show{
     position: absolute;
     width: 300px;
     height: 300px;
-    box-shadow: 0 0 5px 1px rgb(220 162 228);
     color: white;
     background-color: rgba(128, 91, 134, 1);
 }
@@ -492,8 +487,8 @@ a.show{
     z-index: 1;
     box-shadow: 0 0 200px 1px rgb(220 162 228);
     background-color: rgba(0,0,0,0);
-    transform: rotateX(-90deg) translateZ(150px);
-    animation: shadowFloat 6s ease-in-out infinite;
+    transform: rotateX(-90deg) translateZ(200px);
+    /*animation: shadowFloat 6s ease-in-out infinite;*/
     /*transition: 0.8s ease;*/
     pointer-events: none;
 }

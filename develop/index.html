@@ -734,15 +734,6 @@
 
                 console.log(fromSection, toSection)
 
-
-                if(iphoneMediaQuery.matches === false){
-                    //make sure the cube's margin is set back to 10 if we are coming from viewing content
-                    let cubeSceneCvAnimationProperties = {
-                        marginRight: '10%',
-                    }
-                    gsap.to('#main-scene', cubeSceneCvAnimationProperties)
-                }
-
                 //change the from shown property in the data object above to 'hidden', and then the to property to 'active'
                 this[fromShown] = 'hidden';
                 this[toShown] = 'active';
@@ -813,7 +804,7 @@
                 } else {
 
                     let cubeSceneCvAnimationProperties = {
-                        marginRight: '50%',
+                        x: '-=300',
                     }
                     gsap.to('#main-scene', cubeSceneCvAnimationProperties)
 
@@ -884,6 +875,11 @@
                     } else {
                         gsap.to('#main-scene', {  y: 175, delay: 1 });
                     }
+                } else {
+	                let cubeSceneCvAnimationProperties = {
+		                x: '+=300',
+	                }
+	                gsap.to('#main-scene', cubeSceneCvAnimationProperties)
                 }
 
                 setTimeout(() => {
