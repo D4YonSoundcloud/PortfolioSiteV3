@@ -305,25 +305,25 @@
 
 <!-- CONTENT DIV -->
 <div id="main-content" :class="'main-content-div ' + showContent">
-    <h2 :class="'content-title ' + showTitle + transition"> {{ title }} </h2>
-    <div :class="'title-divider-bar ' + showDivider + transition"></div>
-    <p :class="showParagraphOne + transition + ' ' + 'info-p'"> {{ paragraphOne }}</p>
-    <div class="spacer-div"></div>
-    <p :class="showParagraphTwo + transition + ' ' + 'info-p'"> {{ paragraphTwo }}</p>
-    <div class="spacer-div"></div>
-    <p :class="showParagraphThree + transition + ' ' + 'info-p'"> {{ paragraphThree }}</p>
-    <div class="spacer-div"></div>
-    <div :class="'spacer-div ' +  'language-div ' + showParagraphOne" style="margin-top: 0.25%; display: flex; flex-flow: row; justify-content: start; align-items: center;">
+    <h2 :class="'content-title ' + showTitle + transition" id="main-content-title"> {{ title }} </h2>
+    <div :class="'title-divider-bar ' + showDivider + transition" id="main-content-divider-1"></div>
+    <p :class="showParagraphOne + transition + ' ' + 'info-p'" id="main-content-p1"> {{ paragraphOne }}</p>
+    <div class="spacer-div" id="main-content-divider-2"></div>
+    <p :class="showParagraphTwo + transition + ' ' + 'info-p'" id="main-content-p2"> {{ paragraphTwo }}</p>
+    <div class="spacer-div" id="main-content-divider-3"></div>
+    <p :class="showParagraphThree + transition + ' ' + 'info-p'" id="main-content-p3"> {{ paragraphThree }}</p>
+    <div class="spacer-div" id="main-content-divider-4"></div>
+    <div :class="'spacer-div ' +  'language-div ' + showParagraphOne" style="margin-top: 0.25%; display: flex; flex-flow: row; justify-content: start; align-items: center;" id="main-content-languages-used">
         <p v-if="(languagesUsed.length > 0) === true" :class="'languages-title ' + transition"> STACK USED </p>
-        <p :class="'languages ' + showParagraphOne + transition" v-for="(language, index) in languagesUsed"> {{language}} </p>
+        <p :class="'languages'" v-for="(language, index) in languagesUsed"> {{language}} </p>
         <a class="icon-link" v-if="showGithubLink === true" :href="githubLink">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path fill="white" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
             </svg>
         </a>
     </div>
-    <div v-if="showProjectLink === true" :class="'scene-link-div ' + showParagraphThree + transition">
-        <div :class="'scene-link ' + showParagraphThree + transition">
+    <div :class="'scene-link-div'" id="main-content-project-link">
+        <div :class="'scene-link'">
             <div class="box-main">
                 <div class="box-face box-face-front">
                     <a v-if="showProjectLink === true" :href="projectLink" target="_blank">LIVE PROJECT</a>
@@ -349,6 +349,38 @@
     */
     //set GSAP defaults
     gsap.defaults({ duration: 0.8 });
+
+    //register a fade-up effect to be referenced later on
+    gsap.registerEffect({
+        name: "fadeUp",
+        effect: (targets,config) => {
+        	return gsap.to(targets, {
+        		duration: config.duration,
+                y: config.y,
+                opacity: config.opacity,
+                stagger: config.stagger,
+                delay: config.delay,
+            });
+        },
+        defaults: { duration: 0.8, y: "-=50", opacity: 1, stagger: 0, delay: 0 },
+        extendTimeline: true,
+    });
+
+    //register a fade-out effect to be referenced later on
+    gsap.registerEffect({
+	    name: "fadeDownAndOut",
+	    effect: (targets,config) => {
+		    return gsap.to(targets, {
+			    duration: config.duration,
+			    y: config.y,
+			    opacity: config.opacity,
+			    stagger: config.stagger,
+			    delay: config.delay,
+		    });
+	    },
+	    defaults: { duration: 0.8, y: "+=50", opacity: 0, stagger: 0, delay: 0 },
+	    extendTimeline: true,
+    });
 
     // Create a media condition that targets viewports for iphone
     const iphoneMediaQuery = window.matchMedia('(min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3)')
@@ -401,8 +433,53 @@
         gsap.set('#matt-day-title', { transform: 'translate3d(0px, 55px, 10px)' })
         gsap.set('.developer-designer-div', { transform: 'translate3d(0px, 55px, 10px)' })
 
+        gsap.set('#main-content', { y: 100 })
+        gsap.set('#main-content-title', { opacity: 0 })
+        gsap.set('#main-content-p1', { y: 40, opacity: 0 })
+        gsap.set('#main-content-p2', { y: 40, opacity: 0 })
+        gsap.set('#main-content-p3', { y: 40, opacity: 0 })
+        gsap.set('#main-content-languages-used', { y: 40, opacity: 0 })
+        gsap.set('#main-content-project-link', { y: 40, opacity: 0 })
+
     } else {
 	    console.log('this is desktop')
+	    let faces = ['top','back','front','right','left','bottom','top', 'shadow']
+	    let transformLookUpTable = {
+		    "front": "rotateY(  0deg) translateZ(150px)",
+		    "right": "rotateY( 90deg) translateZ(150px)",
+		    "back": "rotateY(180deg) translateZ(150px)",
+		    "left": "translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)",
+		    "bottom": "rotateX(-90deg) translateZ(150px)",
+		    "top": "rotateX( 90deg) translateZ(150px)",
+		    "shadow": "translate(0px, -150px) rotateX(-90deg)"
+	    }
+	    let flexFlowLookUpTable = {
+		    "front": "column wrap",
+		    "right": "row wrap",
+		    "back": "column wrap",
+		    "left": "row wrap",
+		    "bottom": "column wrap",
+		    "top": "column wrap",
+		    "shadow": "column wrap"
+	    }
+
+	    for(let face of faces){
+		    let cubeFaceBoxShadowStyle = {
+			    position: 'absolute',
+			    pointerEvents: 'none',
+			    boxShadow: '0 0 5px 1px rgb(220 162 228)',
+			    backgroundColor: 'transparent',
+			    width: 300,
+			    height: 300,
+			    transform: transformLookUpTable[face],
+			    scaleX: 1,
+			    scaleY: 1,
+		    }
+
+		    gsap.set(`.cube-face-${face}`, { transform: transformLookUpTable[face], flexFlow: flexFlowLookUpTable[face], scaleX: 1, scaleY: 1 })
+		    gsap.set(`.cube-face-box-shadow-${face}`, cubeFaceBoxShadowStyle)
+	    }
+
 	    gsap.set('.cube-face-front', { transform: 'rotateY(  0deg) translateZ(150px)'})
 	    gsap.set('.cube-face-right', { transform: 'rotateY( 90deg) translateZ(150px)'})
 	    gsap.set('.cube-face-back', { transform: 'rotateY(180deg) translateZ(150px)'})
@@ -716,20 +793,21 @@
 
                 if(this.mainSceneContentActive !== ''){
                     console.log('main scene is active')
-                    appMainContent.transition = 'transition';
-                    setTimeout(() => {
-                            appMainContent.transition = '';
-                        }, 800
-                    )
+                    // appMainContent.transition = 'transition';
+                    // setTimeout(() => {
+                    //         appMainContent.transition = '';
+                    //     }, 800
+                    // )
                 }
 
                 //move whole cube up 200 px if it is mobile, or increase the margin if desktop
                 //need to change margin animation to transform X
                 if(iphoneMediaQuery.matches){
-                    if(this.mainCubeClass === 'top' && appMainContent.showContent !== "show-content"){
-                        gsap.to('#main-scene', {  y: "-=45"});
+                    if(this.mainCubeClass === 'top'){
+                        gsap.to('#main-scene', {  y: -45});
                     } else {
-                        gsap.to('#main-scene', {  y: '+=0' });
+                    	console.log('this is what is stopping the transform');
+                        gsap.to('#main-scene', {  y: 0 });
                     }
 
                 } else {
@@ -753,44 +831,65 @@
                 appMainContent.showProjectLink = content[contentName].showProjectLink;
                 appMainContent.projectLink = content[contentName].projectLink;
 
-                setTimeout(() => {
-                    appMainContent.showTitle = 'show';
-                    appMainContent.showDivider = 'show';
-                    appMainContent.showParagraphOne = 'show';
-                    appMainContent.showParagraphTwo = 'show';
-                    appMainContent.showParagraphThree = 'show';
-                    appMainContent.languagesUsed = content[contentName].languagesUsed
-                    appMainContent.githubLink = content[contentName].githubLink;
-                    appMainContent.showGithubLink = content[contentName].showGithubLink;
+	            // appMainContent.showTitle = 'show';
+	            appMainContent.showDivider = 'show';
+	            // appMainContent.showParagraphOne = 'show';
+	            // appMainContent.showParagraphTwo = 'show';
+	            // appMainContent.showParagraphThree = 'show';
+	            appMainContent.languagesUsed = content[contentName].languagesUsed
+	            appMainContent.githubLink = content[contentName].githubLink;
+	            appMainContent.showGithubLink = content[contentName].showGithubLink;
 
-                }, 600)
+	            if((this.mainCubeClass === 'top' || this.mainCubeClass === 'bottom') && appMainContent.showContent === "show-content"){
+		            gsap.effects.fadeUp("#main-content", { y: this.mainCubeClass === 'top' ? "0" : "10", delay: 0.4  })
+	            } else {
+		            gsap.effects.fadeUp("#main-content", { delay: 0.4 })
+	            }
+
+	            gsap.effects.fadeUp("#main-content-title", { y: 0, delay: 0.4  })
+	            //fade-up on the P elements of main-content, with stagger
+	            gsap.effects.fadeUp(".info-p", { y: "0" , stagger: 0.2, delay: 0.6 })
+
+	            gsap.effects.fadeUp("#main-content-languages-used", { y: "0" , delay: 1 })
+
+                if(appMainContent.showProjectLink === true) {
+	                gsap.effects.fadeUp("#main-content-project-link", { y: "0" , delay: 1 })
+                }
 
             },
             hideContent(){
 
-                appMainContent.showTitle = 'hide';
+                // appMainContent.showTitle = 'hide';
                 appMainContent.showDivider = 'hide';
-                appMainContent.showParagraphOne = 'hide';
-                appMainContent.showParagraphTwo = 'hide';
-                appMainContent.showParagraphThree = 'hide';
+                // appMainContent.showParagraphOne = 'hide';
+                // appMainContent.showParagraphTwo = 'hide';
+                // appMainContent.showParagraphThree = 'hide';
                 appMainContent.languagesUsed = [];
                 appMainContent.showGithubLink = false;
+                appMainContent.showProjectLink = false;
+
+	            gsap.effects.fadeDownAndOut("#main-content", { y: 100, delay: 0.6 })
+	            gsap.effects.fadeDownAndOut("#main-content-title", { y: 0, delay: 0.6 })
+
+	            gsap.effects.fadeDownAndOut(".info-p", { y: 40 , stagger: -0.2 })
+	            gsap.effects.fadeDownAndOut("#main-content-languages-used", { y: 40 })
+	            gsap.effects.fadeDownAndOut("#main-content-project-link", { y: 40 })
 
                 //move the cube back to where it originally was
                 if(iphoneMediaQuery.matches){
                     console.log('this is happening')
                     if(this.mainCubeClass === 'top'){
                         console.log('this is about to happen')
-                        gsap.to('#main-scene', {  y: "+=45"});
+                        gsap.to('#main-scene', {  y: 175, delay: 1 });
                     } else {
-                        gsap.to('#main-scene', {  y: '-=0' });
+                        gsap.to('#main-scene', {  y: 175, delay: 1 });
                     }
                 }
 
                 setTimeout(() => {
                     this.mainSceneContentActive = '';
                     appMainContent.showContent = 'hide-content';
-                }, 600)
+                }, 1200)
 
             },
             developerDesignerLoop(){
@@ -1045,6 +1144,7 @@
                     "duration": 0.8,
                     "y": yTransformAmount,
                     "opacity": 1,
+                    "pointerEvents": "all",
                 }
 
                 gsap.fromTo('.main-cv-container', cvContainerFromAnimationObject, cvContainerToAnimationObject).then(() => {
@@ -1093,7 +1193,7 @@
             this.developerDesignerLoop();
 
             if(this.checkIfMobile() === true){
-                gsap.set('.main-scene', { x: -10 })
+                gsap.set('.main-scene', { x: -10, y: 175 })
                 gsap.to('.developer-designer-div', { delay: 0.4, duration: 0.4, z: 0, y: 0 })
                 gsap.to('#matt-day-title', { delay: 0.8, duration: 0.4, z: 15, y: 0 })
                 console.log(this.mainCubeClass, cubeCameraAnglesMobile["front"])
@@ -1248,7 +1348,7 @@
                     marginBottom: 0,
                     marginLeft: 0,
                     x: iphoneMediaQuery.matches ? -10 : 0,
-                    y: iphoneMediaQuery.matches ? 0 : 0,
+                    y: iphoneMediaQuery.matches ? 175 : 0,
                 }
 
                 gsap.to(`.cube-face-${toSection}`, cubeFaceAnimationProperties);
@@ -1259,7 +1359,7 @@
 
                 gsap.to('#main-scene', cubeSceneCvAnimationProperties)
 
-                gsap.to('.main-cv-container',{ duration: 0.6, y: 200, opacity: 0})
+                gsap.to('.main-cv-container',{ duration: 0.6, y: 200, opacity: 0, pointerEvents: "none"})
 
                 setTimeout(() => {
                     //show front-content

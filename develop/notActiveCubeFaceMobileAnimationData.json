@@ -103,7 +103,7 @@
     "scene":{
       "duration": 0.8,
       "scale": 1,
-      "x": "+=185"
+      "x": "-60"
     }
   },
   "notTopFacesRemoveAnimationLookUpTable": {
@@ -538,7 +538,7 @@
       "scaleY": 1
     },
     "scene": {
-      "x": "+=185",
+      "x": "120",
       "scale": 1
     }
   },
@@ -1064,6 +1064,7 @@
       "scaleY": 2
     },
     "scene": {
+      "y": 0,
       "x": "+=15"
     }
   },
@@ -1190,7 +1191,9 @@
       "scaleY": 1
     },
     "scene": {
-      "x": "-=15"
+      "x": "-=15",
+      "y": 175,
+      "delay": 1
     }
   },
   "cvFacesAnimationLookUpTable": {
