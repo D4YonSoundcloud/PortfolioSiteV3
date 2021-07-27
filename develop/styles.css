@@ -11,6 +11,7 @@ h5, h6{
     margin-top: 2.5%;
     margin-bottom: 2.5%;
     transition: 0.2s ease;
+    width: 100%;
 }
 
 h5.small{
@@ -171,8 +172,9 @@ p.designer-hidden{
 .link-div{
     display: flex;
     flex-flow: row;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    width: 100%;
     margin-top: 2.5vh;
 }
 
@@ -350,12 +352,13 @@ a.show{
 
 .back-home-div {
     position: absolute;
-    bottom: 2.5%;
+    bottom: 0;
     height: 15%;
-    width: 100%;
+    /* padding-left: 10%; */
+    width: 90%;
     display: flex;
     flex-flow: row;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 
@@ -445,7 +448,7 @@ a.show{
     justify-content: center;
     padding: 5%;
     transition: 0.8s ease;
-    text-align: center;
+    text-align: left;
     z-index: 100;
 }
 

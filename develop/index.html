@@ -800,14 +800,16 @@
                     	console.log('this is what is stopping the transform');
                         gsap.to('#main-scene', {  y: 0 });
                     }
-
                 } else {
+	                if(this.mainSceneContentActive === ''){
+	                	let xAmountLookUpTable = {
+                            "right": "-=300",
+                            "top": "-=200",
+                            "bottom": "-=200",
+                        }
 
-                    let cubeSceneCvAnimationProperties = {
-                        x: '-=300',
-                    }
-                    gsap.to('#main-scene', cubeSceneCvAnimationProperties)
-
+		                gsap.to('#main-scene', { x: xAmountLookUpTable[this.mainCubeClass] })
+	                }
                 }
 
                 this.mainSceneContentActive = 'content-active'
@@ -876,10 +878,13 @@
                         gsap.to('#main-scene', {  y: 175, delay: 1 });
                     }
                 } else {
-	                let cubeSceneCvAnimationProperties = {
-		                x: '+=300',
-	                }
-	                gsap.to('#main-scene', cubeSceneCvAnimationProperties)
+	                let xAmountLookUpTable = {
+		                "right": "+=300",
+		                "top": "+=200",
+		                "bottom": "+=200",
+                    }
+
+	                gsap.to('#main-scene', { x: xAmountLookUpTable[this.mainCubeClass] })
                 }
 
                 setTimeout(() => {
