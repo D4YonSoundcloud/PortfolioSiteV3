@@ -2,20 +2,20 @@
   "activeCubeFace": {
     "top": "translate(0%, -50%) translate3d(0px, 0px, 25px) rotateX(90deg)",
     "bottom": "translate(0px, 125px) translateZ(25px) rotateX(-90deg)",
-    "back": "translate3d(-12px, 0px, -125px) rotateY(180deg)",
+    "back": "translate3d(-12px, 0px, -165px) rotateY(180deg)",
     "front": "rotateY(  0deg) translateZ(150px)",
     "left": "rotateY(-90deg) translateZ(150px)",
     "right": "translate3d(155px, 0px, 25px) rotateY(90deg)",
     "cv": "translate3d(0px, 0px, 200px) rotateY(90deg)"
   },
   "activeCubeFaceBoxShadowTransformScale": {
-    "top": "translate(0%, -50%) translate(0px, -5px) rotateX(90deg) scale(1,1.5)",
-    "bottom": "rotateX(-90deg) translateZ(125px)",
-    "back": "translate3d(-12px, 0px, -125px) rotateY(180deg) scaleX(0.88)",
-    "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
+    "top": "translate(0%, -50%) translate3d(0px, 0px, 25px) rotateX(90deg)",
+    "bottom": "translate(0px, 125px) translateZ(25px) rotateX(-90deg)",
+    "back": "translate3d(-12px, 0px, -165px) rotateY(180deg)",
+    "front": "rotateY(  0deg) translateZ(150px)",
     "left": "rotateY(-90deg) translateZ(150px)",
-    "right": "translate(130px, 0px) translateZ(25px) rotateY(90deg) scaleX(2)",
-    "cv": "translate(-310px, 0px) rotateY(90deg) scaleY(0.1)"
+    "right": "translate3d(190px, 0px, 25px) rotateY(90deg)",
+    "cv": "translate3d(0px, 0px, 200px) rotateY(90deg)"
   },
   "activeCubeFaceRemove": {
     "top": "rotateX( 90deg) translateZ(150px)",
@@ -27,13 +27,13 @@
     "cv": "translate3d(0px, 0px, 150px)"
   },
   "activeCubeFaceRemoveBoxShadowTransformScale": {
-    "top": "translate(0%, -50%) translateZ(25px) rotateX(90deg) scale(1,1)",
+    "top": "rotateX( 90deg) translateZ(150px)",
     "bottom": "rotateX(-90deg) translateZ(150px)",
-    "back": "translate3d(0px, 0px, -100px) rotateY(180deg) scaleX(1)",
-    "front": "translate3d(0px, 0px, 150px) rotateY(0deg)",
-    "left": "rotateY(-90deg) translateZ(150px)",
+    "back": "translate3d(0px, 0px, -150px) rotateY(180deg)",
+    "front": "rotateY(  0deg) translateZ(150px)",
+    "left": "translate(-260px, 0px) rotateY(-90deg)",
     "right": "rotateY( 90deg) translateZ(150px)",
-    "cv": "rotateY( 90deg) translateZ(150px) scaleY(1)"
+    "cv": "translate3d(0px, 0px, 150px)"
   },
   "activeHeight": {
     "top": 300,
@@ -126,8 +126,8 @@
     "cv": 1
   },
   "activeFaceStartScaleY": {
-    "top": 66,
-    "bottom": 66,
+    "top": 77,
+    "bottom": 77,
     "right": 1,
     "left": 1,
     "front": 1,

@@ -223,7 +223,7 @@
         <div :class="'cube-face ' + 'cube-face-shadow '">
         </div>
         <!-- absolutely positioned box shadow for good animation performance -->
-        <div class="cube-face-box-shadow-shadow"></div>
+<!--        <div class="cube-face-box-shadow-shadow"></div>-->
     </div>
 
 </div>
@@ -453,6 +453,15 @@
 		    "top": "rotateX( 90deg) translateZ(150px)",
 		    "shadow": "translate(0px, -150px) rotateX(-90deg)"
 	    }
+	    let boxShadowsTransformLookUpTable = {
+		    "front": "translate3d(0px, 0px, 150px)",
+		    "right": "translate(150px, 0px) rotateY(90deg)",
+		    "back": "rotateY(180deg) translateZ(150px)",
+		    "left": "translate(-50%, 0%) translate(0px, 0px) rotateY(-90deg)",
+		    "bottom": "rotateX(-90deg) translateZ(150px)",
+		    "top": "rotateX( 90deg) translateZ(150px)",
+		    "shadow": "translate(0px, -150px) rotateX(-90deg)"
+	    }
 	    let flexFlowLookUpTable = {
 		    "front": "column wrap",
 		    "right": "row wrap",
@@ -471,7 +480,7 @@
 			    backgroundColor: 'transparent',
 			    width: 300,
 			    height: 300,
-			    transform: transformLookUpTable[face],
+			    transform: boxShadowsTransformLookUpTable[face],
 			    scaleX: 1,
 			    scaleY: 1,
 		    }
@@ -804,8 +813,8 @@
 	                if(this.mainSceneContentActive === ''){
 	                	let xAmountLookUpTable = {
                             "right": "-=300",
-                            "top": "-=200",
-                            "bottom": "-=200",
+                            "top": "-200",
+                            "bottom": "-200",
                         }
 
 		                gsap.to('#main-scene', { x: xAmountLookUpTable[this.mainCubeClass] })
@@ -880,8 +889,8 @@
                 } else {
 	                let xAmountLookUpTable = {
 		                "right": "+=300",
-		                "top": "+=200",
-		                "bottom": "+=200",
+		                "top": "-40",
+		                "bottom": "-40",
                     }
 
 	                gsap.to('#main-scene', { x: xAmountLookUpTable[this.mainCubeClass] })
@@ -927,7 +936,7 @@
                     let cubeFaceBoxShadow = {
 	                    scaleX: animationData["activeBoxShadowScaleX"][toSection],
 	                    scaleY: animationData["activeBoxShadowScaleY"][toSection],
-	                    transform: animationData["activeCubeFace"][toSection],
+	                    transform: animationData["activeCubeFaceBoxShadowTransformScale"][toSection],
                     }
 
                     let cubeFaceStartEndScales = {
@@ -962,7 +971,7 @@
 	                let cubeFaceBoxShadow = {
 		                scaleX: animationData["activeBoxShadowRemoveScaleX"][fromSection],
 		                scaleY: animationData["activeBoxShadowRemoveScaleY"][fromSection],
-		                transform: animationData["activeCubeFaceRemove"][fromSection],
+		                transform: animationData["activeCubeFaceRemoveBoxShadowTransformScale"][fromSection],
 		                boxShadow: animationData["activeCubeFaceBoxShadow"][fromSection]
 	                }
 
@@ -988,7 +997,7 @@
 	                    let cubeFaceBoxShadow = {
 		                    scaleX: animationData["activeBoxShadowScaleX"][toSection],
 		                    scaleY: animationData["activeBoxShadowScaleY"][toSection],
-		                    transform: animationData["activeCubeFace"][toSection],
+		                    transform: animationData["activeCubeFaceBoxShadowTransformScale"][toSection],
 	                    }
 
 	                    let cubeFaceStartEndScales = {
